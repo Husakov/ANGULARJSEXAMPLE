@@ -1,0 +1,22 @@
+<div class="title">
+    Select options
+</div>
+
+<uib-accordion class="uib-accordion-dark">
+    <div uib-accordion-group
+         ng-repeat="tab in $ctrl.mediator.model.options('optionTabs') track by tab.alias"
+         ng-init="isOpen = false"
+         is-open="isOpen"
+         open-class="active">
+        <uib-accordion-heading>
+            <i class="fa fa-fw {{tab.icon}}"></i>
+            {{::tab.title}}
+            <i class="fa switch-icon pull-right"
+               ng-class="{'fa-chevron-down': !isOpen, 'fa-chevron-up': isOpen}"></i>
+            <span class="status-icon pull-right"
+                  ng-class="{enabled: $ctrl.mediator.getOptionTabStatus(tab.alias)}"></span>
+        </uib-accordion-heading>
+
+        <div class="selected-option" ng-include="$ctrl.getTemplateUrl('options/'+tab.alias)"></div>
+    </div>
+</uib-accordion>

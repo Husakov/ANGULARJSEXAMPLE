@@ -1,0 +1,215 @@
+inbox-side-panel {
+    position: relative;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    padding: 0px;
+    border-right: 1px solid #ECECF2;
+    background: $main-background-color;
+
+    .toolbar-top {
+        padding: 20px 15px 0px 15px;
+        .fixed-mobile-search-list {
+            height: 40px;
+        }
+        hr {
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+    }
+
+    .conversation-search {
+        display: block;
+        margin-top: 15px;
+    }
+
+    .inbox-dropdown {
+        padding: 20px 0px 0px;
+        border: none;
+        width: 330px;
+        color: #9A99AB;
+        .inbox-side-panel__title {
+            font-size: 18px;
+            margin-left: 22px;
+            font-weight: 600;
+            padding-bottom: 7px;
+        }
+
+        .inbox-side-panel:last-child {
+            padding-bottom: 7px;
+        }
+
+        .inbox-side-panel {
+            .nav-link {
+                color: #9A99AB;
+                text-decoration: none;
+                display: block;
+                padding: 7px 24px;
+                line-height: 24px;
+            }
+
+            .active {
+                background-color: #edf8ff;
+
+                .inbox-name {
+                    font-weight: bold;
+                }
+            }
+
+            avatar {
+                margin-right: 6px;
+            }
+            .inbox-icon {
+                width: 24px;
+                height: 24px;
+                display: inline-block;
+                font-size: 24px;
+                margin-right: 10px;
+            }
+            .inbox-count {
+                width: 32px;
+                height: 24px;
+                text-align: center;
+                border-radius: 4px;
+                color: #fff;
+                background: #1FB6FF;
+                font-size: 14px;
+                line-height: 25px;
+                &.grey {
+                    background: hexToRgba(#000, 0.18);
+                }
+            }
+
+            .panel-heading {
+                padding: 0 22px;
+            }
+
+            .panel {
+                box-shadow: none;
+                border: none;
+            }
+
+            .accordion-toggle {
+                text-decoration: none;
+            }
+
+            .inbox-side-block {
+                margin-top: 5px;
+                .panel-title {
+                    margin-bottom: 0;
+                }
+                .accordion-title {
+                    font-weight: normal;
+                    position: relative;
+                    .item-count {
+                        color: #2E9FEB;
+                    }
+                    .toggle-icon {
+                        right: 6px;
+                        top: 14px;
+                        display: block;
+                    }
+                    &:hover {
+                        cursor: pointer;
+                        .toggle-icon {
+                            display: block;
+                        }
+                    }
+                }
+
+                .accordion-panel {
+                    padding-top: 13px;
+                    padding-bottom: 5px;
+                    line-height: 22px;
+                }
+                .accordion-panel-inside {
+                    padding: 7px 0px 7px 0px;
+                }
+                .panel-group .panel + .panel {
+                    margin-top: 0;
+                    padding: 0;
+                }
+                .panel-body {
+                    border-top: none;
+                    background: #F0F7FA;
+                    padding: 5px 22px;
+                }
+            }
+
+            .emoji-xs {
+                transform: scale(0.7);
+                margin-top: -5px;
+            }
+            .scrollable {
+                height: 21px * 10;
+            }
+            .edit-team-link {
+                margin-left: 3px;
+                cursor: pointer;
+                color: #D1D1D1;
+            }
+            .dropdown-menu .active {
+                background-color: transparent !important;
+            }
+            .inbox-icon-unassigned {
+                color: #00DFB3;
+            }
+            .inbox-icon-all {
+                color: #20D06B;
+            }
+            .inbox-icon-mentioned {
+                color: #089C87;
+            }
+        }
+    }
+
+    .sorting-button {
+        font-size: 12px;
+        color: #9A99AB;
+        line-height: 18px;
+        padding: 12px 5px 0;
+        display: block;
+    }
+
+    .conversations-container {
+        position: relative;
+        height: 100%;
+        width: 100%;
+        overflow: hidden;
+        .list {
+            padding: 12px 16px 0;
+        }
+        .conversation-loader {
+            width: 100%;
+            height: 100%;
+            bottom: 0;
+            left: 0;
+            min-height: 50px;
+        }
+        .no-conversation {
+            margin: 10px 0;
+        }
+    }
+
+    .side-spinner {
+        position: relative;
+        height: 40px;
+        margin-bottom: 20px;
+    }
+
+    @media (max-width: 545px) {
+        .fixed-mobile-search-list {
+            position: fixed;
+            z-index: 999;
+            background-color: #f0f0f0;
+            width: 100%
+        }
+    }
+
+}
+
+@media (min-width: 33.9em) {
+    inbox-side-panel {
+        width: 360px;
+    }
+}

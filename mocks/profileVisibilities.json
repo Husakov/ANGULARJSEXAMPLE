@@ -1,0 +1,614 @@
+[
+    {
+        "id": "57ac42118810455f4d51dff4",
+        "default": true,
+        "type": "account-people-segments",
+        "name": "All Users",
+        "creator": {
+            "name": "Default Segment"
+        },
+        "created": "2016-08-11T09:14:57.141Z",
+        "enabled": true,
+        "people": []
+    },
+    {
+        "id": "57ac42118810455f4d51dff6",
+        "default": true,
+        "type": "account-people-segments",
+        "name": "All Visitors",
+        "creator": {
+            "name": "Default Segment"
+        },
+        "created": "2016-08-11T09:14:57.147Z",
+        "enabled": true,
+        "people": []
+    },
+    {
+        "id": "57ac42118810455f4d51dff8",
+        "default": true,
+        "type": "account-people-segments",
+        "name": "New",
+        "creator": {
+            "name": "Default Segment"
+        },
+        "created": "2016-08-11T09:14:57.150Z",
+        "enabled": false,
+        "people": []
+    },
+    {
+        "id": "57ac42118810455f4d51dffa",
+        "default": true,
+        "type": "account-people-segments",
+        "name": "Active",
+        "creator": {
+            "name": "Default Segment"
+        },
+        "created": "2016-08-11T09:14:57.152Z",
+        "enabled": false,
+        "people": []
+    },
+    {
+        "id": "57ac42118810455f4d51dffc",
+        "default": true,
+        "type": "account-people-segments",
+        "name": "Slipping Away",
+        "creator": {
+            "name": "Default Segment"
+        },
+        "created": "2016-08-11T09:14:57.155Z",
+        "enabled": false,
+        "people": []
+    },
+    {
+        "id": "57b48eff8ccdd659066a3d1b",
+        "default": false,
+        "type": "account-people-segments",
+        "name": "Maya Segment",
+        "creator": {
+            "name": "You"
+        },
+        "created": "2016-08-17T16:21:19.572Z",
+        "enabled": false,
+        "people": []
+    },
+    {
+        "id": "57c811855589ce5061356acc",
+        "default": false,
+        "type": "account-people-segments",
+        "name": "Cordie",
+        "creator": {
+            "name": "You"
+        },
+        "created": "2016-09-01T11:31:17.210Z",
+        "enabled": false,
+        "people": []
+    },
+    {
+        "id": "57e0bcb450ad2aa20fb11f74",
+        "default": false,
+        "type": "account-people-segments",
+        "name": "fsfd",
+        "creator": {
+            "name": "You"
+        },
+        "created": "2016-09-20T04:36:04.981Z",
+        "enabled": false,
+        "people": []
+    },
+    {
+        "id": "57e189b150ad2aa20fb11f76",
+        "default": false,
+        "type": "account-people-segments",
+        "name": "Maya",
+        "creator": {
+            "name": "You"
+        },
+        "created": "2016-09-20T19:10:41.227Z",
+        "enabled": false,
+        "people": []
+    },
+    {
+        "id": "57e211d6ccc8c3fd71f4e40e",
+        "default": false,
+        "type": "account-people-segments",
+        "name": "fdf",
+        "creator": {
+            "name": "You"
+        },
+        "created": "2016-09-21T04:51:34.314Z",
+        "enabled": false,
+        "people": []
+    },
+    {
+        "id": "57e2d384ccc8c3fd71f4e42a",
+        "default": false,
+        "type": "account-people-segments",
+        "name": "Cordie Nader Sr.",
+        "creator": {
+            "name": "You"
+        },
+        "created": "2016-09-21T18:37:56.295Z",
+        "enabled": false,
+        "people": []
+    },
+    {
+        "id": "57e2f42fccc8c3fd71f4e431",
+        "default": false,
+        "type": "account-people-segments",
+        "name": "Maya Pagac",
+        "creator": {
+            "name": "You"
+        },
+        "created": "2016-09-21T20:57:19.618Z",
+        "enabled": false,
+        "people": []
+    },
+    {
+        "id": "57e3c0d9ccc8c3fd71f4e43e",
+        "default": false,
+        "type": "account-people-segments",
+        "name": "Maya Segment and Delia Gusikowski",
+        "creator": {
+            "name": "You"
+        },
+        "created": "2016-09-22T11:30:33.189Z",
+        "enabled": false,
+        "people": []
+    },
+    {
+        "id": "57e7c8eb7784926d3b2d218a",
+        "default": false,
+        "type": "account-people-segments",
+        "name": "Maya or Cordie",
+        "creator": {
+            "name": "You"
+        },
+        "created": "2016-09-25T12:54:03.791Z",
+        "enabled": false,
+        "people": []
+    },
+    {
+        "id": "57ebfd628798998c2bcdbfb0",
+        "default": false,
+        "type": "account-people-segments",
+        "name": "dsds",
+        "creator": {
+            "name": "You"
+        },
+        "created": "2016-09-28T17:26:58.412Z",
+        "enabled": false,
+        "people": []
+    },
+    {
+        "id": "57ac42118810455f4d51dff5",
+        "default": true,
+        "type": "account-company-segments",
+        "name": "All",
+        "creator": {
+            "name": "Default Segment"
+        },
+        "created": "2016-08-11T09:14:57.146Z",
+        "enabled": true,
+        "people": []
+    },
+    {
+        "id": "57ac42118810455f4d51dff7",
+        "default": true,
+        "type": "account-company-segments",
+        "name": "Active",
+        "creator": {
+            "name": "Default Segment"
+        },
+        "created": "2016-08-11T09:14:57.148Z",
+        "enabled": false,
+        "people": []
+    },
+    {
+        "id": "57ac42118810455f4d51dff9",
+        "default": true,
+        "type": "account-company-segments",
+        "name": "New",
+        "creator": {
+            "name": "Default Segment"
+        },
+        "created": "2016-08-11T09:14:57.151Z",
+        "enabled": false,
+        "people": []
+    },
+    {
+        "id": "57ac42118810455f4d51dffb",
+        "default": true,
+        "type": "account-company-segments",
+        "name": "Slipping Away",
+        "creator": {
+            "name": "Default Segment"
+        },
+        "created": "2016-08-11T09:14:57.152Z",
+        "enabled": false,
+        "people": []
+    },
+    {
+        "id": "57b33e23cb982a4e17fcd0cf",
+        "default": false,
+        "type": "account-company-segments",
+        "name": "Exactly 4",
+        "creator": {
+            "name": "You"
+        },
+        "created": "2016-08-16T16:24:03.926Z",
+        "enabled": false,
+        "people": []
+    },
+    {
+        "id": "58147340549785c71ad9ea20",
+        "default": false,
+        "type": "account-company-segments",
+        "name": "Test filter",
+        "creator": {
+            "name": "You"
+        },
+        "created": "2016-10-29T10:00:32.888Z",
+        "enabled": false,
+        "people": []
+    },
+    {
+        "id": "57339ff03cc74d5057db3ac2",
+        "default": false,
+        "type": "account-tags",
+        "name": "olive",
+        "creator": {
+            "name": "You"
+        },
+        "created": "2016-08-01T20:38:57.579Z",
+        "enabled": false,
+        "people": []
+    },
+    {
+        "id": "57339ff13cc74d5057db3ac6",
+        "default": false,
+        "type": "account-tags",
+        "name": "orchid",
+        "creator": {
+            "name": "You"
+        },
+        "created": "2016-08-01T20:38:57.579Z",
+        "enabled": false,
+        "people": []
+    },
+    {
+        "id": "57339ff13cc74d5057db3ac7",
+        "default": false,
+        "type": "account-tags",
+        "name": "cyan",
+        "creator": {
+            "name": "You"
+        },
+        "created": "2016-08-01T20:38:57.579Z",
+        "enabled": false,
+        "people": []
+    },
+    {
+        "id": "57339ff13cc74d5057db3ac9",
+        "default": false,
+        "type": "account-tags",
+        "name": "white",
+        "creator": {
+            "name": "You"
+        },
+        "created": "2016-08-01T20:38:57.579Z",
+        "enabled": false,
+        "people": []
+    },
+    {
+        "id": "57339ff13cc74d5057db3aca",
+        "default": false,
+        "type": "account-tags",
+        "name": "maroon",
+        "creator": {
+            "name": "You"
+        },
+        "created": "2016-08-01T20:38:57.579Z",
+        "enabled": false,
+        "people": []
+    },
+    {
+        "id": "57339ff13cc74d5057db3acb",
+        "default": false,
+        "type": "account-tags",
+        "name": "ivory",
+        "creator": {
+            "name": "You"
+        },
+        "created": "2016-08-01T20:38:57.579Z",
+        "enabled": false,
+        "people": []
+    },
+    {
+        "id": "57339ff13cc74d5057db3acc",
+        "default": false,
+        "type": "account-tags",
+        "name": "lavender",
+        "creator": {
+            "name": "You"
+        },
+        "created": "2016-08-01T20:38:57.579Z",
+        "enabled": false,
+        "people": []
+    },
+    {
+        "id": "57339ff13cc74d5057db3acd",
+        "default": false,
+        "type": "account-tags",
+        "name": "silver",
+        "creator": {
+            "name": "You"
+        },
+        "created": "2016-08-01T20:38:57.579Z",
+        "enabled": false,
+        "people": []
+    },
+    {
+        "id": "57339ff13cc74d5057db3ace",
+        "default": false,
+        "type": "account-tags",
+        "name": "pink",
+        "creator": {
+            "name": "You"
+        },
+        "created": "2016-08-01T20:38:57.579Z",
+        "enabled": false,
+        "people": []
+    },
+    {
+        "id": "57339ff13cc74d5057db3ad0",
+        "default": false,
+        "type": "account-tags",
+        "name": "sky blue",
+        "creator": {
+            "name": "You"
+        },
+        "created": "2016-08-01T20:38:57.579Z",
+        "enabled": false,
+        "people": []
+    },
+    {
+        "id": "57339ff13cc74d5057db3ad1",
+        "default": false,
+        "type": "account-tags",
+        "name": "azure",
+        "creator": {
+            "name": "You"
+        },
+        "created": "2016-08-01T20:38:57.579Z",
+        "enabled": false,
+        "people": []
+    },
+    {
+        "id": "57339ff13cc74d5057db3ad3",
+        "default": false,
+        "type": "account-tags",
+        "name": "grey",
+        "creator": {
+            "name": "You"
+        },
+        "created": "2016-08-01T20:38:57.579Z",
+        "enabled": false,
+        "people": []
+    },
+    {
+        "id": "57339ff13cc74d5057db3ad4",
+        "default": false,
+        "type": "account-tags",
+        "name": "violet",
+        "creator": {
+            "name": "You"
+        },
+        "created": "2016-08-01T20:38:57.579Z",
+        "enabled": false,
+        "people": []
+    },
+    {
+        "id": "57339ff13cc74d5057db3ad5",
+        "default": false,
+        "type": "account-tags",
+        "name": "orchid",
+        "creator": {
+            "name": "You"
+        },
+        "created": "2016-08-01T20:38:57.579Z",
+        "enabled": false,
+        "people": []
+    },
+    {
+        "id": "57339ff13cc74d5057db3ad7",
+        "default": false,
+        "type": "account-tags",
+        "name": "grey",
+        "creator": {
+            "name": "You"
+        },
+        "created": "2016-08-01T20:38:57.579Z",
+        "enabled": false,
+        "people": []
+    },
+    {
+        "id": "57339ff13cc74d5057db3ad8",
+        "default": false,
+        "type": "account-tags",
+        "name": "magenta",
+        "creator": {
+            "name": "You"
+        },
+        "created": "2016-08-01T20:38:57.579Z",
+        "enabled": false,
+        "people": []
+    },
+    {
+        "id": "57339ff13cc74d5057db3ad9",
+        "default": false,
+        "type": "account-tags",
+        "name": "teal",
+        "creator": {
+            "name": "You"
+        },
+        "created": "2016-08-01T20:38:57.579Z",
+        "enabled": false,
+        "people": []
+    },
+    {
+        "id": "57339ff13cc74d5057db3ada",
+        "default": false,
+        "type": "account-tags",
+        "name": "silver",
+        "creator": {
+            "name": "You"
+        },
+        "created": "2016-08-01T20:38:57.579Z",
+        "enabled": false,
+        "people": []
+    },
+    {
+        "id": "57339ff13cc74d5057db3adb",
+        "default": false,
+        "type": "account-tags",
+        "name": "ivory",
+        "creator": {
+            "name": "You"
+        },
+        "created": "2016-08-01T20:38:57.579Z",
+        "enabled": false,
+        "people": []
+    },
+    {
+        "id": "57339ff13cc74d5057db3adc",
+        "default": false,
+        "type": "account-tags",
+        "name": "green",
+        "creator": {
+            "name": "You"
+        },
+        "created": "2016-08-01T20:38:57.579Z",
+        "enabled": false,
+        "people": []
+    },
+    {
+        "id": "57339ff13cc74d5057db3add",
+        "default": false,
+        "type": "account-tags",
+        "name": "teal",
+        "creator": {
+            "name": "You"
+        },
+        "created": "2016-08-01T20:38:57.579Z",
+        "enabled": false,
+        "people": []
+    },
+    {
+        "id": "57339ff13cc74d5057db3ade",
+        "default": false,
+        "type": "account-tags",
+        "name": "orchid",
+        "creator": {
+            "name": "You"
+        },
+        "created": "2016-08-01T20:38:57.579Z",
+        "enabled": false,
+        "people": []
+    },
+    {
+        "id": "57339ff13cc74d5057db3adf",
+        "default": false,
+        "type": "account-tags",
+        "name": "gold",
+        "creator": {
+            "name": "You"
+        },
+        "created": "2016-08-01T20:38:57.579Z",
+        "enabled": false,
+        "people": []
+    },
+    {
+        "id": "57339ff13cc74d5057db3ae0",
+        "default": false,
+        "type": "account-tags",
+        "name": "teal",
+        "creator": {
+            "name": "You"
+        },
+        "created": "2016-08-01T20:38:57.579Z",
+        "enabled": false,
+        "people": []
+    },
+    {
+        "id": "57339ff13cc74d5057db3ae1",
+        "default": false,
+        "type": "account-tags",
+        "name": "fuchsia",
+        "creator": {
+            "name": "You"
+        },
+        "created": "2016-08-01T20:38:57.579Z",
+        "enabled": false,
+        "people": []
+    },
+    {
+        "id": "57339ff13cc74d5057db3ae2",
+        "default": false,
+        "type": "account-tags",
+        "name": "maroon",
+        "creator": {
+            "name": "You"
+        },
+        "created": "2016-08-01T20:38:57.579Z",
+        "enabled": false,
+        "people": []
+    },
+    {
+        "id": "57339ff13cc74d5057db3ae3",
+        "default": false,
+        "type": "account-tags",
+        "name": "maroon",
+        "creator": {
+            "name": "You"
+        },
+        "created": "2016-08-01T20:38:57.579Z",
+        "enabled": false,
+        "people": []
+    },
+    {
+        "id": "57339ff13cc74d5057db3ae4",
+        "default": false,
+        "type": "account-tags",
+        "name": "orchid",
+        "creator": {
+            "name": "You"
+        },
+        "created": "2016-08-01T20:38:57.579Z",
+        "enabled": false,
+        "people": []
+    },
+    {
+        "id": "57339ff13cc74d5057db3ae5",
+        "default": false,
+        "type": "account-tags",
+        "name": "mint green",
+        "creator": {
+            "name": "You"
+        },
+        "created": "2016-08-01T20:38:57.579Z",
+        "enabled": false,
+        "people": []
+    },
+    {
+        "id": "57339ff13cc74d5057db3ae6",
+        "default": false,
+        "type": "account-tags",
+        "name": "gold",
+        "creator": {
+            "name": "You"
+        },
+        "created": "2016-08-01T20:38:57.579Z",
+        "enabled": false,
+        "people": []
+    }
+]

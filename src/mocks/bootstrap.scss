@@ -1,0 +1,23 @@
+#bootstrap-page {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    padding: 5px 20px 20px;
+    .theme-dropdown .dropdown-menu {
+        position: static;
+        display: block;
+        margin-bottom: 20px;
+    }
+
+    .scrollbar-test {
+        width: 300px;
+        height: 300px;
+        .absolute-test {
+            position: absolute;
+            left: 300px;
+            top: 10px;
+        }
+    }
+}

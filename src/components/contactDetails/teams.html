@@ -1,0 +1,12 @@
+<span class="inline"
+   ng-repeat="el in data.elements track by el.id"
+   uib-tooltip="{{::el.name}}"
+   tooltip-append-to-body="true"
+   tooltip-class="tooltip-top">
+    <avatar item="el"></avatar>
+    {{ ::el.name }}
+</span>
+
+<span ng-if="data.elements.length === 0">
+    {{::$ctrl.contact.name}} is not member of any team
+</span>

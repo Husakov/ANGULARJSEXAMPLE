@@ -1,0 +1,43 @@
+<div class="activity-filter">
+    <div class="btn-group" uib-dropdown
+         ng-if="::!$root.STAGE_OR_PROD">
+        <button id="first" type="button" class="btn btn-link" uib-dropdown-toggle ng-disabled="$ctrl.changeLoading">
+            <i class="fa fa-fw fa-{{$ctrl.selectedActivityType.icon}} type-icon"></i>
+            {{$ctrl.selectedActivityType.name}}
+            <i class="fa fa-chevron-down text-sm"></i>
+        </button>
+        <ul class="dropdown-menu with-status" uib-dropdown-menu role="menu" aria-labelledby="first">
+            <li ng-repeat="activity in $ctrl.activityTypes"
+                ng-class="{'active': $ctrl.selectedActivityType.name == activity.name}">
+                <a ng-click="$ctrl.setActivityFilter(activity)">
+                    <i class="fa fa-fw fa-{{activity.icon}}"></i>
+                    {{activity.name}}
+                </a>
+            </li>
+        </ul>
+    </div>
+    <button type="button"
+            ng-click="$ctrl.refresh()"
+            class="btn btn-link pull-right btn-refresh" >
+        <i class="fa fa-fw fa-refresh"></i>
+    </button>
+</div>
+
+<div class="flex-2 flex activity-container" ri-scrollbar>
+    <div ng-class="{'streamline': listHelper.items.length}"
+         scroll-list="$ctrl.fetch(params)"
+         helper="$ctrl.listHelper"
+         ready="!!$ctrl.params"
+         scroll-container="ri-scrollbar">
+        <activity-event class="activity-event"
+                        ng-repeat="item in listHelper.items"
+                        activity-types="$ctrl.activityTypes"
+                        event="::item">
+        </activity-event>
+        <loader class="activity-loader"
+                ng-if="listHelper.loading">
+        </loader>
+        <div class="no-activity"
+             ng-if="!listHelper.loading && listHelper.items.length === 0">No Activity</div>
+    </div>
+</div>

@@ -1,0 +1,29 @@
+<div>
+    Swith on goal
+    <div class="pull-right">
+        <ui-toggle ng-model="$ctrl.mediator.model.optionsGetterSetter('goal')"
+                   ng-model-options="{getterSetter: true}"
+                   styles="round off-default"
+                   on=""
+                   off="">
+        </ui-toggle>
+    </div>
+</div>
+<div class="clearfix"></div>
+
+<div ri-draggable
+     ng-if="$ctrl.mediator.model.options('goal')"
+     class="messages-filter-panel panel panel-default">
+    <users-filter class="small-filter"
+                  mode="::$ctrl.mediator.model.get('user_role')"
+                  ng-model="$ctrl.mediator.model.getterSetter('message_goal.predicates')"
+                  fixed-mode="::true"
+                  hide-mode="::true"
+                  ng-model-options="{getterSetter: true}">
+        <users-filter-left>
+                <span ri-draggable-pointer>
+                    <i class="fa fa-arrows"></i>
+                </span>
+        </users-filter-left>
+    </users-filter>
+</div>

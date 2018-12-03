@@ -1,0 +1,43 @@
+<div class="form-horizontal">
+    <div ng-if="buttonDetailsType === 'link'">
+        <div class="form-group form-group-sm">
+            <input type="text"
+                   class="form-control te-input"
+                   ng-model="linkElement.title"
+                   placeholder="Enter button text">
+        </div>
+        <hr class="horizontal-delimiter">
+        <div class="form-group form-group-sm">
+            <input type="text"
+                   class="form-control te-input"
+                   ng-model="linkElement.url"
+                   placeholder="Enter a link">
+        </div>
+    </div>
+
+    <div class="form-group form-group-sm" ng-if="buttonDetailsType === 'align'">
+        <div class="text-center">
+            <div class="btn-group">
+                <button class="btn btn-default"
+                        ng-repeat="_align in ::['left', 'center', 'right'] track by $index"
+                        ng-class="{active: align === _align}"
+                        ng-click="setAlign(_align)">
+                    <i class="fa fa-align-{{::_align}}"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group form-group-sm" ng-if="buttonDetailsType !== 'link' && buttonDetailsType !== 'align'">
+        <div class="text-center">
+            <div class="btn-group">
+                <button class="btn btn-default" ng-click="setButtonDetails('link')">
+                    <i class="fa fa-pencil"></i>
+                </button>
+                <button class="btn btn-default" ng-click="setButtonDetails('align')">
+                    <i class="fa fa-align-center"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,12 @@
+<div>
+    <div ng-class="{'open': isOpen}">
+        <span ng-click="toggle()">
+            <i class="fa fa-puzzle-piece" aria-hidden="true"></i>
+        </span>
+
+        <div class="dropdown-menu saved-replies">
+            <saved-replies-manager callback="select(reply)"
+                                   assign="register(instance)"></saved-replies-manager>
+        </div>
+    </div>
+</div>

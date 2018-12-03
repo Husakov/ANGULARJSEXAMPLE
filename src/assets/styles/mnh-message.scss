@@ -1,0 +1,9 @@
+.mnh-m-btn-wrapper,
+.mnh-m-video-wrapper {
+    &:not(:last-child) {
+        margin-bottom: 20px;
+    }
+    &:not(:first-child) {
+        margin-top: 20px;
+    }
+}

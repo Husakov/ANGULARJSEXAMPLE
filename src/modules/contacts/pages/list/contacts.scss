@@ -1,0 +1,18 @@
+﻿#contacts-list-page {
+    background: $main-background-color;
+    padding: 45px 45px 0 45px;
+    .contacts-draggable-panel {
+        left: 50%;
+        top: 25%;
+        margin-left: -395px;
+        width: 790px;
+        height: 312px;
+        z-index: 99;
+        .fa-navicon {
+            color: #D9D9E1;
+            line-height: 29px;
+            vertical-align: middle;
+            font-size: 22px !important;
+        }
+    }
+}

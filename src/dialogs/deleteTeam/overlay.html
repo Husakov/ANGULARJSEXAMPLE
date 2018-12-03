@@ -1,0 +1,10 @@
+<div class="avatar-holder">
+    <avatar class="avatar--left" item="$ctrl.overlay.who" size="32"></avatar>
+    <span ng-if="$ctrl.overlay.to">
+        <i class="fa fa-repeat"></i>
+        <avatar class="avatar--right" item="$ctrl.overlay.to" size="32"></avatar>
+    </span>
+</div>
+<div class="conversation-overlay-title">
+    <span ng-bind-html="$ctrl.overlay.title"></span>
+</div>

@@ -1,0 +1,106 @@
+<div class="messages-left-block">
+    <messages-list-sections-dropdown list-helper="$ctrl.listHelper"></messages-list-sections-dropdown>
+
+    <span class="list-count-info">
+        <span class="selected-count"
+              ng-if="$ctrl.listHelper.hasChecked">
+            <strong>{{$ctrl.listHelper.checkedItems.length}}</strong>
+            selected
+            <a class="fa fa-times-circle clear-selection-button"
+               uib-tooltip="Clear selection"
+               tooltip-append-to-body="true"
+               ng-click="$ctrl.listHelper.clearSelection()"></a>
+        </span>
+    </span>
+</div>
+
+<div class="action-buttons-container">
+    <div class="header-button-group">
+        <button class="btn btn-primary"
+                ng-if="!$ctrl.listHelper.hasChecked"
+                ui-sref="^.new($ctrl.$state.params)">
+            New Message
+        </button>
+        <button class="btn btn-default"
+                ng-if="!$root.STAGE_OR_PROD && $ctrl.$state.params.type == 'auto' && !$ctrl.listHelper.hasChecked">
+            New Automation - TODO
+        </button>
+
+        <div class="btn-group"
+             uib-dropdown
+             ng-if="$ctrl.listHelper.hasChecked">
+            <button class="btn btn-default mid-dot-button"
+                    uib-dropdown-toggle>
+                &middot;&middot;&middot;
+            </button>
+            <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="first">
+                <li role="menuitem">
+                    <a ui-sref="^.new($ctrl.$state.params)">
+                        <i class="fa fa-fw fa-envelope"></i>New Message
+                    </a>
+                </li>
+                <li role="menuitem"
+                    ng-if="!$root.STAGE_OR_PROD && $ctrl.$state.params.type == 'auto'">
+                    <a>
+                        <i class="fa fa-fw fa-envelope"></i>New Automation - TODO
+                    </a>
+                </li>
+                <li role="menuitem">
+                    <a ng-click="$ctrl.duplicateChecked()">
+                        <i class="fa fa-fw fa-files-o "></i>Duplicate
+                    </a>
+                </li>
+                <li role="menuitem">
+                    <a ng-click="$ctrl.deleteChecked()">
+                        <i class="fa fa-fw fa-remove "></i>Delete
+                    </a>
+                </li>
+                <li class="dropdown-submenu"
+                    ng-if="!$root.STAGE_OR_PROD">
+                    <a>
+                        <i class="fa fa-fw fa-arrow-right"></i>Move to
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li ng-repeat="folder in $ctrl.folders">
+                            <a ng-click="$ctrl.moveTo(folder)">
+                                <i class="fa fa-fw {{::folder.icon}}" aria-hidden="true"></i>
+                                {{::folder.title}}
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div class="btn-group"
+             uib-dropdown
+             ng-if="!$root.STAGE_OR_PROD && $ctrl.$state.params.type == 'auto'">
+            <button class="btn btn-link" type="button"
+                    uib-dropdown-toggle>
+                <i class="fa fa-cog"></i>
+            </button>
+            <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="first">
+                <li role="menuitem">
+                    <a ng-click="$ctrl.summary()">
+                        <i class="fa fa-fw fa-bar-chart"></i>Summary - TODO
+                    </a>
+                </li>
+                <li role="menuitem">
+                    <a>
+                        <i class="fa fa-fw fa-cog "></i>Settings - TODO
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <list-search class="input-search-box"
+                 on-search="$ctrl.onSearch(name, admin)"
+                 search-by="::{tags: false, admins: true}"
+                 placeholder="Search messages..."
+                 word-placeholder="Messages title containing ">
+    </list-search>
+</div>
+
+<div class="clearfix">
+</div>

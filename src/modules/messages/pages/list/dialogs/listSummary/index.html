@@ -1,0 +1,43 @@
+<div class="list-summary-dialog">
+    <div class="summary-header">
+        <div class="summary-header-title">
+            Marketing
+        </div>
+        <div class="summary-header-description">
+            Automation Summary
+        </div>
+
+        <button
+            type="button"
+            class="styled-close-button"
+            ng-click="$ctrl.close()">
+            &times;
+        </button>
+    </div>
+    <div class="summary-content">
+        <i class="fa fa-fw fa-bar-chart sum-icon"></i>
+        <div class="summary-information">
+            <div class="summary-column">
+                <div class="count">{{$ctrl.formatValue($ctrl.enteredAutomation, true)}}</div>
+                <span class="description">entered automation</span>
+            </div>
+            <div class="summary-column">
+                <div class="count active">{{$ctrl.formatValue($ctrl.automationNow, true)}}</div>
+                <span class="description">in automation now</span>
+            </div>
+            <div class="summary-column">
+                <div class="count exited">{{$ctrl.formatValue($ctrl.exitedAutomation, true)}}</div>
+                <span class="description">exited automation</span>
+            </div>
+            <div class="summary-column">
+                <div class="count reached">
+                    {{$ctrl.formatValue($ctrl.reacedAutomation, true)}}
+                </div>
+                <div class="light-tooltip">
+                    {{$ctrl.formatValue($ctrl.percentReaced, false, 3)}}%
+                </div>
+                <span class="description">reached goal</span>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,54 @@
+<div class="tag-search-header">
+
+    <button class="btn btn-link btn-sm"
+            ng-if="!$root.STAGE_OR_PROD"
+            ng-click="$ctrl.onManageTags()">
+        <i class="fa fa-cog" aria-hidden="true"></i>
+    </button>
+
+    <button class="btn btn-primary btn-sm pull-right"
+            ng-click="$ctrl.apply()">
+        Apply Tag
+    </button>
+</div>
+<div class="tag-search-panel input-group">
+    <i class="fa fa-search"></i>
+    <input type="text"
+           ng-model="$ctrl.search"
+           class="search-input"
+           placeholder="Search or create a new tag"
+           ng-keydown="$ctrl.onKeyDown($event)"
+           ng-focus="isActive = true"
+           ng-blur="isActive = false"
+           autofocus>
+</div>
+<div class="tag-search-body">
+    <div class="selected-tag-list flex-auto" ng-if="$ctrl.selected.length">
+        <span ng-repeat="tag in $ctrl.selected"
+              class="label label-default">
+            <i class="fa fa-tag"></i>
+            <span ng-bind="tag.name"></span>
+            <i class="fa fa-times-circle pointer unselect-tag"
+               ng-click="$ctrl.unselectTag(tag)"></i>
+        </span>
+    </div>
+    <div class="list-group flex"
+         keys-navigation="isActive"
+         ri-scrollbar>
+        <a class="list-group-item keys-navigation"
+           ng-repeat="tag in $ctrl.tags | filter:{name: $ctrl.search} as filteredTags track by tag.id"
+           ng-click="$ctrl.selectTag(tag)"
+           ng-bind="::tag.name">
+        </a>
+        <a class="list-group-item keys-navigation"
+           ng-hide="filteredTags.length"
+           ng-click="$ctrl.addNewTag($ctrl.search)">
+            <i class="fa fa-tag"></i>
+            Create new tag: '{{$ctrl.search}}'
+        </a>
+    </div>
+</div>
+<div class="overlay"
+     ng-if="$ctrl.loading">
+    <loader></loader>
+</div>

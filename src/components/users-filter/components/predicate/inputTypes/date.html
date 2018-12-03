@@ -1,0 +1,15 @@
+<div class="input-group input-group-sm">
+    <input type='text'
+           class="form-control"
+           ng-model="$ctrl.predicate.value"
+           model-formatter="$ctrl.inputType.formatter"
+           uib-datepicker-popup
+           datepicker-append-to-body="true"
+           show-button-bar="false"
+           is-open="isDatepickerOpen"
+           ng-click="isDatepickerOpen = !isDatepickerOpen">
+    <span class="input-group-addon"
+          ng-click="isDatepickerOpen = !isDatepickerOpen">
+        <i class="fa fa-calendar" aria-hidden="true"></i>
+    </span>
+</div>

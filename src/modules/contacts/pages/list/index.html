@@ -1,0 +1,40 @@
+<div id="contacts-list-page">
+    <div ng-show="$ctrl.isFilterOpened"
+         class="contacts-draggable-panel panel panel-default"
+         ri-draggable>
+        <users-filter ng-model="$ctrl.predicates"
+                      mode="$ctrl.filterMode">
+            <users-filter-left>
+                <span ri-draggable-pointer>
+                    <i class="fa fa-arrows"></i>
+                </span>
+            </users-filter-left>
+            <users-filter-right>
+                <button class="btn btn-default pull-right"
+                        ng-click="$ctrl.toggleFilter()">
+                    <i class="fa fa-fw fa-eye"></i>
+                    Hide
+                </button>
+                <button class="btn btn-primary pull-right"
+                        ng-click="$ctrl.saveSegment()"
+                        ng-disabled="!$ctrl.isNewPredicates" >
+                    Save Segment
+                </button>
+            </users-filter-right>
+        </users-filter>
+    </div>
+
+    <div class="contacts-content">
+        <contacts-list-toolbar main="$ctrl"></contacts-list-toolbar>
+        <div class="panel panel-default table-container table-fixed-header"
+             ri-scrollbar>
+            <div class="table-buttons">
+                <contacts-list-table-headers main="$ctrl"
+                                             max-columns="5">
+                </contacts-list-table-headers>
+            </div>
+            <contacts-list-table-body main="$ctrl">
+            </contacts-list-table-body>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,45 @@
+<div class="saved-replies-search">
+    <label for="savedRepliesSearch" class="fa fa-search"></label>
+    <input ng-model="savedRepliesFilter"
+           placeholder="Search 'Saved Replies'…"
+           class="form-control no-border"
+           id="savedRepliesSearch">
+
+    <div class="buttons">
+        <button class="btn btn-default"
+                ng-click="$ctrl.create()"
+                title="Create new">
+            New
+        </button>
+    </div>
+</div>
+
+<div class="saved-replies-list-container flex"
+     ri-scrollbar>
+    <div class="saved-replies-list-item"
+         ng-repeat="item in $ctrl.list | filter:savedRepliesFilter track by item.id"
+         ng-click="$ctrl.select(item)">
+        <div class="saved-reply-avatar">
+            <avatar item="::item.admin"
+                    size="25">
+            </avatar>
+        </div>
+        <div class="saved-reply-name">
+            {{item.name}}
+        </div>
+        <div class="saved-reply-body">
+            <span ng-bind-html="$ctrl.checkAttachedFile(item.body)">
+             </span>
+        </div>
+        <div class="saved-reply-edit">
+            <button class="btn btn-link btn-sm"
+                    ng-click="$ctrl.show(item)">
+                <i class="fa fa-fw fa-pencil"></i>
+            </button>
+        </div>
+    </div>
+
+    <div class="loader" ng-if="!$ctrl.listReady">
+        <loader></loader>
+    </div>
+</div>

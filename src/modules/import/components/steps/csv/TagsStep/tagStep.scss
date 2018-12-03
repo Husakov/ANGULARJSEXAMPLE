@@ -1,0 +1,17 @@
+import-csv-tags-step {
+    h5 {
+        margin-top: 0;
+    }
+    .tag-list {
+        .tag {
+            line-height: 25px;
+            .fa {
+                margin-right: 10px;
+                opacity: 0.5;
+            }
+        }
+    }
+    .add-tags-button {
+        padding: 10px;
+    }
+}

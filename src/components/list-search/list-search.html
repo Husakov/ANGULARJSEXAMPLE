@@ -1,0 +1,48 @@
+<div class="dropdown"
+     click-outside="$ctrl.toggle(false)"
+     ng-class="{'open': $ctrl.isOpen}">
+    <input type="text"
+           placeholder="{{::($ctrl.placeholder || 'Search...')}}"
+           ng-focus="$ctrl.updateLists(); $ctrl.toggle(true);"
+           ng-model="$ctrl.searchWord"
+           ng-model-options="{ debounce: $ctrl.debounceDelay }"
+           on-enter="$ctrl.pickWord()"
+           class="dropdown-toggle list-search-input">
+
+    <div class="dropdown-menu list-search-results"
+         ri-scrollbar
+         ng-click="$ctrl.toggle(false)"
+         keys-navigation="$ctrl.isOpen">
+        <a class="list-group-item keys-navigation"
+           ng-click="$ctrl.pickWord()"
+           ng-if="$ctrl.searchWord">
+            <span class="search-type">
+                <i ng-if="::$ctrl.wordIcon"
+                  class="fa fa-{{ ::$ctrl.wordIcon }}">
+                </i>
+                {{ ::($ctrl.wordPlaceholder || 'For' ) }} "{{ $ctrl.searchWord }}"
+            </span>
+        </a>
+        <a class="list-group-item keys-navigation"
+           ng-repeat="tag in $ctrl.tags"
+           ng-click="$ctrl.pickItem('tags', tag.id, tag.name)">
+            <span class="search-type">
+                <i class="fa fa-tag"></i>
+                Tag {{ tag.name }}
+            </span>
+        </a>
+        <a class="list-group-item keys-navigation"
+           ng-repeat="admin in $ctrl.admins"
+           ng-click="$ctrl.pickItem('admins', admin.id, admin.name)">
+            <span class="search-type">
+                <avatar item="admin" size="20"></avatar>
+                From {{ admin.name }}
+            </span>
+        </a>
+    </div>
+    <i ng-if="$ctrl.searchWord"
+       class="fa fa-times pointer"
+       ng-click="$ctrl.clearSearchInput()"></i>
+
+    <div class="clearfix"></div>
+</div>

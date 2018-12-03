@@ -1,0 +1,53 @@
+@import 'components/message/message';
+@import 'components/reply/reply';
+
+$messages_background_color: #fafcfd;
+
+messenger {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    height: 100%;
+    background: $messages_background_color;
+    .messages-container {
+        height: 100%;
+        position: relative;
+        .messages {
+            height: auto;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            overflow: hidden;
+        }
+
+        .message-date-stamp {
+            padding: 0 8px;
+            margin: 20px 0;
+            height: 40px;
+            line-height: 40px;
+            border: 1px solid #CFCFE4;
+            border-radius: $border-radius-base;
+        }
+    }
+
+    .loader-wrapper {
+        z-index: 100;
+        background: $messages_background_color;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        &.ng-leave {
+            animation: 0.7s hide;
+        }
+        loader {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    }
+}

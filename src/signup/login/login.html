@@ -1,0 +1,87 @@
+<div class="login-container" ri-scrollbar>
+    <section class="login flex">
+        <div class="login-left flex flex-1">
+            <nav class="navbar" ng-class="{'opened': $ctrl.isCollapsed}">
+                <div class="navbar-header">
+                    <button type="button"
+                            class="navbar-toggle collapsed"
+                            ng-click="$ctrl.isCollapsed = !$ctrl.isCollapsed">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="logo" href="#">
+                        <img src="../images/logo.jpg" />
+                    </a>
+                </div>
+                <div class="navbar-collapse"
+                     uib-collapse="!$ctrl.isCollapsed">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">How it works</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+            </nav>
+
+            <div class="login-form-container flex flex-1">
+                <form name="$ctrl.form"
+                      class="login-form">
+                    <div class="login-welcome">
+                        Welcome back, please login to your account
+                    </div>
+                    <div class="login-google">
+                        <i class="fa fa-fw fa-google"></i>
+                        Log in with Google
+                    </div>
+                    <div class="login-google-line">
+                        <span>or</span>
+                    </div>
+                    <div class="login-user">
+                        <div class="login-input-container">
+                            <div input-container>
+                                <label>Email</label>
+                                <input type="email"
+                                       required
+                                       ng-model="$ctrl.model.email">
+                            </div>
+                        </div>
+                        <div class="login-input-container">
+                            <div input-container>
+                                <label>Password</label>
+                                <input type="password"
+                                       required
+                                       ng-model="$ctrl.model.password">
+                            </div>
+                            <i class="fa fa-fw fa-question-circle-o forgot-password"
+                               uib-tooltip="Forgot password?"
+                               tooltip-class="tooltip-top"
+                               tooltip-append-to-body="true"></i>
+                        </div>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox"
+                                   ng-model="$ctrl.model.remember_me">
+                            <i></i>
+                            Remember me
+                        </label>
+                    </div>
+                    <div class="login-buttons">
+                        <button class="btn btn-primary"
+                                type="submit"
+                                ng-disabled="!$ctrl.form.$valid || $ctrl.form.$submitted"
+                                ng-click="$ctrl.login()">Login</button>
+                    </div>
+                    <div class="login-footer">
+                        <p>By signing up you agree to Riika’s</p>
+                        <p class="text-bold dark-text">Terms and Conditions & Privacy Policy</p>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="login-right flex-1">
+
+        </div>
+    </section>
+</div>

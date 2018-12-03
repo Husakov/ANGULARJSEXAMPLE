@@ -1,0 +1,5 @@
+<select class="form-control input-sm"
+        ng-model="$ctrl.predicate.value"
+        ng-model-options="{ debounce: $ctrl.debounceDelay }"
+        ng-options="item.id as item.name for item in $ctrl.inputType.items">
+</select>

@@ -1,0 +1,82 @@
+<a class="list-message"
+   ng-class="{'message-checked': $ctrl.model.checked,
+                'unreaded': !$ctrl.model.has_been_read,
+                'not-checked': (!$ctrl.model.checked && $ctrl.inboxHelper.listHelper.hasChecked)
+                }"
+   ui-sref=".conversation({id: '{{::$ctrl.model.id}}'})"
+   ui-sref-options="{inherit: true}}"
+   ui-sref-active="active-message">
+    <div class="conversation-overlay"
+         ng-if="$ctrl.overlay"
+         ng-include="$ctrl.overlayTemplate"></div>
+
+    <div class="conversation-control">
+        <avatar item="$ctrl.model._mainParticipant" size="32" show-status="true"></avatar>
+        <div class="checkbox select-conversation">
+            <label ng-click="$event.stopPropagation()">
+                <input type="checkbox"
+                       ng-checked="$ctrl.model.checked"
+                       ng-click="$ctrl.toggleElement()">
+                <i class="dark-white"></i>
+            </label>
+        </div>
+    </div>
+
+    <div class="conversation-description">
+        <div class="conversation-info" ng-class="{'without-company': !$ctrl.model._mainParticipant.companies.length}">
+            <div class="time-message"
+                 ng-class="{'text-muted': $ctrl.model.has_been_read, 'without-info': !$ctrl.model._mainParticipant.companies}">
+                <i ng-if="$ctrl.showIconIfRealAttachmentsExists()" class="fa fa-papercli"></i>
+                <span class="message-created-at"
+                      ng-class="{'blue-text':(!$ctrl.model.has_been_read && !$ctrl.model.active)}"
+                      am-time-ago="$ctrl.model.last_message_at">
+                </span>
+            </div>
+
+            <div ng-if="!$ctrl.model.is_closed"
+                 class="close-conversation"
+                 ng-click="$ctrl.changeStatus($event, 'close')">
+                <i class="fa fa-fw fa-archive"></i>
+                Close
+            </div>
+
+            <div ng-if="$ctrl.model.is_closed"
+                 class="reopen-conversation"
+                 ng-click="$ctrl.changeStatus($event, 'open')">
+                <i class="fa fa-fw fa-archive"></i>
+                Re-open
+            </div>
+        </div>
+
+        <div class="customer-info">
+            <span class="customer-name" ng-class="{'without-company': !$ctrl.model._mainParticipant.companies.length}">
+                {{$ctrl.model._mainParticipant.display_as }}
+            </span>
+
+            <span ng-if="$ctrl.model._mainParticipant.companies.length">
+                <span>{{$ctrl.model._mainParticipant.companies[0].name | limitWithDots:18 }}</span>
+                <span ng-if="$ctrl.model._mainParticipant.companies.length > 1"> and {{$ctrl.model._mainParticipant.companies.length - 1}} more</span>
+            </span>
+        </div>
+
+        <div class="last-message"
+             ng-if="!$ctrl.typingAdmin"
+             ng-class="$ctrl.model._lastMessage.user ? 'last-message-from-user' : ''">
+                 <span ng-bind-html="$ctrl.message | removeHtmlTags | emojis:24">
+                 </span>
+        </div>
+        <div ng-if="$ctrl.typingAdmin" class="user-typing last-message">
+            <avatar item="$ctrl.typingAdmin"
+                    size="24">
+            </avatar>
+            <div class="user-typing-message">
+                <span class="arrow left"></span>
+                <typing></typing>
+            </div>
+        </div>
+
+        <div class="label label-count" ng-if="$ctrl.model._lastMessage.user && $ctrl.model.has_been_read">
+            {{ $ctrl.model.parts_count }}
+        </div>
+    </div>
+</a>

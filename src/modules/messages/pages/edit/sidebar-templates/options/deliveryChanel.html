@@ -1,0 +1,11 @@
+<div ng-repeat="channel in $ctrl.mediator.model.options('deliveryChanelOptions') track by channel.name"
+     class="radio">
+    <label>
+        <input ng-model="$ctrl.mediator.model.getterSetter('delivery_channel')"
+               ng-model-options="{getterSetter: true}"
+               ng-value="::channel.name"
+               type="radio">
+        <i></i>
+        <span ng-bind="::channel.title"></span>
+    </label>
+</div>

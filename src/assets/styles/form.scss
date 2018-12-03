@@ -1,0 +1,64 @@
+.form-control {
+    box-shadow: none;
+    &:focus {
+        box-shadow: none;
+    }
+}
+
+input.form-control {
+    &.dark-input {
+        border: 1px solid $input-border;
+        background: $input-border;
+    }
+}
+
+select.form-control {
+    padding: 7px 12px;
+    background: $input-group-addon-bg;
+    cursor: pointer;
+}
+
+.form-group {
+    + .btn {
+        margin-left: 5px;
+    }
+}
+
+label {
+    font-weight: normal;
+}
+
+.input-group {
+    .input-group-addon {
+        &.input-group-addon-label {
+            background: #FFFFFF;
+            font-weight: bold;
+            font-size: 13px;
+            text-transform: uppercase;
+            padding: 5px 8px;
+        }
+    }
+    &.input-group-fixed {
+        table-layout: fixed;
+        .input-group-addon {
+            width: auto;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    }
+}
+
+/* Change Autocomplete styles in Chrome*/
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0px 1000px $main-background-color inset;
+    transition: background-color 5000s ease-in-out 0s;
+}

@@ -1,0 +1,17 @@
+<div ng-if="$ctrl.mediator.model.options('isChat', true)"
+     class="chat"
+     ng-include="'${require(`./in-app/chat.html`)}'"></div>
+
+<div ng-if="$ctrl.mediator.model.options('isBorderless', true)"
+     class="chat borderless"
+     ng-include="'${require(`./in-app/borderless.html`)}'"></div>
+
+<div ng-if="$ctrl.mediator.model.options('isAnnouncement', true)"
+     class="chat note"
+     ng-include="'${require(`./in-app/note.html`)}'"></div>
+
+<div ng-if="$ctrl.mediator.model.options('isPost', true)"
+     class="chat takeover"
+     ng-include="'${require(`./in-app/takeover.html`)}'"></div>
+
+<div class="clearfix"></div>

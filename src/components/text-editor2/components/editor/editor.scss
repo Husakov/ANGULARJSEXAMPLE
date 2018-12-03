@@ -1,0 +1,17 @@
+text-editor {
+    .text-content {
+        position: relative;
+
+        &.empty:before {
+            content: attr(placeholder);
+            display: block;
+            pointer-events: none;
+            position: absolute;
+            opacity: 0.6;
+        }
+
+        &:focus {
+            outline: none;
+        }
+    }
+}

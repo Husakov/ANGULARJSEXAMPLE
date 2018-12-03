@@ -1,0 +1,44 @@
+<div class="inline"
+     ng-repeat="file in $ctrl.editor.injector.attachments">
+     <div class="attachment">
+        <div class="attachment-icon">
+            <i class="fa fa-fw fa-paperclip"></i>
+        </div>
+        <div class="attachment-body">
+            <a ng-href="{{::file.url}}" class="attachment-title">
+                {{::file.name}}
+            </a>
+            <span class="attachment-size"
+                  ng-if="(file.size >= 0) && !(file.progress >= 0)">
+                {{::file.size | filesize}}
+            </span>
+            <small class="attachment-status"
+                   ng-if="file.progress >= 0 && !file.canceled">
+                Uploading: {{file.progress}}%
+            </small>
+            <small class="attachment-status text-danger"
+                    ng-if="file.canceled">
+                Canceled
+            </small>
+        </div>
+        <div class="attachment-actions">
+            <i ng-click="$ctrl.editor.injector.cancelAndRemoveFile(file)"
+               class="fa fa-fw fa-times-circle pointer">
+            </i>
+        </div>
+    </div>
+
+    <div ng-if="file.error && !file.canceled"
+         class="text-right attachment-error">
+        <span ng-click="$ctrl.editor.injector.reloadFile(file)"
+              title="{{::file.error}}"
+              class="text-danger small pointer">
+            <i class="fa fa-fw fa-exclamation-circle"></i>
+            Failed. Click to retry.
+        </span>
+    </div>
+</div>
+
+<div class="images-container"
+     ng-show="$ctrl.isAttachmentsSeparated">
+</div>

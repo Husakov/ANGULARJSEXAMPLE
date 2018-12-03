@@ -1,0 +1,197 @@
+@mixin ngIf {
+    &.ng-enter,
+    &.ng-leave {
+        @content;
+    }
+}
+
+@mixin ngIfShow {
+    @content;
+
+    &.ng-leave,
+    &.ng-enter.ng-enter-active {
+        @content;
+    }
+}
+
+@mixin ngIfHide {
+    &.ng-enter,
+    &.ng-leave.ng-leave-active {
+        @content;
+    }
+}
+
+import-csv-csv-map-step {
+    .box-title {
+        padding: 0 20px;
+        line-height: 44px;
+        height: 44px;
+    }
+
+    .csv-col {
+        position: relative;
+        margin-bottom: 18px;
+        width: calc(100% + 28px);
+        margin-left: -15px;
+        height: calc(100vh - 190px);
+        .csv-col-wrapper {
+            flex-wrap: wrap;
+            padding: 15px;
+            width: calc(100% + 20px);
+        }
+    }
+
+    .csv-substep-wrapper {
+        position: relative;
+
+    }
+}
+
+.attribute-dropdown-list {
+    height: 200px;
+    overflow: auto;
+}
+
+$width: 260px;
+$height: 300px;
+
+import-csv-csv-map-manager {
+    display: block;
+    height: 100%;
+    .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: white;
+
+        @include ngIf {
+            transition: all linear 0.5s;
+        }
+
+        @include ngIfHide {
+            z-index: 0;
+            opacity: 0;
+        }
+
+        @include ngIfShow {
+            z-index: 30;
+            opacity: 0.8;
+        }
+    }
+
+    .csv-substep-wrapper {
+        .col-item-wrapper {
+            height: $height;
+            width: $width;
+            position: relative;
+            margin-right: 19px;
+            margin-bottom: 15px;
+
+            .col-item {
+                transition: all linear 0.5s;
+                position: absolute;
+                top: 0;
+                left: 0;
+                padding: 0;
+                background-color: white;
+                margin: 0;
+                z-index: 1;
+
+                &.selected {
+                    z-index: 35;
+                    transform: translateX(-50%) translateY(-50%);
+                    height: 360px;
+                    .side {
+                        width: 240px;
+                        .values {
+                            padding: 25px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+import-csv-csv-map-column {
+    display: flex;
+    position: relative;
+    height: 100%;
+
+    .side {
+        height: 100%;
+        overflow: hidden;
+        position: relative;
+
+        h5 {
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        .values {
+            padding: 18px 20px;
+            .confirm-value {
+                height: 40px;
+                &.selected-mapped {
+                    line-height: 30px;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+            }
+
+            .value {
+                line-height: 25px;
+            }
+        }
+
+        .more-values {
+            border-top: 1px solid #F8F8FA;
+            padding: 11px 20px;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+
+        &.confirm-selected {
+            padding: 25px;
+            .title {
+                margin: 22px 0;
+                font-weight: bold;
+            }
+            .small {
+                margin-bottom: 5px;
+            }
+            .btn-basic {
+                overflow: hidden;
+                text-overflow: ellipsis;
+                width: 100%;
+            }
+            .input-group, .btn-basic {
+                margin: 15px 0;
+            }
+            fieldset:disabled {
+                .radio:not(.active) {
+                    opacity: 0.5;
+                }
+            }
+        }
+
+        &:not(:first-child) {
+            border-left: 1px solid #F8F8FA;
+        }
+
+        @include ngIf {
+            transition: all linear 0.5s;
+        }
+
+        @include ngIfHide {
+            width: 0;
+        }
+
+        @include ngIfShow {
+            width: $width;
+        }
+    }
+}

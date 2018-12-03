@@ -1,0 +1,43 @@
+avatar {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    .avatar-img {
+        img {
+            width: 100%;
+        }
+    }
+
+    .link-disabled {
+        pointer-events: none;
+    }
+
+    .avatar-letter {
+        background: #fff;
+        border-radius: 50%;
+        text-align: center;
+        font-size: 60%;
+        box-sizing: content-box;
+        font-weight: 600;
+    }
+
+    .team-emoji {
+        text-align: center;
+    }
+
+    .bottom {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        width: 30%;
+        height: 30%;
+        border-radius: 50%;
+        border: 2px solid #fff;
+        &.on {
+            background-color: $brand-success;
+        }
+        &.away {
+            background-color: $brand-warning;
+        }
+    }
+}

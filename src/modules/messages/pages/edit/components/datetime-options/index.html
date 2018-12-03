@@ -1,0 +1,38 @@
+<div class="form-group">
+    <span ng-bind="$ctrl.name"></span>
+    <div class="pull-right">
+        <ui-toggle ng-model="$ctrl.isEnabled"
+                   ng-model-options="{getterSetter: true}"
+                   on-change="$ctrl.changeMode()"
+                   styles="round off-default"
+                   on=""
+                   off="">
+        </ui-toggle>
+    </div>
+</div>
+<div class="flex flex-align-content-s-between">
+    <div class="date-selector">
+        <div class="input-group date">
+            <input type='text' class="form-control"
+                   ng-model="$ctrl.date"
+                   uib-datepicker-popup
+                   show-button-bar="false"
+                   placeholder="{{::$ctrl.date | date:'yyyy-MM-dd'}}"
+                   is-open="$ctrl.isDatepickerOpen"
+                   ng-disabled="!$ctrl.isEnabled"
+                   ng-click="$ctrl.toggleDatePicker(true)">
+            <span class="input-group-addon"
+                  ng-click="$ctrl.toggleDatePicker(true)">
+                <i class="fa fa-calendar" aria-hidden="true"></i>
+            </span>
+        </div>
+    </div>
+    <div class="time-selector">
+        <input class="form-control"
+               type="time"
+               ng-disabled="!$ctrl.isEnabled"
+               ng-model="$ctrl.date"
+               placeholder="{{::$ctrl.date | date: 'HH:mm'}}"
+               required>
+    </div>
+</div>

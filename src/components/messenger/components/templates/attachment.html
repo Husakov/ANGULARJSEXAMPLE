@@ -1,0 +1,5 @@
+<i class="fa fa-fw fa-paperclip"></i>
+<a ng-href="{{::file.url}}">
+    <b>{{::(file.file_name || file.name)}}</b>
+</a>
+<span ng-if="::((file.file_size || file.size) >= 0)">{{::(file.file_size || file.size) | filesize}}</span>

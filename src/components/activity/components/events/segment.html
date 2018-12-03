@@ -1,0 +1,22 @@
+<div class="panel-body">
+    <div class="flex-row flex-align-top">
+        <div class="user-information flex-auto">
+            <a class="blue-txt"
+               ui-sref="contacts.details({mode: 'users', id: $ctrl.event.user_id})"
+               ng-bind="::$ctrl.event.user.name">
+            </a>
+            entered the segment
+            <a class="blue-txt"
+               ui-sref="contacts.list.mode({mode: 'users', segmentId: $ctrl.event.segment.id})"
+               ng-bind="::$ctrl.event.segment.name">
+            </a>
+        </div>
+        <div class="flex-auto text-right">
+            <span am-time-ago="::$ctrl.event.created_at"
+                  uib-tooltip="{{::$ctrl.event.created_at | date:'HH:mm a on d, MMM yyyy'}}"
+                  tooltip-class="tooltip-top activity-tooltip-event"
+                  tooltip-placement="top-right"
+                  tooltip-append-to-body="true"></span>
+        </div>
+    </div>
+</div>

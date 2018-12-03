@@ -1,0 +1,290 @@
+message-preview {
+    display: block;
+
+    .insert-toolbar {
+        display: block;
+        padding: 8px;
+        white-space: nowrap;
+        .text-editor-insert-toolbar {
+            display: inline-block;
+        }
+    }
+
+    .email-view {
+        height: auto;
+        min-height: 100%;
+        justify-content: center;
+        position: relative;
+        .preview-content {
+            margin: 50px auto 0;
+            width: 600px;
+            height: auto;
+            min-height: 260px;
+
+            .insert-toolbar {
+                left: auto;
+                top: 20px;
+            }
+
+            & > .panel-header {
+                background-image: linear-gradient(0deg, #F4F7FD 0%, #FFFFFF 69%);
+                box-shadow: 0 0 1px 0 $main-shadow-color;
+                flex: 0 0 56px;
+                padding: 8px 0;
+                &:first-child {
+                    border-radius: 4px 4px 0 0;
+                }
+
+                .title {
+                    font-size: 14px;
+                    text-transform: uppercase;
+                    font-weight: bold;
+                    margin-left: 30px;
+                }
+
+                .subject {
+                    margin-left: 7px;
+                }
+
+                .subject-preview {
+                    margin-left: 30px;
+                    &.empty {
+                        opacity: 0.3;
+                    }
+                }
+
+                .text-editor-insert-toolbar {
+                    margin: 10px 22px 0;
+                    display: inline-block;
+                }
+            }
+
+            .email-body {
+                line-height: 25px;
+                padding: 18px 30px 20px 30px;
+                border-top: 2px solid $brand-primary;
+                overflow: auto;
+                img {
+                    max-width: 100%;
+                    height: auto;
+                }
+            }
+        }
+
+        .email-footer-detail {
+            margin: 25px auto 50px;
+            width: 548px;
+            .message-from {
+                line-height: 31px;
+                avatar {
+                    margin-right: 7px;
+                }
+            }
+
+            .unsubscribe {
+                line-height: 31px;
+            }
+
+            .copyright {
+                margin-top: 15px;
+                margin-bottom: 15px;
+                font-size: 14px;
+                text-align: center;
+            }
+        }
+    }
+
+    .inapp-view {
+        position: relative;
+        height: auto;
+        min-height: 100%;
+        background: url(./assets/chat-bg.png);
+        background-size: auto;
+        background-repeat: repeat-y;
+        background-position: 10% 0;
+        justify-content: flex-end;
+
+        .chat {
+            position: relative;
+            float: right;
+            width: 390px;
+            padding: 30px 30px 30px 60px;
+            margin-top: 55px;
+            align-self: flex-end;
+
+            img {
+                max-width: 100%;
+                height: auto;
+            }
+
+            .panel {
+                position: relative;
+                border-radius: 8px;
+
+                .message-from {
+                    font-size: 14px;
+                    margin-bottom: 10px;
+                    .note-avatar {
+                        margin-right: 10px;
+                    }
+                }
+
+                .avatar {
+                    position: absolute;
+                    left: -44px;
+                    bottom: 0;
+                }
+
+                .insert-toolbar {
+                    display: block;
+                    padding: 8px;
+                    position: fixed;
+                    left: auto;
+                    top: 50%;
+                    .draggable-pointer {
+                        color: $brand-primary;
+                        border-right: 1px dashed $brand-primary;
+                        margin-left: 6px;
+                        padding-right: 12px;
+                        width: auto;
+                    }
+                }
+            }
+
+            &.borderless {
+                .chat-message {
+                    width: 90%;
+                    float: right;
+                    background: $brand-primary;
+                    color: #fff;
+                    .btn-group > .btn {
+                        color: #fff;
+                        opacity: 1;
+                    }
+                    .icon {
+                        border-color: #fff;
+                        color: #fff;
+                    }
+                }
+            }
+
+            .chat-reply {
+                position: relative;
+                background: #ECF0F3;
+                border-radius: 8px;
+                width: 100%;
+                cursor: pointer;
+                .icon {
+                    position: absolute;
+                    right: 20px;
+                    color: #BDC8D1;
+                    font-size: 20px;
+                    bottom: 20px;
+                    &.fa-smile-o {
+                        right: 45px;
+                    }
+                }
+            }
+
+            .chat-launcher {
+                width: 60px;
+                height: 60px;
+                text-align: center;
+                border-radius: 50%;
+                background: $brand-primary;
+                box-shadow: 0 6px 16px 0 hexToRgba($brand-primary, 0.43);
+                i {
+                    font-size: 24px;
+                    line-height: 60px;
+                    color: white;
+                }
+            }
+
+            &.note,
+            &.takeover {
+                .chat-reply {
+                    border-radius: 0 0 8px 8px;
+                }
+            }
+        }
+    }
+
+    .preview-background {
+        background-color: rgba(0,0,0,0.75);
+        .preview-content {
+            box-shadow: none;
+        }
+
+        &-add {
+            opacity: 0;
+            transition: opacity 0.3s 0s;
+            &-active {
+                opacity: 1;
+            }
+        }
+    }
+
+    .desktop-preview,
+    .mobile-preview {
+        &-add {
+            transform: scale(0.8);
+            transition: transform 0.3s 0s;
+            &-active {
+                transform: scale(1);
+            }
+        }
+    }
+
+    .preview-mode {
+        overflow: hidden;
+        .preview-content {
+            margin-top: 0;
+        }
+        &.inapp-view,
+        &.email-view,
+        .inapp-view,
+        .email-view {
+            pointer-events: none;
+        }
+    }
+
+    .mobile-preview {
+        min-height: 710px;
+        justify-content: center;
+        align-items: center;
+        .device-container {
+            transform: scale(1);
+            .device-preview {
+                border: 1px solid $input-border;
+            }
+        }
+        .email-view {
+            min-height: auto;
+            .preview-content {
+                width: 100%;
+                min-height: 300px;
+                .panel-header .title {
+                    margin-left: 10px;
+                }
+                .subject-preview {
+                    margin-left: 10px;
+                }
+                .email-body {
+                    padding: 18px 10px 10px;
+                }
+            }
+            .email-footer-detail {
+                width: 100%;
+                padding: 0 10px;
+                margin-top: 10px;
+            }
+        }
+        .inapp-view {
+            display: flex;
+            .chat {
+                width: 100%;
+                padding: 30px 10px 30px 55px;
+            }
+        }
+    }
+}

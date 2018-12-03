@@ -1,0 +1,33 @@
+*[input-container] {
+    position: relative;
+    label {
+        transition: all cubic-bezier(0.5, 0.1, 0, 1.2) 200ms;
+        font-size: 16px;
+        font-weight: normal;
+        position: absolute;
+        top: 16px;
+        cursor: pointer;
+        width: 100%;
+        z-index: 5;
+        pointer-events: none;
+    }
+    input {
+        border: transparent;
+        font-weight: bold;
+        font-size: 16px;
+        width: 100%;
+        padding-top: 20px;
+        opacity: 0;
+        color: #000;
+    }
+    &.has-value, &.input-focused {
+        label {
+            font-size: 13px;
+            top: 6px;
+            padding: 0;
+        }
+        input {
+            opacity: 1;
+        }
+    }
+}

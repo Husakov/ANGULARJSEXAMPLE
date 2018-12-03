@@ -1,0 +1,134 @@
+<div id="contacts-details-page" class="flex-col">
+    <div class="top" ng-if="!$ctrl.loading">
+        <leaflet-map coord-objs="::$ctrl.coords"
+                     zoom="2">
+        </leaflet-map>
+
+        <div class="info-panel">
+            <div class="avatar-container">
+                <avatar ng-if="::$ctrl.isUsers"
+                        item="$ctrl.contact"
+                        class="bordered-image"
+                        size="60"></avatar>
+                <div class="avatars"
+                     ng-if="::$ctrl.isCompanies && ($ctrl.contact.users.length > 2)">
+                    <avatar ng-repeat="item in $ctrl.contact.users | limitTo: 3"
+                            item="item"
+                            class="bordered-image"
+                            size="26"></avatar>
+                </div>
+            </div>
+
+            <div class="title">
+                <span class="name">{{ ::$ctrl.contact.name }}</span>
+                <label ng-if="::$ctrl.isUsers" class="label label-default">User</label>
+                <label ng-if="::$ctrl.isCompanies" class="label label-default">Company</label>
+                <label ng-if="::$ctrl.isAdmins" class="label label-default">Admin</label>
+            </div>
+            <div class="location"
+                 ng-init="location = $ctrl.coords[0]"
+                 ng-if="::!$ctrl.isCompanies">
+                <span>
+                    <i class="fa fa-fw fa-map-marker"></i>
+                    {{ ::location.city_name }},
+                    {{ ::location.country_name }}
+                </span>
+
+                <span>
+                    <i class="fa fa-fw fa-clock-o"></i>
+                    {{ $ctrl.localTime }}
+                </span>
+            </div>
+
+            <div class="buttons">
+                <button class="btn btn-primary"
+                        ng-if="::!$root.STAGE_OR_PROD"
+                        ng-click="$ctrl.writeMessage()">
+                    Send Message
+                </button>
+
+                <div class="btn-group"
+                     uib-dropdown>
+                    <button type="button"
+                            class="btn btn-primary dropdown-toggle"
+                            uib-dropdown-toggle>
+                        <i class="fa fa-chevron-down text-sm"></i>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-right"
+                        uib-dropdown-menu role="menu">
+                        <li ng-if="::!$ctrl.isAdmins">
+                            <a ng-click="$ctrl.deleteContact()">
+                                <i class="fa fa-fw fa-trash"></i>
+                                Delete
+                                <span ng-if="::!$ctrl.isCompanies">person</span>
+                                <span ng-if="::$ctrl.isCompanies">company</span>
+                            </a>
+                        </li>
+                        <li ng-if="::$ctrl.isUsers && !$root.STAGE_OR_PROD">
+                            <a>
+                                <i class="fa fa-fw fa-times-circle"></i>
+                                Block person
+                            </a>
+                        </li>
+                        <li ng-if="::$ctrl.isUsers && !$root.STAGE_OR_PROD">
+                            <a>
+                                <i class="fa fa-fw fa-ban"></i>
+                                Unsubscribe from email
+                            </a>
+                        </li>
+                        <li>
+                            <a ng-click="$ctrl.openNotes()">
+                                <i class="fa fa-fw fa-sticky-note-o"></i>
+                                Add Notes
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="flex-2 flex"
+         ng-if="!$ctrl.loading">
+
+        <activity user-id="$ctrl.contact.id"
+                  section-type="$ctrl.activitySection"
+                  ng-if="$ctrl.isUsers"></activity>
+
+        <activity admin-id="$ctrl.contact.id"
+                  section-type="$ctrl.activitySection"
+                  ng-if="$ctrl.isAdmins"></activity>
+
+        <div ng-if="::$ctrl.isCompanies"
+             class="company-details-container flex-col">
+            <div class="company-tab-switcher"
+                 ng-init="$ctrl.showActivity = false">
+                <div class="btn-group ui-tab" role="group">
+                    <button class="btn btn-link"
+                            ng-class="{'active': $ctrl.showActivity}"
+                            ng-click="$ctrl.showActivity = true">
+                        Activity
+                    </button>
+                    <button class="btn btn-link"
+                            ng-class="{'active': !$ctrl.showActivity}"
+                            ng-click="$ctrl.showActivity = false">
+                        Users
+                    </button>
+                </div>
+            </div>
+
+            <div ng-show="$ctrl.showActivity"
+                 class="activity flex-12 flex">
+                <activity company-id="::$ctrl.contact.id"></activity>
+            </div>
+            <div ng-show="!$ctrl.showActivity"
+                 class="flex-12 flex">
+                <contacts-details-users-table users="$ctrl.contact.users"
+                                              class="flex-col contacts-details-users-table">
+                </contacts-details-users-table>
+            </div>
+        </div>
+    </div>
+
+    <loader ng-if="$ctrl.loading"></loader>
+</div>

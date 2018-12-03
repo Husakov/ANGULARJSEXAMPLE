@@ -1,0 +1,123 @@
+<div class="side" recompile>
+    <div class="values">
+        <h5 class="text-uppercase text-bold">
+            <i ng-if="$ctrl.column.isMapped"
+               class="fa fa-check-circle pull-right text-success"></i>
+            Column {{::($ctrl.column.index + 1)}}
+        </h5>
+
+        <div class="confirm-value"
+             ng-class="{'selected-mapped' : $ctrl.column.isSelected || $ctrl.column.isMapped}">
+            <button class="btn btn-primary btn-sm btn-block"
+                    ng-if="!($ctrl.column.isMapped || $ctrl.column.isSelected)"
+                    ng-click="$ctrl.toggle()">
+                Select this column
+            </button>
+            <span class="text-blue"
+                  ng-if="$ctrl.column.isSelected">
+                Selected
+            </span>
+            <span class="text-blue"
+                  ng-if="$ctrl.column.isMapped">
+                Mapped as {{::$ctrl.column.title}}
+            </span>
+        </div>
+
+        <div ng-repeat="item in ::$ctrl.column.values | limitTo: 3 track by $index"
+             class="value">
+            {{:: item | limitWithDots: 15}}
+        </div>
+    </div>
+
+    <div class="more-values"
+         ng-if="::($ctrl.column.values.length > 3)">
+        ... + {{::($ctrl.column.values.length - 3)}} more
+    </div>
+</div>
+<div class="side flex-col confirm-selected"
+     ng-if="$ctrl.column.isSelected"
+     recompile>
+    <div class="flex-auto">
+        <div>
+            Map column {{::($ctrl.column.index + 1)}} to
+        </div>
+        <div class="text-blue title"
+             ng-if="::!$ctrl.helper.step().isCustom">
+            {{::$ctrl.helper.mapData.title}}
+        </div>
+
+        <div ng-if="$ctrl.helper.isNewAttribute">
+            <div class="input-group input-group-sm">
+                <input type="text"
+                       class="form-control"
+                       ng-model="$ctrl.helper.mapData.title">
+                <div class="input-group-btn">
+                    <button class="btn btn-primary"
+                            ng-click="$ctrl.helper.newAttribute(false)">
+                        <i class="fa fa-times" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div ng-if="::$ctrl.helper.step().isCustom"
+             ng-hide="$ctrl.helper.isNewAttribute"
+             uib-dropdown
+             dropdown-append-to-body="true">
+            <button class="btn btn-basic btn-sm"
+                    uib-dropdown-toggle>
+                <i class="fa fa-{{$ctrl.helper.selectedAttribute.icon}}"
+                   ng-if="$ctrl.helper.selectedAttribute"></i>
+                {{$ctrl.helper.mapData.title || 'Custom Attribute'}}
+                <i class="fa fa-chevron-down text-sm"></i>
+            </button>
+
+            <ul class="dropdown-menu attribute-dropdown-list"
+                uib-dropdown-menu>
+                <li>
+                    <a ng-click="$ctrl.helper.newAttribute()">
+                        <i class="fa fa-plus-square"></i>
+                        Add attribute
+                    </a>
+                </li>
+                <li class="dropdown-header">
+                    Existing custom attributes
+                </li>
+                <li ng-repeat="item in $ctrl.helper.attributes track by item.id">
+                    <a ng-click="$ctrl.helper.selectAttribute(item)">
+                        <i class="fa fa-{{::item.icon}}"></i>
+                        {{::(item.title || item.name)}}
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="small">
+            with data type of
+        </div>
+        <fieldset ng-disabled="!$ctrl.helper.isNewAttribute">
+            <div class="radio"
+                 ng-repeat="type in ::$ctrl.helper.dataTypes track by type.name"
+                 ng-class="{'active': $ctrl.helper.mapData.type == type}">
+                <label>
+                    <input type="radio"
+                           name="dataType"
+                           ng-model="$ctrl.helper.mapData.type"
+                           ng-value="::type">
+                    <i class="dark-white"></i>
+                    {{::type.title}}
+                </label>
+            </div>
+        </fieldset>
+    </div>
+    <div>
+        <button class="btn btn-default"
+                ng-click="$ctrl.toggle(false)">
+            Cancel
+        </button>
+        <button class="btn btn-primary"
+                ng-disabled="!$ctrl.helper.canConfirm()"
+                ng-click="$ctrl.confirm()">
+            Confirm
+        </button>
+    </div>
+</div>

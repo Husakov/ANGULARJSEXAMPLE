@@ -1,0 +1,18 @@
+messages-list-sections-dropdown {
+    display: inline-block;
+    position: relative;
+    .breadcrumb {
+        padding: 0;
+        .dropdown-toggle,
+        a.dropdown-toggle {
+            cursor: pointer;
+            color: $brand-primary;
+        }
+        .active-icon {
+            display: none;
+        }
+        .active .active-icon {
+            display: inline-block;
+        }
+    }
+}

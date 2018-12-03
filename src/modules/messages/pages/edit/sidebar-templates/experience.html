@@ -1,0 +1,10 @@
+<div class="title">Click to Select Experience</div>
+<ul class="list-group">
+    <li class="list-group-item"
+        ng-repeat="type in ::$ctrl.mediator.model.options('messageTypes')"
+        ng-class="{active: $ctrl.mediator.model.get('type') === type.name}"
+        ng-click="$ctrl.mediator.model.set('type', type.name)">
+        <i class="fa fa-fw {{::type.icon}}"></i>
+        {{::type.title}}
+    </li>
+</ul>

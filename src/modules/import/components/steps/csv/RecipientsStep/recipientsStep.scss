@@ -1,0 +1,38 @@
+import-csv-recipients-step {
+    .recipients-types {
+        .radio {
+            margin-top: 0px;
+            &:not(:last-child) {
+                margin-bottom: 15px;
+            }
+            label {
+                padding-left: 35px;
+                line-height: 20px;
+                width: 100%;
+                input + i {
+                    margin-left: -35px;
+                    margin-right: 14px;
+                }
+                .description {
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+
+    .upload-file-drop {
+        border: 1px dashed #46A2E8;
+        height: 80px;
+        position: relative;
+
+        .description-icon {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+        }
+
+        .uploaded-file-name {
+            line-height: 40px;
+        }
+    }
+}

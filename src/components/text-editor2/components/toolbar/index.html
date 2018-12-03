@@ -1,0 +1,12 @@
+<div ng-repeat="toolGroup in ::$ctrl.tools"
+     class="btn-group">
+    <button ng-repeat="tool in ::toolGroup"
+            ng-disabled="$ctrl.editor.isDisabled()"
+            ng-class="{active: !$ctrl.isDisabled && tool.isActive()}"
+            ng-click="tool.action($event)"
+            class="btn btn-sm btn-icon">
+        <i ng-if="::tool.icon" class="{{::tool.icon}}"></i>
+        <span ng-if="::tool.text">{{::tool.text.toUpperCase()}}</span>
+        <span ng-if="::tool.display" te-display="::tool"></span>
+    </button>
+</div>

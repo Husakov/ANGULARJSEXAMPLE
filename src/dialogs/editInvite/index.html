@@ -1,0 +1,73 @@
+<div class="modal-header">
+    <button type="button"
+            class="btn close"
+            ng-click="$ctrl.cancel()">
+        <span>&times;</span>
+    </button>
+    <span ng-if="$ctrl.creatingInvite">
+        Invite a teammate
+    </span>
+    <span ng-if="!$ctrl.creatingInvite">
+        Permissions for {{ $ctrl.invitation.name || $ctrl.invitation.email }}
+    </span>
+</div>
+<div class="modal-body edit-invite-body">
+    <form role="form" name="teammatesAppForm">
+        <div class="form-group" ng-if="$ctrl.creatingInvite">
+            <label for="inviteByEmail" class="form-label">Invite</label>
+            <input id="inviteByEmail"
+                   ng-model="$ctrl.invitation.email"
+                   type="email"
+                   class="form-control"
+                   maxlength="50"
+                   placeholder="Enter your new teammate's email address"
+                   required>
+        </div>
+
+        <div class="form-group">Permissions</div>
+        <div class="form-group">
+            <label class="ui-check radio">
+                <input ng-model="$ctrl.invitation.role" name="permissions" type="radio" value="full_access">
+                <i class="dark-white"></i> Invite with full access to all data and features
+            </label>
+        </div>
+        <div class="form-group">
+            <label class="ui-check radio">
+                <input ng-model="$ctrl.invitation.role" name="permissions" type="radio" value="restricted_access">
+                <i class="dark-white"></i> Invite with restricted access…
+            </label>
+        </div>
+        <div class="form-group sub-group" ng-show="$ctrl.invitation.role === 'restricted_access' ">
+            <label class="ui-check checkbox sub">
+                <input ng-model="$ctrl.invitation.can_access_settings_and_billing" type="checkbox">
+                <i class="dark-white"></i> Allow access to app & team settings and billing
+            </label>
+            <label class="ui-check checkbox sub">
+                <input ng-model="$ctrl.invitation.can_export_data" type="checkbox">
+                <i class="dark-white"></i> Prevent exporting user & company data
+            </label>
+            <label class="ui-check checkbox sub">
+                <input ng-model="$ctrl.invitation.can_send_messages" type="checkbox">
+                <i class="dark-white"></i> Prevent sending messages to more than one person at a time
+            </label>
+        </div>
+
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default"
+                    ng-click="$ctrl.cancel()">
+                Cancel
+            </button>
+            <button type="button" class="btn btn-primary"
+                    ng-disabled="!teammatesAppForm.$valid"
+                    ng-if="$ctrl.creatingInvite"
+                    ng-click="$ctrl.sendInvite($ctrl.invitation)">
+                Invite
+            </button>
+            <button type="button" class="btn btn-primary"
+                    ng-if="!$ctrl.creatingInvite"
+                    ng-click="$ctrl.changePermissions($ctrl.invitation)">
+                Save
+            </button>
+        </div>
+    </form>
+</div>

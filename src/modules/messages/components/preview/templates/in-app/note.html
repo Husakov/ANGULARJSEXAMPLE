@@ -1,0 +1,38 @@
+<div class="panel panel-default"
+     ng-if="!$ctrl.mediator.model.options('isBadge', true) || $ctrl.mediator.model.options('preview_delivery_option')">
+    <div class="panel-body">
+        <div class="message-from">
+            <avatar item="$ctrl.mediator.getAssign($ctrl.mediator.model.get('from_id', true))"
+                    class="note-avatar pull-left" size="30"></avatar>
+            <strong>{{$ctrl.getAssign($ctrl.mediator.model.get('from_id', true)).name}}</strong>
+            from My App
+            <div class="clearfix"></div>
+        </div>
+
+        <div class="insert-toolbar panel panel-default"
+             ng-if="!$ctrl.mediator.isPreview"
+             ri-draggable>
+            <span ri-draggable-pointer>
+                <i class="fa fa-arrows"></i>
+            </span>
+            <text-editor-insert-toolbar class="text-editor-insert-toolbar"
+                                        editor="$ctrl.editor"></text-editor-insert-toolbar>
+        </div>
+
+        <text-editor refer="$ctrl.editor"
+                     ng-if="!$ctrl.mediator.isPreview"
+                     placeholder="Type your message here..."
+                     ng-model="$ctrl.mediator.model.getterSetter('json_blocks', true)"
+                     ng-model-options="{getterSetter: true}">
+        </text-editor>
+        <span ng-if="$ctrl.mediator.isPreview"
+              ng-bind-html="$ctrl.mediator.model.options('messageBody', true)">
+        </span>
+    </div>
+
+    <div class="chat-reply"
+         ng-if="$ctrl.mediator.model.options('isFull', true) || $ctrl.mediator.model.options('preview_delivery_option')"
+         ng-include="'${require(`./reply-form.html`)}'">
+    </div>
+</div>
+<div class="chat-launcher pull-right"><i class="fa fa-close"></i></div>

@@ -1,0 +1,12 @@
+<div class="list-group">
+    <a class="list-group-item"
+       ng-repeat="item in $ctrl.items track by item.id"
+       ng-click="$ctrl.select({result: item})">
+        <avatar item="item"
+                size="16"
+                class="pull-left"
+                link-disabled="::true">
+        </avatar>
+        <span ng-bind-html="item.name | highlight:$ctrl.typedTerm"></span>
+    </a>
+</div>

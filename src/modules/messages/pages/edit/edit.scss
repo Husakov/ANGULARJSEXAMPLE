@@ -1,0 +1,170 @@
+#messages-edit-page {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 400px;
+    background: #fff;
+    .message-edit-editor {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.message-edit-sidenav {
+    .sections-container {
+        .second-sections {
+            .admin-team-search {
+                .dropdown-menu {
+                    width: 100%;
+                }
+            }
+
+            .description {
+                font-size: 14px;
+                color: $text-color;
+                font-weight: normal;
+            }
+
+            .special-form-style {
+                .input-group-addon {
+                    background: $dark-theme-bg;
+                    color: $text-color;
+                    border-color: $text-color;
+                }
+            }
+
+            .ui-select-bootstrap .ui-select-choices-row {
+                > a {
+                    color: $text-color;
+                }
+                &.active {
+                    color: #fff;
+                }
+            }
+
+            .messages-filter-panel {
+                font-weight: normal;
+                .form-control {
+                    color: $text-color;
+                    background-color: #fff;
+                }
+                .dropdown-menu {
+                    background: #fff;
+                    box-shadow: 0 6px 12px hexToRgba(#000, 0.175);
+                    .list-group-item {
+                        background: #fff;
+                    }
+                    .searchbox {
+                        input.searcher {
+                            background: #fff;
+                        }
+                    }
+                }
+            }
+
+            .small-title {
+                font-size: 13px;
+                text-transform: uppercase;
+            }
+
+            .dropdown-menu {
+                width: auto;
+                min-width: unset;
+                background: $dark-theme-bg;
+                box-shadow: none;
+                .list-group-item {
+                    background: $dark-theme-bg;
+                }
+                .searchbox {
+                    margin: 10px 10px 2px;
+                    input.searcher {
+                        background: $dark-theme-secondary-bg;
+                        border-bottom: none;
+                        border-radius: 3px;
+                        padding: 6px 0 6px 27px;
+                    }
+                    i.fa.fa-search.pointer {
+                        top: 6px;
+                        left: 8px;
+                    }
+                }
+            }
+
+            &.edit {
+                &-experience {
+                    padding: 15px;
+                    .title {
+                        text-transform: uppercase;
+                        text-align: center;
+                        font-size: 14px;
+                        margin: 35px 0;
+                    }
+                    .list-group-item {
+                        margin: 9px 0px;
+                        border-radius: 3px;
+                        cursor: pointer;
+                    }
+                }
+            }
+
+            &.options {
+                padding-left: 20px;
+                .selected-option {
+                    margin-top: 10px;
+                    ui-toggle {
+                        display: block;
+                        margin-top: -7px;
+                    }
+                    .radio {
+                        margin: 0 0 10px 22px;
+                        input[type="radio"] + i {
+                            margin-right: 8px;
+                        }
+                    }
+                }
+            }
+
+            &.radio-select {
+                .radio {
+                    margin: 12px 0;
+                    &.sub-checkbox {
+                        margin-left: 30px;
+                    }
+                }
+            }
+        }
+
+        .users-preview {
+            box-shadow: none;
+            padding: 15px;
+        }
+    }
+
+    .messages-filter-panel {
+        position: fixed;
+        left: 50%;
+        top: 25%;
+        margin-left: -200px;
+        width: 650px;
+        height: 312px;
+        z-index: 100;
+
+        transition: transform 0.3s;
+        &.ng-hide {
+            transform: scale(0);
+        }
+        &.ng-enter {
+            transform: scale(0);
+            &.ng-enter-active {
+                transform: scale(1);
+            }
+        }
+        &.ng-leave {
+            transform: scale(1);
+            &.ng-leave-active {
+                transform: scale(0);
+            }
+        }
+    }
+}

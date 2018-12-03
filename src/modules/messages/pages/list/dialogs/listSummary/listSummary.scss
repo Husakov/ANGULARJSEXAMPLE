@@ -1,0 +1,83 @@
+.list-summary-dialog {
+    position: relative;
+    display: block;
+    .summary-header {
+        color: #9A99AB;
+        padding: 35px 0 0 85px;
+        &-title {
+            font-size: 24px;
+            font-weight: 600;
+        }
+        &-description {
+            font-size: 18px;
+        }
+        .styled-close-button {
+            position: absolute;
+            top: 25px;
+            right: 28px;
+        }
+    }
+
+    .summary-content {
+        padding: 25px 35px 35px 85px;
+        font-size: 16px;
+        color: #9A99AB;
+        text-align: center;
+        .summary-information {
+            display: flex;
+            .summary-column {
+                flex: 1;
+                position: relative;
+                .count {
+                    font-size: 32px;
+                    letter-spacing: 0.69px;
+                    &.active {
+                        color: #57960F;
+                    }
+                    &.exited {
+                        color: #EC273F;
+                    }
+                    &.reached {
+                        color: #2499F1;
+                    }
+                }
+                .description {
+                    white-space: nowrap;
+                    padding: 0 8px;
+                }
+                .light-tooltip {
+                    display: inline-block;
+                    position: absolute;
+                    top: -30px;
+                    left: 50%;
+                    margin-left: -23%;
+                    background: #FFFFFF;
+                    box-shadow: 0 0 10px 0 $main-shadow-color;
+                    border-radius: 21px;
+                    padding: 3px 15px;
+                    font-size: 16px;
+                    color: #1FB6FF;
+                    line-height: 21px;
+                    text-transform: uppercase;
+                    font-weight: 600;
+                }
+            }
+        }
+        .sum-icon {
+            color: #7B909B;
+            position: absolute;
+            left: 50px;
+            top: 135px;
+            font-size: 18px;
+        }
+    }
+}
+
+.summary-modal {
+    .modal-dialog {
+        top: 50%;
+        margin-top: -120px;
+        width: 700px;
+        height: 215px;
+    }
+}

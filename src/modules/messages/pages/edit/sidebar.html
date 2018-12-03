@@ -1,0 +1,79 @@
+<messages-sidenav mediator="$ctrl.mediator"
+                  sections="$ctrl.sections"
+                  class="message-edit-sidenav"
+                  templates="$ctrl.templates">
+    <messages-sidenav-left>
+        <div class="a-b-test"
+             ng-if="$ctrl.mediator.model.options('hasVersions')">
+            <button class="btn btn-link btn-start"
+                    ng-if="$ctrl.mediator.model.get('variations').length < 2"
+                    ng-click="$ctrl.mediator.model.addVersion()">
+                <i class="fa fa-fw fa-flask"></i>
+                <span class="in-collapsed">A/B Test</span>
+            </button>
+            <ul class="versions" ng-if="$ctrl.mediator.model.get('variations').length > 1">
+                <li ng-repeat="version in $ctrl.mediator.model.get('variations') track by $index"
+                    ng-class="{'active': $ctrl.mediator.model.currentVersionIndex === $index}"
+                    ng-click="$ctrl.mediator.model.setVersion($index)">
+                    {{ ::(['A', 'B'][$index]) }}
+                    <span class="in-collapsed">version</span>
+                    <i class="fa fa-trash in-collapsed"
+                       ng-if="$ctrl.mediator.model.options('isDraft')"
+                       title="Delete current version"
+                       ng-click="$event.stopPropagation(); $ctrl.mediator.deleteVersion($index)"></i>
+                </li>
+            </ul>
+
+            <hr/>
+        </div>
+
+        <div class="title-container">
+            <input type="text"
+                   class="form-control in-collapsed"
+                   ng-model="$ctrl.mediator.model.getterSetter('title')"
+                   ng-model-options="{getterSetter: true}"
+                   placeholder="Name your message">
+            <i class="fa fa-bell-o empty-title-icon in-collapsed"
+               uib-tooltip="If you leave this field blank, the message should be saved as 'Untitled Message'"
+               tooltip-placement="right"
+               tooltip-append-to-body="true"
+               ng-if="!$ctrl.mediator.model.get('title')"></i>
+        </div>
+
+
+        <div ng-show="$ctrl.mediator.isFilterOpened"
+             ng-click="$emit('sideNav.clearState')"
+             class="messages-filter-panel-background overlay-background dark-background"></div>
+        <div ri-draggable
+             ng-show="$ctrl.mediator.isFilterOpened"
+             class="messages-filter-panel panel panel-default">
+
+            <users-filter ng-model="$ctrl.mediator.model.getterSetter('selection_state.predicates')"
+                          ng-if="!$ctrl.mediator.model.options('editor.predefinedUsers')"
+                          ng-model-options="{getterSetter: true}"
+                          fixed-mode="::true"
+                          hide-mode="::true"
+                          mode="$ctrl.mediator.model.get('user_role')">
+                <users-filter-left>
+                <span ri-draggable-pointer>
+                    <i class="fa fa-navicon"></i>
+                </span>
+                </users-filter-left>
+                <users-filter-right>
+                    <button class="btn btn-default pull-right"
+                            ng-click="$emit('sideNav.clearState')">
+                        <i class="fa fa-fw fa-eye"></i>
+                        Hide
+                    </button>
+                </users-filter-right>
+
+            </users-filter>
+
+            <users-preview class="users-preview"
+                           user-ids="$ctrl.mediator.model.get('selection_state.included_ids')"
+                           ng-if="$ctrl.mediator.model.options('editor.predefinedUsers')">
+            </users-preview>
+        </div>
+
+    </messages-sidenav-left>
+</messages-sidenav>

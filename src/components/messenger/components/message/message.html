@@ -1,0 +1,65 @@
+<div class="list-item" ng-class="::$ctrl.message._wrappers">
+
+    <div class="list-left user-message" ng-if="::$ctrl.message.user">
+        <avatar item="::$ctrl.message.user" size="32"></avatar>
+    </div>
+
+    <div class="list-right admin-message" ng-if="::$ctrl.message.admin">
+        <avatar item="::$ctrl.message.admin" size="32"></avatar>
+    </div>
+
+    <div class="list-body">
+        <div class="box-body text-left">
+            <div ng-include="'${require(`../templates/message-dropdown-actions.html`)}'"></div>
+
+            <div ng-bind-html="::$ctrl.body"
+                 class="message-content">
+            </div>
+            <div ng-if="::$ctrl.hasAttachment()"
+                 class="message-content"
+                 ng-include="::$ctrl.templates.attachment"
+                 ng-repeat="file in ::$ctrl.message.uploads">
+            </div>
+
+            <div ng-include="'${require(`../templates/message-tags.html`)}'"></div>
+        </div>
+
+        <span class="message-info">
+            Sent
+
+            <span ng-if="::!$ctrl.message.is_email && !!$ctrl.message.channel_type">
+                from
+                <span tooltip-trigger="outsideClick"
+                      uib-tooltip="{{::$ctrl.message.url}}"
+                      tooltip-append-to-body="true" tooltip-class="tooltip-top">App</span>,
+            </span>
+
+            <span ng-if="::$ctrl.message.is_email">
+                by
+                <span tooltip-trigger="outsideClick"
+                      uib-tooltip="{{::$ctrl.message.email}}"
+                      tooltip-append-to-body="true" tooltip-class="tooltip-top">Email</span>,
+            </span>
+
+            <span ng-if="!!$ctrl.message.channel_type">
+                via
+                <span uib-tooltip="{{::$ctrl.message.user_agent}}"
+                      tooltip-append-to-body="true"
+                      tooltip-class="tooltip-top">
+                    {{ ::$ctrl.message.channel_type }}
+                </span>
+                ,
+            </span>
+            <span uib-tooltip="{{::$ctrl.message.created_at | date:'medium'}}"
+                  tooltip-append-to-body="true"
+                  tooltip-class="tooltip-top">
+                {{ ::$ctrl.message.created_at | amTimeAgo }}.
+            </span>
+
+            <span ng-if="::$ctrl.message.admin">
+                <span ng-if="$ctrl.message._seen">Seen</span>
+                <span ng-if="!$ctrl.message._seen">Not seen</span>
+            </span>
+        </span>
+    </div>
+</div>

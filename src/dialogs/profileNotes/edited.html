@@ -1,0 +1,8 @@
+<div class="edited-tooltip">
+    Edited by
+    <div class="avatar w-20 inline">
+        <img class="pointer" ng-src="{{ note.created_by_object.avatar.image_url }}">
+    </div>
+    {{ note.created_by_object.name }}
+    <span am-time-ago="note.updated_at"></span>
+</div>

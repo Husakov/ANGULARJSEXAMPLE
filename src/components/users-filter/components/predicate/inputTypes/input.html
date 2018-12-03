@@ -1,0 +1,19 @@
+<input class="form-control bulleted-input input-sm"
+       ng-if="!$ctrl.inputType.inputTrail"
+       type="{{$ctrl.inputType.type}}"
+       placeholder="{{$ctrl.inputType.placeholder}}"
+       ng-model="$ctrl.predicate.value"
+       ng-model-options="{ debounce: $ctrl.debounceDelay }"
+       model-formatter="$ctrl.inputType.formatter">
+
+<div class="input-group input-group-sm" ng-if="$ctrl.inputType.inputTrail">
+    <input class="form-control"
+           type="{{$ctrl.inputType.type}}"
+           placeholder="{{$ctrl.inputType.placeholder}}"
+           ng-model="$ctrl.predicate.value"
+           ng-model-options="{ debounce: $ctrl.debounceDelay }"
+           model-formatter="$ctrl.inputType.formatter">
+    <div class="input-group-addon">
+        {{$ctrl.inputType.inputTrail}}
+    </div>
+</div>

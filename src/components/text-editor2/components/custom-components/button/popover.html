@@ -1,0 +1,49 @@
+<div ng-click="$event.stopPropagation();">
+    <div ng-if="$ctrl.popoverType === 'link'"
+         class="form-horizontal" >
+        <div class="input-group input-group-sm">
+            <input type="text"
+                   class="form-control te-input"
+                   ng-model="$ctrl.model.text"
+                   placeholder="Enter button text">
+        </div>
+        <hr class="horizontal-delimiter">
+        <div class="input-group input-group-sm">
+            <input type="text"
+                   class="form-control te-input"
+                   ng-model="$ctrl.model.linkUrl"
+                   model-formatter="$ctrl.formatter.linkUrl"
+                   placeholder="Enter a link">
+        </div>
+    </div>
+
+    <div class="form-group form-group-sm"
+         ng-if="$ctrl.popoverType === 'align'">
+        <div class="text-center">
+            <div class="btn-group">
+                <button class="btn btn-icon btn-sm"
+                        ng-repeat="_align in ::['left', 'center', 'right'] track by $index"
+                        ng-class="{active: align === _align}"
+                        ng-click="$ctrl.setAlign(_align)">
+                    <i class="fa fa-align-{{::_align}}"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group form-group-sm"
+         ng-if="!$ctrl.popoverType">
+        <div class="text-center">
+            <div class="btn-group">
+                <button class="btn btn-icon btn-sm"
+                        ng-click="$ctrl.setPopoverType('link')">
+                    <i class="fa fa-pencil"></i>
+                </button>
+                <button class="btn btn-icon btn-sm"
+                        ng-click="$ctrl.setPopoverType('align')">
+                    <i class="fa fa-align-center"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

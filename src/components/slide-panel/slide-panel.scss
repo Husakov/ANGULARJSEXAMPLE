@@ -1,0 +1,64 @@
+slide-panel {
+    display: none;
+    height: 100%;
+
+    .slide-panel-background {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: calc(100% + 250px);
+        height: 100%;
+        z-index: 1100;
+        background: rgba(255, 255, 255, 0.50);
+        margin-left: -250px;
+        cursor: pointer;
+        &.dark {
+            background: rgba(0, 0, 0, 0.10);
+        }
+    }
+
+    .slide-panel {
+        height: 100%;
+        background: #FFFFFF;
+        z-index: 1101;
+        position: relative;
+        box-shadow: 0 2px 40px 0 $main-shadow-color;
+
+        &.with-transition {
+            transition: all 0.5s linear;
+            max-width: 0px;
+        }
+
+        &.opened {
+            max-width: 800px;
+        }
+
+        &.from-bottom {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: auto;
+            max-height: 0;
+            max-width: 100%;
+
+            &.opened {
+                max-height: 400px;
+                max-width: 100%;
+            }
+        }
+    }
+
+    &.visible-panel {
+        display: block;
+    }
+
+    &.slided-panel {
+        position: fixed;
+        left: 100%;
+        z-index: 10005;
+        .slide-panel {
+            max-width: 100%;
+        }
+    }
+}

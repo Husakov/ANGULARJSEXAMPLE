@@ -1,0 +1,38 @@
+<div class="clearfix box-title">
+    {{$ctrl.helper.index + 1}} of {{::$ctrl.helper.total}}:
+    {{$ctrl.helper.step().question}}
+    <div class="pull-right">
+        <button class="btn btn-default"
+                ng-if="$ctrl.helper.index > 0"
+                ng-click="$ctrl.helper.back()">
+            Previous
+        </button>
+        <button class="btn btn-primary"
+                ng-if="$ctrl.helper.index + 1 < $ctrl.helper.total && !$ctrl.helper.step().isRequired"
+                ng-click="$ctrl.helper.next()">
+            Skip
+        </button>
+        <button class="btn btn-primary"
+                ng-if="$ctrl.helper.index + 1 === $ctrl.helper.total && $ctrl.helper.step().isCustom"
+                ng-click="$ctrl.helper.finish()">
+            Finish
+        </button>
+    </div>
+</div>
+
+<div class="csv-substep-wrapper">
+    <div class="overlay"
+         ng-if="$ctrl.isSelected">
+    </div>
+    <div class="csv-col" ri-scrollbar>
+        <div class="csv-col-wrapper flex-row">
+            <div class="col-item-wrapper"
+                 ng-repeat="col in ::$ctrl.helper.columns track by $index">
+                <import-csv-csv-map-column class="col-item panel panel-default panel-body"
+                                           ng-init="$last && $ctrl.initElements()"
+                                           column="col">
+                </import-csv-csv-map-column>
+            </div>
+        </div>
+    </div>
+</div>

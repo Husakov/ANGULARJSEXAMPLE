@@ -1,0 +1,47 @@
+<div class="btn-group" uib-dropdown>
+    <button class="btn btn-link dropdown-toggle"
+            uib-dropdown-toggle>
+        <i class="fa fa-fw fa-th-list"></i>
+    </button>
+
+    <div class="dropdown-menu dropdown-menu-right"
+         uib-dropdown-menu
+         no-click-through>
+        <div class="attribute-container"
+             ri-scrollbar>
+            <div class="text-center"
+                 ng-if="$ctrl.loading">
+                <loader></loader>
+            </div>
+            <div ng-repeat="(key, category) in $ctrl.categories track by key"
+                 ng-if="category.attributes.length">
+                <div class="h-displayed-attributes">
+                    {{::category.name}} attributes
+                </div>
+                <div class="list-group">
+                    <div class="list-group-item"
+                         ng-repeat="attribute in category.attributes track by attribute.id"
+                         ng-if="attribute.name">
+                        <div class="checkbox"
+                             ng-class="{'disabled': $ctrl.isDisabledColumn(attribute)}">
+                            <label tooltip-enable="$ctrl.isMaxColumns()"
+                                   tooltip-append-to-body="true"
+                                   tooltip-placement="top-left"
+                                   uib-tooltip="You can't choose more than {{$ctrl.maxColumns}} columns. Uncheck some columns">
+                                <input type="checkbox"
+                                       ng-model="attribute.visible"
+                                       ng-change="$ctrl.toggleVisible()"
+                                       ng-disabled="$ctrl.isDisabledColumn(attribute)">
+                                <i class="dark-white"></i>
+                                <small ng-if="attribute.icon"
+                                       class="fa fa-fw fa-{{attribute.icon}}">
+                                </small>
+                                {{attribute.title || attribute.name}}
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

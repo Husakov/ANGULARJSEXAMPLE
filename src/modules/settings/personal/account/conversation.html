@@ -1,0 +1,34 @@
+<div class="conversation">
+    <form class="form" name="conversationPrefForm">
+        <div class="form-group">
+            <label class="form-label">Conversation Assignment</label>
+            <p class="description">When I reply to a conversation that is unassigned or assigned to a team</p>
+            <div class="radio">
+                <label>
+                    <input ng-model="ctrl.model.assign_conversations_on_reply"
+                           name="assignmentSettings"
+                           type="radio"
+                           ng-value="true">
+                    <i class="dark-white"></i> Assign it to me
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input ng-model="ctrl.model.assign_conversations_on_reply"
+                           name="assignmentSettings" type="radio"
+                           ng-value="false">
+                    <i class="dark-white"></i> Keep it unassigned or assigned to the team
+                </label>
+            </div>
+        </div>
+        <div class="form-group">
+            <button type="submit"
+                    class="btn btn-primary"
+                    ng-disabled="!conversationPrefForm.$valid"
+                    ng-click="ctrl.updateModel()">
+                <i class="fa fa-floppy-o" aria-hidden="true"></i>
+                Save
+            </button>
+        </div>
+    </form>
+</div>

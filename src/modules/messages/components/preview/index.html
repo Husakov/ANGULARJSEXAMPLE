@@ -1,0 +1,36 @@
+<div class="h-100"
+     ng-class="{'preview-background': ($ctrl.mediator.isMobilePreview || $ctrl.mediator.isDesktopPreview)}">
+    <div ng-if="!$ctrl.mediator.isMobilePreview && $ctrl.mediator.model.options('isInApp')"
+         ng-class="{'preview-mode': $ctrl.mediator.isPreview, 'desktop-preview': $ctrl.mediator.isDesktopPreview}"
+         class="inapp-view flex-col"
+         ng-include="'${require(`./templates/in-app.html`)}'"></div>
+
+    <div ng-if="!$ctrl.mediator.isMobilePreview && $ctrl.mediator.model.options('isEmail')"
+         ng-class="{'preview-mode': $ctrl.mediator.isPreview, 'desktop-preview': $ctrl.mediator.isDesktopPreview}"
+         class="email-view flex-col"
+         ng-include="'${require(`./templates/email.html`)}'"></div>
+
+    <div ng-if="$ctrl.mediator.isMobilePreview"
+         ng-class="{'mobile-preview': $ctrl.mediator.isMobilePreview}"
+         class="preview-mode flex-col h-100">
+        <div class="device-container device-iphone-8 device-silver">
+            <div class="device-frame">
+                <div class="device-preview h-100"
+                     ri-scrollbar>
+                    <div ng-if="$ctrl.mediator.model.options('isInApp')"
+                         class="inapp-view"
+                         ng-include="'${require(`./templates/in-app.html`)}'"></div>
+
+                    <div ng-if="$ctrl.mediator.model.options('isEmail')"
+                         class="email-view"
+                         ng-include="'${require(`./templates/email.html`)}'"></div>
+                </div>
+            </div>
+            <div class="device-stripe"></div>
+            <div class="device-header"></div>
+            <div class="device-sensors"></div>
+            <div class="device-btns"></div>
+            <div class="device-power"></div>
+        </div>
+    </div>
+</div>

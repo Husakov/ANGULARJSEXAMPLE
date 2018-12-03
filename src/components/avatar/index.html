@@ -1,0 +1,45 @@
+<div class="avatar-img"
+     ng-if="$ctrl.getImg() && !$ctrl.isTeam()"
+     ng-style="{'width': $ctrl.size+'px',
+                'height': $ctrl.size+'px',
+                'line-height': $ctrl.size+'px'}">
+
+    <img class="img-circle pointer"
+         ng-src="{{ $ctrl.getImg() }}"
+         ng-class="{'link-disabled': $ctrl.linkDisabled, pointer: !$ctrl.linkDisabled}"
+         ui-sref="contacts.details({mode: $ctrl.isAdmin() ? 'admins' : 'users', id: $ctrl.item.id})">
+    <i class="bottom" ng-class="$ctrl.status" ng-if="::$ctrl.showStatus"></i>
+</div>
+
+<div class="avatar-letter"
+     ng-if="!$ctrl.getImg() && !$ctrl.isTeam()"
+     ng-class="{'link-disabled': $ctrl.linkDisabled, pointer: !$ctrl.linkDisabled}"
+     ui-sref="contacts.details({mode: $ctrl.isAdmin() ? 'admins' : 'users', id: $ctrl.item.id})"
+     ng-style="{'width': $ctrl.size+'px',
+                'height': $ctrl.size+'px',
+                'line-height': $ctrl.size+'px',
+                'color': $ctrl.item.avatar.color}">
+
+    <span>{{$ctrl.item.initials || 'U'}}</span>
+    <i class="bottom" ng-class="$ctrl.status" ng-if="::$ctrl.showStatus"></i>
+</div>
+
+<!-- TEAM AVATAR -->
+
+<div ng-if="$ctrl.isTeam() && $ctrl.item.avatar_emoji"
+     class="team-emoji"
+     ng-style="{'width': $ctrl.size+'px',
+                'height': $ctrl.size+'px',
+                'font-size': $ctrl.size/2 + 2 +'px',
+                'line-height': $ctrl.size+'px'}">
+    {{$ctrl.item.avatar_emoji}}
+</div>
+<div ng-if="$ctrl.isTeam() && !$ctrl.item.avatar_emoji"
+     class="team-emoji-default"
+     ng-style="{'width': $ctrl.size+'px',
+                'height': $ctrl.size+'px',
+                'line-height': $ctrl.size+'px',
+                'font-size': ($ctrl.size-2)+'px',
+                'color': $ctrl.item.avatar.color}">
+    <i class="fa fa-users"></i>
+</div>

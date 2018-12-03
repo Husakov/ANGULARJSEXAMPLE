@@ -1,0 +1,54 @@
+<div class="modal-header">
+    <button type="button" class="close" ng-click="$ctrl.cancel()">
+        <span>&times;</span>
+    </button>
+    <h5 class="modal-title">
+        Remove {{$ctrl.selectedAdmin.name}}
+    </h5>
+</div>
+<div class="modal-body">
+    <div class="warning-message has-warning">
+        <div class="form-control amber-100 box-radius-2x">
+            <i class="fa fa-warning"></i>
+            <span>You’re about to remove this team member from app</span>
+        </div>
+    </div>
+
+    <form role="form" name="userconfirmation">
+        <div class="row m-a-0">
+            <b class="block m-t-md">Auto Messages</b>
+            <div>Update auto messages sending from {{$ctrl.selectedAdmin.name}}'s account to be sent from</div>
+
+            <div class="form-group col-md-5 p-a-0">
+
+                <admin-team-search on-select="$ctrl.changeNewSender(selected)">
+                    <button class="form-control" uib-dropdown-toggle>
+                        {{$ctrl.newSender ? $ctrl.newSender.name : 'Select new sender'}}
+                    </button>
+                </admin-team-search>
+
+            </div>
+        </div>
+
+        <div class="row m-a-0">
+            <b class="block m-t-sm">Assign Replies</b>
+            <div>Assign any replies sent to {{$ctrl.selectedAdmin.name}} to</div>
+
+            <div class="form-group col-md-5 p-a-0">
+
+                <admin-team-search on-select="$ctrl.changeNewAssignee(selected)">
+                    <button class="form-control" uib-dropdown-toggle>
+                        {{$ctrl.newAssignee ? $ctrl.newAssignee.name : 'Select new assignee'}}
+                    </button>
+                </admin-team-search>
+
+            </div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-default p-x-md" ng-click="$ctrl.cancel()">Cancel</button>
+    <button type="button" class="btn btn-danger p-x-md"
+            ng-click="$ctrl.dropAdmin($ctrl.selectedAdmin.id)"
+            ng-disabled="!$ctrl.formReady">Confirm and remove</button>
+</div>

@@ -1,0 +1,100 @@
+#messages-details-page {
+    background: #fff;
+}
+
+.message-details-sidenav {
+
+    .messagge-label {
+        font-size: 14px;
+        margin: 0 0 8px 13px;
+    }
+
+    .message-title {
+        color: #fff;
+        margin: 0 13px 20px 13px;
+    }
+
+    .settings-accordion {
+        .panel-group {
+            .panel {
+                background: transparent;
+                color: #fff;
+                .panel-heading {
+                    background: transparent;
+                    position: relative;
+                    &:hover {
+                        background: transparent;
+                    }
+                    .panel-title {
+                        font-weight: normal;
+                        a {
+                            padding: 7px 12px;
+                            border: none !important;
+                            outline: none !important;
+                            i {
+                                color: $text-color;
+                                margin-right: 5px;
+                            }
+                        }
+                    }
+                    &:after {
+                        content: '';
+                        width: 9px;
+                        height: 9px;
+                        border-radius: 50%;
+                        display: block;
+                        background: $brand-success;
+                        position: absolute;
+                        right: 28px;
+                        top: 10px;
+                    }
+                }
+                &-open {
+                    .panel-heading {
+                        color: $brand-primary;
+                        .panel-title a i {
+                            color: $brand-primary;
+                        }
+                    }
+                }
+                .panel-body {
+                    background: transparent;
+                    color: $text-color;
+                    font-size: 14px;
+                    margin-left: 27px;
+                    .media {
+                        &:first-of-type {
+                            margin-top: 0;
+                        }
+                        .media-heading {
+                            font-size: 16px;
+                            color: #fff;
+                            margin-bottom: 0;
+                        }
+                    }
+                }
+                &.no-options {
+                    .panel-title {
+                        a {
+                            cursor: default;
+                            i {
+                                color: $gray-light;
+                            }
+                        }
+                    }
+                    .panel-heading:after {
+                        background: $text-color;
+                    }
+                }
+            }
+        }
+    }
+
+    .sender-info {
+        cursor: default;
+    }
+
+    .title-preview {
+        cursor: text !important;
+    }
+}

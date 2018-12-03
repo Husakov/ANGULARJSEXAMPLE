@@ -1,0 +1,38 @@
+.text-editor-style-toolbar {
+    margin-top: -10px;
+
+    &.bottom {
+        margin-top: 10px;
+    }
+
+    .btn-group {
+        position: relative;
+
+        .btn,
+        .btn:hover,
+        .btn.active {
+            background: white;
+        }
+
+        + .btn-group {
+            margin-left: 0;
+        }
+
+        .btn {
+            &:not(:first-child) {
+                position: absolute;
+                left: 0;
+            }
+            &:first-child {
+                z-index: 5;
+            }
+            &.active:not(:only-child) {
+                pointer-events: none;
+                z-index: 15;
+                + .btn {
+                    z-index: 10;
+                }
+            }
+        }
+    }
+}

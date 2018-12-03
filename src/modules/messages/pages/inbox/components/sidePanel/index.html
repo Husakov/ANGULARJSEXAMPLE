@@ -1,0 +1,118 @@
+<div class="toolbar-top">
+    <div class="fixed-mobile-search-list">
+        <div ng-if="!$ctrl.listHelper.hasChecked">
+            <div class="dropdown pull-left" uib-dropdown on-toggle="toggled(open)">
+                <button class="btn btn-link" uib-dropdown-toggle>
+                    {{$ctrl.inboxHelper.params.status === 'opened' ? 'Open' : 'Closed'}}
+                    ({{ $ctrl.inboxHelper.params.status === 'closed' ? $ctrl.inboxHelper.currentInbox.count_closed : $ctrl.inboxHelper.currentInbox.count_opened }})
+                    <i class="fa fa-chevron-down text-sm" aria-hidden="true"></i>
+                </button>
+
+                <ul class="dropdown-menu" uib-dropdown-menu role="menu">
+                    <li role="menuitem">
+                        <a ui-sref=".conversation({status: 'opened', search: null, tag: null })">
+                            Open <span class="text-muted">({{ $ctrl.inboxHelper.currentInbox.count_opened }})</span>
+                            <i class="fa fa-check text-primary" ng-if="$ctrl.inboxHelper.params.status === 'opened'"></i>
+                        </a>
+                    </li>
+                    <li role="menuitem">
+                        <a ui-sref=".conversation({status: 'closed', search: null, tag: null })">
+                            Closed <span class="text-muted">({{ $ctrl.inboxHelper.currentInbox.count_closed }})</span>
+                            <i class="fa fa-check text-primary" ng-if="$ctrl.inboxHelper.params.status === 'closed'"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div uib-dropdown class="inline pull-right" is-open="$ctrl.inboxOpen">
+                <button class="btn btn-link"
+                        uib-dropdown-toggle>
+                    {{ $ctrl.inboxHelper.currentInbox.name }}
+                    <i class="fa fa-chevron-down text-sm" aria-hidden="true"></i>
+                </button>
+                <div class="dropdown-menu inbox-dropdown"
+                     ng-click="$event.stopPropagation()"
+                     uib-dropdown-menu ng-include="'${require(`./inbox-dropdown.html`)}'">
+                </div>
+            </div>
+
+            <div class="overlay-background light-background" ng-if="$ctrl.inboxOpen"></div>
+
+            <div class="clearfix"></div>
+        </div>
+        <div ng-if="$ctrl.listHelper.hasChecked">
+            <button class="btn btn-link"
+                    ng-if="$ctrl.inboxHelper.params.status === 'opened'"
+                    ng-click="$ctrl.inboxHelper.changeCheckedConversationsStatus('close')">
+                <i class="fa fa-fw fa-archive"></i>
+                Close
+                <span class="text-muted">({{$ctrl.listHelper.checkedItems.length}})</span>
+            </button>
+            <button class="btn btn-link"
+                    ng-if="$ctrl.inboxHelper.params.status === 'closed'"
+                    ng-click="$ctrl.inboxHelper.changeCheckedConversationsStatus('open')">
+                <i class="fa fa-fw fa-archive"></i>
+                Re-open
+                <span class="text-muted">({{$ctrl.listHelper.checkedItems.length}})</span>
+            </button>
+
+            <admin-team-search on-select="$ctrl.inboxHelper.assignToCheckedConversations(selected)"
+                               active-admin-team-id="$ctrl.$state.params.identifier"
+                               labels="{admins: 'TEAMMATES', teams: 'TEAMS', inboxes: 'INBOXES'}"
+                               options="::{inboxes: true}"
+                               class="pull-right admin-team-search">
+                <button class="btn btn-link" uib-dropdown-toggle>
+                    <i class="fa fa-fw fa-share"></i>
+                    Assign
+                    <span class="text-muted">({{$ctrl.listHelper.checkedItems.length}})</span>
+                    <i class="fa fa-chevron-down text-sm" aria-hidden="true"></i>
+                </button>
+            </admin-team-search>
+        </div>
+    </div>
+
+    <hr/>
+
+    <list-search class="conversation-search"
+                 on-search="$ctrl.searchConversations(tag, name)"
+                 current-search="$ctrl.currentSearch"
+                 placeholder="Search..."
+                 word-placeholder="Messages containing ">
+    </list-search>
+
+    <div class="clearfix">
+        <div class="dropdown pull-right">
+            <a ng-show="$ctrl.inboxHelper.params.order === 'asc'"
+               ui-sref=".conversation({order: 'desc'})"
+               class="sorting-button">
+                Oldest
+            </a>
+            <a ng-show="$ctrl.inboxHelper.params.order === 'desc'"
+               ui-sref=".conversation({order: 'asc'})"
+               class="sorting-button">
+                Newest
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="conversations-container"
+     ri-scrollbar>
+    <div class="list"
+         scroll-list="$ctrl.inboxHelper.fetch(params)"
+         scroll-container="ri-scrollbar"
+         ready="!!$ctrl.inboxHelper.paramsPromise"
+         helper="$ctrl.listHelper">
+        <inbox-side-element ng-repeat="item in $ctrl.listHelper.items track by item.id"
+                            conversation="item">
+        </inbox-side-element>
+
+        <loader class="conversation-loader" ng-if="$ctrl.listHelper.loading">
+        </loader>
+
+        <div class="text-center no-conversation"
+             ng-if="!$ctrl.listHelper.loading && $ctrl.listHelper.items.length === 0">
+            No Conversations
+        </div>
+    </div>
+</div>

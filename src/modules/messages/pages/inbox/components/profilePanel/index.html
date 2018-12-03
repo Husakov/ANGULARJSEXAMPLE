@@ -1,0 +1,92 @@
+<div class="data-on-map-conversation">
+
+    <leaflet-map coord-objs="$ctrl.user.geoip_data"
+                 zoom="2">
+    </leaflet-map>
+
+    <div class="btn-switch"
+         ng-init="$ctrl.toogle_profile = true">
+        <button type="button"
+                class="btn"
+                ng-if="!!$ctrl.user.company_ids.length && !$ctrl.toogle_profile"
+                ng-click="$ctrl.toogle_profile = true">
+            User
+        </button>
+        <button type="button"
+                class="btn"
+                ng-if="!!$ctrl.user.company_ids.length && $ctrl.toogle_profile"
+                ng-click="$ctrl.toogle_profile = false">
+            Company
+        </button>
+    </div>
+
+    <div class="profile-main-info">
+
+        <avatar item="$ctrl.user" size="48" ng-if="$ctrl.user"></avatar>
+        <a ui-sref="contacts.details({mode: 'users', id: $ctrl.user.id})" class="user-name">
+            {{ $ctrl.user.display_as }}
+        </a>
+
+        <div class="dropdown inline action-dropdown"
+             uib-dropdown
+             dropdown-append-to-body="true">
+            <button class="btn" uib-dropdown-toggle>
+                <i class="fa fa-angle-down " aria-hidden="true"></i>
+            </button>
+
+            <ul class="dropdown-menu without-shadow dropdown-menu-right"
+                uib-dropdown-menu>
+                <li>
+                    <a>
+                        <i class="fa fa-times-circle"></i>
+                        Block person
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        <i class="fa fa-ban"></i>
+                        Unsubscribe from email
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <a class="block text-muted pointer" ng-if="!!$ctrl.user.company"
+           ui-sref="company-profile({id: $ctrl.user.company.id})">
+            <i class="fa fa-building"></i> {{$ctrl.user.company.name}}
+        </a>
+    </div>
+
+    <div class="profile-addition-info">
+        <span ng-if="(($ctrl.user.geoip_data.city_name | isNotEmpty)
+                     || ($ctrl.user.geoip_data.country_name | isNotEmpty))">
+            <i class="fa fa-fw fa-map-marker"></i>
+            {{$ctrl.user.geoip_data.city_name}},
+            {{$ctrl.user.geoip_data.country_name}}
+        </span>
+
+        <span>
+            <i class="fa fa-fw fa-clock-o"></i>
+            {{$ctrl.user.localTime | date:'h:mma'}} IST
+        </span>
+    </div>
+</div>
+
+<div class="conversation-info-profile">
+    <contacts-details ng-show="$ctrl.toogle_profile"
+                      contact="$ctrl.user"
+                      mode="::'users'">
+    </contacts-details>
+    <div class="profile-menu" ng-show="!$ctrl.toogle_profile" ng-if="$ctrl.user.companies.length > 0">
+
+        <div class="select-company-containter">
+            <select ng-model="$ctrl.currentVisibleCompany" class="form-control select-company"
+                    ng-options="::company as (company.name) for company in $ctrl.user.companies">
+            </select>
+        </div>
+
+        <contacts-details contact="$ctrl.currentVisibleCompany"
+                          mode="::'companies'">
+        </contacts-details>
+    </div>
+</div>

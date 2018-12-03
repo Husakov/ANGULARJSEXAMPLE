@@ -1,0 +1,456 @@
+$element-label-padding: 25px; // padding for text label in checkbox and radio
+
+.checkbox,
+.checkbox-inline,
+.radio,
+.radio-inline {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-left: 0;
+    > label {
+        padding-left: $element-label-padding;
+        font-weight: normal;
+        cursor: pointer;
+        input[type="radio"],
+        input[type="checkbox"] {
+            & + i {
+                margin-left: -$element-label-padding;
+            }
+        }
+    }
+    input[type="radio"],
+    input[type="checkbox"] {
+        opacity: 0;
+        position: absolute;
+        z-index: -1;
+        & + i {
+            margin-right: 5px;
+            position: relative;
+            top: 3px;
+            display: inline-block;
+            &:before {
+                content: "";
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                width: 0px;
+                height: 0px;
+                background-color: transparent;
+            }
+        }
+    }
+
+    &.disabled {
+        opacity: 0.4;
+        cursor: default;
+        input:checked {
+            & + i {
+                background: #a6a5b8;
+                border: 1px solid #a6a5b8;
+            }
+        }
+    }
+    & + .checkbox,
+    & + .radio {
+        margin-top: 5px;
+    }
+
+    &.sub-radio,
+    &.sub-checkbox {
+        margin-left: 30px;
+    }
+}
+
+.checkbox,
+.checkbox-inline {
+    input[type='checkbox'] + i {
+        visibility: visible;
+        background: $main-background-color;
+        width: 16px;
+        height: 16px;
+        border: 1px solid #CACAD7;
+        border-radius: 3px;
+    }
+    input[type='checkbox']:checked {
+        visibility: visible;
+        & + i {
+            background: white;
+            border-radius: 3px;
+            border: 1px solid hexToRgba(#626274, 0.21);
+            &:before {
+                width: 10px !important;
+                height: 10px !important;
+                background: #00D9B7 !important;
+                border-radius: 2px;
+                display: block;
+                top: 2px !important;
+                left: 2px !important;
+                content: ' ' !important;
+            }
+        }
+    }
+    & + .checkbox {
+        margin-top: 15px;
+    }
+}
+
+.sub-checkbox {
+    margin-left: $element-label-padding;
+}
+
+.radio,
+.radio-inline {
+    input[type='radio'] + i {
+        visibility: visible;
+        background-image: linear-gradient(0deg, #F2F4F8 0%, #FEFFFF 100%);
+        border: 2px solid #DEE1E1;
+        width: 16px;
+        height: 16px;
+        box-shadow: 0 1px 2px 0 hexToRgba(#000, 0.05);
+        border-radius: 50%;
+    }
+    input[type='radio']:checked {
+        visibility: visible;
+        & + i {
+            visibility: visible;
+            background-image: linear-gradient(0deg, #F2F4F8 0%, #FEFFFF 100%);
+            border: 2px solid #DEE1E1;
+            box-shadow: 0 1px 2px 0 hexToRgba(#000, 0.05);
+            border-radius: 50%;
+            &:before {
+                content: '';
+                background-color: $brand-primary !important;
+                left: 2px !important;
+                top: 2px !important;
+                width: 8px !important;
+                height: 8px !important;
+                border-radius: 50%;
+            }
+        }
+    }
+}
+
+.label {
+    font-weight: normal;
+    font-size: 14px;
+    border-radius: 1em;
+    padding: .4em 1em .4em;
+    display: inline-block;
+    &.label-default {
+        color: $text-color;
+        &:hover {
+            color: $text-color;
+        }
+    }
+    &.label-light {
+        background: #FFFFFF;
+        box-shadow: 0 0 5px 0 $main-shadow-color;
+        color: $text-color;
+    }
+    margin-right: 1px;
+    &:last-child,
+    &:only-child {
+        margin-right: 0px;
+    }
+}
+
+.breadcrumb {
+    margin-bottom: 0;
+    > li {
+        &:not(.no-arrow):after {
+            content: "\f054";
+            padding: 0 5px;
+            font: normal normal normal 14px/1 FontAwesome;
+            font-size: 70%;
+            vertical-align: middle;
+            margin: 0 0 0 3px;
+        }
+        &:last-child:after,
+        + li:before {
+            content: none;
+        }
+        a {
+            color: $text-color;
+        }
+    }
+}
+
+.ui-select-label {
+    display: inline-block;
+    label {
+        margin: 0;
+        span {
+            background: #FFFFFF;
+            border: 0.5px solid #CBD9E1;
+            padding: 4px 25px 4px 35px;
+            font-weight: normal;
+            display: inline-block;
+            position: relative;
+            cursor: pointer;
+            &:before {
+                content: "";
+                position: absolute;
+                width: 9px;
+                height: 9px;
+                background: red;
+                left: 15px;
+                top: 50%;
+                border-radius: 50%;
+                margin-top: -5px;
+            }
+        }
+        input[type='radio'] {
+            display: none;
+            &:checked + span {
+                color: $brand-primary;
+                background: #EEF2F7;
+                box-shadow: inset 0 1px 1px 0 hexToRgba(#000, 0.1);
+                &:before {
+                    background: #39B54A;
+                }
+            }
+        }
+        + label span {
+            border-left: none;
+        }
+        &:first-child span {
+            border-top-left-radius: 3px;
+            border-bottom-left-radius: 3px;
+        }
+        &:last-child span {
+            border-top-right-radius: 3px;
+            border-bottom-right-radius: 3px
+        }
+    }
+}
+
+.ui-double-dropdown {
+    display: flex;
+    flex-direction: row;
+    .btn {
+        border: 1px solid #F3F3F7;
+    }
+    .dropdown:first-child {
+        .btn {
+            background: #F3F3F7;
+        }
+    }
+    .dropdown:last-child {
+        margin-left: -5px;
+    }
+}
+
+.toggle-icon {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #F3F8F9;
+    border-radius: 50%;
+    cursor: pointer;
+    position: absolute;
+    &:before {
+        content: "";
+        position: absolute;
+        background-color: #2E9FEB;
+        transition: transform 0.25s ease-out;
+    }
+    &:after {
+        content: "";
+        position: absolute;
+        background-color: #2E9FEB;
+        transition: transform 0.25s ease-out;
+        top: 50%;
+        left: 25%;
+        width: 50%;
+        height: 2px;
+        margin-top: -1px;
+        border-radius: 2px;
+    }
+    &.open-icon {
+        &:before {
+            top: 25%;
+            left: 50%;
+            width: 2px;
+            height: 50%;
+            margin-left: -1px;
+            border-radius: 2px;
+        }
+    }
+    &:hover {
+        &:before, &:after {
+            transform: rotate(180deg);
+        }
+    }
+}
+
+.radio-mimic {
+    width: 16px;
+    height: 16px;
+    border: 2px solid #DEE1E1;
+    display: inline-block;
+    border-radius: 12px;
+    vertical-align: middle;
+    position: relative;
+    margin-bottom: 3px;
+    margin-right: 3px;
+
+    &-input {
+        display: none;
+    }
+
+    input:checked + &,
+    &.active {
+        &:before {
+            content: ' ';
+            width: 8px;
+            height: 8px;
+            background: #45B9FC;
+            display: block;
+            border-radius: 12px;
+            position: absolute;
+            top: 2px;
+            left: 2px;
+        }
+    }
+}
+
+.panel-tooltip {
+    .tooltip-inner {
+        background: #FFFFFF;
+        padding: 16px 24px;
+        box-shadow: 0 1px 5px 0 $main-shadow-color;
+        border-radius: 8px;
+        font-size: 14px;
+        color: $text-color;
+        line-height: 19px;
+        text-align: left;
+    }
+    .tooltip-arrow {
+        display: none;
+    }
+}
+
+input {
+    &:focus,
+    &:active {
+        outline: none;
+    }
+
+    &.bulleted-input {
+        border: 0;
+        border-bottom: 1px dotted $brand-primary;
+        border-radius: 0;
+        font-weight: 600;
+        background: none;
+        color: $brand-primary;
+        &::placeholder {
+            color: $brand-primary;
+            font-weight: normal;
+        }
+    }
+}
+
+.styled-close-button {
+    border: 2px solid $text-color;
+    border-radius: 50%;
+    height: 28px;
+    width: 28px;
+    font-size: 23px;
+    background: none;
+    line-height: 22px;
+    padding: 0;
+    text-align: center;
+}
+
+.ui-tab {
+    border-bottom: 1px solid #E1E1EA;
+    padding: 0 20px;
+    .active {
+        border-bottom: 2px solid #46A2E8;
+        background: none;
+        font-weight: bold;
+    }
+}
+
+.uib-datepicker-popup {
+    .btn-info {
+        background: $brand-primary;
+        &:hover,
+        &:focus,
+        &.focus {
+            background: #1990cd;
+        }
+    }
+    .uib-daypicker,
+    .uib-monthpicker,
+    .uib-yearpicker {
+        outline: none;
+        table {
+            margin: 5px 7px 0;
+            th small {
+                margin: 5px 2px 6px;
+                display: block;
+            }
+            td {
+                padding: 1px;
+            }
+        }
+        .btn-default {
+            background: none;
+            .text-muted {
+                opacity: 0.2;
+            }
+            &.btn-info,
+            &.btn-info.active {
+                background: $brand-primary;
+                .text-muted,
+                .text-info {
+                    opacity: 1;
+                    color: #fff;
+                }
+            }
+            &:hover {
+                background: $brand-primary;
+                color: #fff;
+                .text-muted,
+                .text-info {
+                    color: #fff;
+                }
+            }
+        }
+    }
+
+    .uib-daypicker {
+        table td {
+            em {
+                color: $brand-primary;
+            }
+        }
+        .btn-default {
+            padding: 3px 10px;
+        }
+    }
+    .uib-monthpicker {
+        .btn-default {
+            padding: 12px 18px;
+        }
+    }
+    .uib-yearpicker {
+        .btn-default {
+            padding: 10px 12px;
+        }
+    }
+    .uib-button-bar {
+        padding: 4px 8px 3px;
+        overflow: hidden;
+    }
+}
+
+.emojione {
+    $sizes: 24 32 64;
+    @each $size in $sizes {
+        &[class*='emojione-#{$size}'] {
+            width: #{$size}px !important;
+            height: #{$size}px  !important;
+        }
+    }
+}

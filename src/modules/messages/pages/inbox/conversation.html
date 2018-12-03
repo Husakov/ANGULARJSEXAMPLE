@@ -1,0 +1,29 @@
+<div class="text-center conversation-toolbar"
+     ng-class="{'one-item': !($ctrl.model._mainParticipant | isNotEmpty)}">
+    <admin-team-search ng-if="($ctrl.model._mainParticipant | isNotEmpty)"
+                       active-admin-team-id="$ctrl.model.assignee_id"
+                       class="admin-team-search"
+                       on-select="$ctrl.helper.assignToConversation(selected, $ctrl.model.id)"
+                       labels="{admins: 'TEAMMATES', teams: 'TEAMS', inboxes: 'INBOXES'}"
+                       options="::{inboxes: true}">
+        <button class="btn btn-link" uib-dropdown-toggle>
+            <i class="fa fa-fw fa-share"></i>
+            Assign
+            <i class="fa fa-chevron-down text-sm" aria-hidden="true"></i>
+        </button>
+    </admin-team-search>
+
+    <a class="user-name"
+       ng-if="($ctrl.model._mainParticipant | isNotEmpty)"
+       ui-sref="contacts.details({mode: 'users', id: $ctrl.model._mainParticipant.id})">
+        <avatar item="$ctrl.model._mainParticipant" size="32" show-status="true"></avatar>
+        {{ $ctrl.model._mainParticipant.display_as }}
+    </a>
+    <button class="btn btn-link toggle-btn"
+            ng-click="$ctrl.profilePanel.toggle()">
+        ...
+    </button>
+</div>
+
+<messenger conversation-id="{{$ctrl.conversationId}}">
+</messenger>

@@ -1,0 +1,246 @@
+<div class="s-body-containter-box"
+     id="teammates">
+    <!-- FORM -->
+    <form class="form" name="ctrl.teamManagementForm">
+        <!-- Select team dropdown menu -->
+        <div class="flex">
+            <div class="toolbar flex-2">
+                <div class="inline team-select" uib-dropdown>
+                    <button type="button" class="big-btn-with-desc" uib-dropdown-toggle>
+                        <span ng-if="!ctrl.selectedTeam">
+                            <avatar size="34"
+                                    class="bordered-image"></avatar>
+                            <span class="btn-text-main">All Users</span>
+                            <span class="btn-text-description">
+                                ({{ctrl.invitesList.length > 0 ? ctrl.invitesList.length + ' pending invites' : 'No pending invites'}})
+                            </span>
+                        </span>
+                        <span ng-if="ctrl.selectedTeam">
+                            <avatar item="ctrl.selectedTeam"
+                                    size="34"
+                                    class="bordered-image"></avatar>
+                            <span class="btn-text-main">
+                                {{ctrl.selectedTeam.name}}
+                            </span>
+                            <span ng-if="ctrl.selectedTeam.is_default">
+                                (default)
+                            </span>
+                            <span class="btn-text-description">
+                                ({{ctrl.selectedTeam.members.length > 0 ? ctrl.selectedTeam.members.length + ' members' : 'No members'}})
+                            </span>
+                        </span>
+                        <i class="fa icon-arrow fa-chevron-down" aria-hidden="true"></i>
+                    </button>
+                    <div class="dropdown-menu"
+                         uib-dropdown-menu>
+                        <div class="list-group"
+                             ri-scrollbar>
+                            <a class="list-group-item flex flex-align-center big-btn-drop-item"
+                               ng-click="ctrl.openAdminsWithInvites()">
+                                <avatar size="34"
+                                        class="bordered-image"></avatar>
+                                <span class="btn-text-main">All Users and invites</span>
+                                <span class="btn-text-description flex-1">
+                                    ({{ctrl.invitesList.length > 0 ? ctrl.invitesList.length + ' pending invites' : 'No pending invites'}})
+                                </span>
+                            </a>
+                            <a class="list-group-item flex flex-align-center big-btn-drop-item"
+                               ng-repeat="team in ctrl.teams track by $index"
+                               ng-click="ctrl.openTeam(team)">
+                                <avatar item="team"
+                                        size="34"
+                                        class="bordered-image"></avatar>
+                                <span class="btn-text-main">{{team.name}}</span>
+                                <span ng-if="team.is_default">
+                                    (default)
+                                </span>
+                                <span class="btn-text-description flex-1">
+                                    ({{team.members.length > 0 ? team.members.length + ' members' : 'No members'}})
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="inline action-menu" uib-dropdown>
+                    <button type="button"
+                            class="btn btn-default mid-dot-button dropdown-toggle"
+                            uib-dropdown-toggle>
+                        &middot;&middot;&middot;
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a ng-click="ctrl.openCreateTeam()">
+                                <i class="fa fa-fw fa-plus-square"></i> Create New Team
+                            </a>
+                        </li>
+                        <li>
+                            <a ng-class="!ctrl.selectedTeam ? 'disabled' : ''"
+                               ng-disabled="!ctrl.selectedTeam"
+                               ng-click="ctrl.openDeleteTeam()">
+                                <i class="fa fa-fw fa-times"></i> Delete team
+                            </a>
+                        </li>
+                        <li>
+                            <a ng-class="!ctrl.hasChecked ? 'disabled' : ''"
+                               ng-disabled="!ctrl.hasChecked"
+                               ng-click="ctrl.openDeleteMembers()">
+                                <i class="fa fa-fw fa-user-times"></i> Delete teammates
+                            </a>
+                        </li>
+                        <li>
+                            <a ng-class="!ctrl.selectedTeam ? 'disabled' : ''"
+                               ng-disabled="!ctrl.selectedTeam"
+                               ng-click="ctrl.openEditTeam()">
+                                <i class="fa fa-fw fa-pencil-square-o"></i> Edit team
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Action drop-down menu -->
+            <div class="flex-1">
+
+                <div ng-show="!ctrl.selectedTeam" class="form-group invite-input">
+                    <input class="form-control dark-input"
+                           ng-model="ctrl.inviteInput"
+                           ng-keyup="$event.keyCode == 13 && ctrl.openSendInvite(ctrl.inviteInput)"
+                           placeholder="Invite a teammate by email">
+                    <i class="fa fa-fw fa-paper-plane send-invite"
+                       ng-click="ctrl.openSendInvite(ctrl.inviteInput)"></i>
+                </div>
+
+                <div ng-show="ctrl.selectedTeam" class="form-group">
+                    <div class="input-group btn-block input-team-member">
+                        <i class="fa fa-fw fa-search"></i>
+
+                        <ui-select ng-model="ctrl.selectedAdmin" theme="bootstrap"
+                                   on-select="ctrl.onSelectMember(ctrl.selectedTeam, $item)">
+                            <ui-select-match placeholder="Add a teammate..."
+                                             class="ui-select-match">
+                                Add a teammate...
+                            </ui-select-match>
+                            <ui-select-choices class="ui-select-choices"
+                                               repeat="admin in ctrl.admins | filter:ctrl.adminInTeamFilter()">
+                                <avatar item="admin"
+                                        size="34"
+                                        class="bordered-image"></avatar>
+                                <span class="btn-text-main"
+                                      ng-bind-html="admin.name | highlight: $select.search"></span>
+                            </ui-select-choices>
+                        </ui-select>
+                    </div>
+                </div>
+
+                <div class="clearfix"></div>
+            </div>
+        </div>
+        <!-- Users in team content -->
+        <div class="users-list">
+            <!-- Pending users -->
+            <div ng-if="!ctrl.selectedTeam"
+                 class="panel panel-default panel-body user"
+                 ng-repeat="invite in ctrl.invitesList">
+                <div class="flex-row">
+                    <div class="flex-auto checkbox-column">
+                    </div>
+                    <div class="flex-auto avatar-column">
+                        <avatar size="34"
+                                class="bordered-image"></avatar>
+                    </div>
+                    <div class="flex-auto user-information">
+                        {{ invite.email }}
+                    </div>
+                    <div class="flex-auto other-information">
+                        <a  ng-if="!STAGE_OR_PROD"
+                            ng-click="ctrl.openPermissionsManagement(invite, true)">
+                            {{ invite.role === "full_access" ? "Full access" : "Restricted access" }}
+                        </a>
+                        <a ng-click="ctrl.resendInvite(invite)">
+                            (Resend)
+                        </a>
+
+                        <i class="fa fa-times btn-drop pointer visible-on-hover pull-right"
+                           ng-click="ctrl.openRevokeManagement(invite)"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Selected team list -->
+            <div ng-if="ctrl.selectedTeam"
+                 class="panel panel-default panel-body user"
+                 ng-repeat="admin in ctrl.selectedTeam.members track by $index">
+                <div class="flex-row">
+                    <div class="flex-auto checkbox-column">
+                        <div class="checkbox-inline"
+                             ng-click="$event.stopPropagation();">
+                            <label>
+                                <input type="checkbox"
+                                       ng-checked="admin.checked"
+                                       ng-click="ctrl.toggleElement(admin)">
+                                <i class="dark-white"></i>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="flex-auto avatar-column">
+                        <a ng-click="$event.stopPropagation();"
+                           ui-sref="contacts.details({mode: 'admins', id: admin.id})">
+                            <avatar item="admin"
+                                    size="34"
+                                    class="bordered-image"></avatar>
+                        </a>
+                    </div>
+                    <div class="flex-auto user-information">
+                        {{ admin.name ? admin.name : admin.email }}
+                    </div>
+                    <div class="flex-auto other-information">
+                        <i class="fa fa-times btn-drop pointer visible-on-hover pull-right"
+                           ng-if="!ctrl.selectedTeam.is_default"
+                           ng-click="ctrl.removeMember(ctrl.selectedTeam, admin)"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- All admins list -->
+            <div ng-if="!ctrl.selectedTeam"
+                 class="panel panel-default panel-body user pointer"
+                 ng-repeat="admin in ctrl.admins track by $index"
+                 ng-click="showDescription = !showDescription">
+                <div class="flex-row">
+                    <div class="flex-auto checkbox-column">
+                    </div>
+                    <div class="flex-auto avatar-column" >
+                        <a ng-click="$event.stopPropagation();"
+                           ui-sref="contacts.details({mode: 'admins', id: admin.id})">
+                            <avatar item="admin"
+                                    size="34"
+                                    class="bordered-image"></avatar>
+                        </a>
+                    </div>
+                    <div class="flex-auto user-information">
+                        {{ admin.name ? admin.name : admin.email }}
+                    </div>
+                    <div class="flex-auto other-information">
+                        <a ng-if="!STAGE_OR_PROD"
+                           ng-click="$event.stopPropagation(); ctrl.openPermissionsManagement(admin)">
+                            {{ admin.permissions.role === "full_access" ? "Full access" : "Restricted access" }}
+                        </a>
+
+                        <i class="fa fa-times btn-drop pointer visible-on-hover pull-right"
+                           ng-click="$event.stopPropagation(); ctrl.openDropAdmin(admin)"></i>
+                    </div>
+                </div>
+                <div class="flex-row teams"
+                     ng-if="showDescription">
+                        <span class="label label-default"
+                              ng-show="admin.teams.length > 0"
+                              ng-repeat="team in admin.teams track by $index">
+                            {{ team.name }}
+                        </span>
+                    <div ng-show="!admin.teams.length">
+                        <span>No Teams</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

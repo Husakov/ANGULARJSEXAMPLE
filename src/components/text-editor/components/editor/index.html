@@ -1,0 +1,23 @@
+<text-editor-style-toolbar name="{{::$ctrl.styleToolbarName}}"
+                           editor-name="{{::$ctrl.name}}"
+                           ng-if="!$ctrl.options.styleToolbarDisabled"></text-editor-style-toolbar>
+
+<text-angular ng-model="$ctrl.content"
+              name="{{::$ctrl.name}}"
+              placeholder="{{::$ctrl.placeholder}}"
+              text-editor-attributes-fixer
+              text-editor-action-invoker
+              text-editor-video-thumb-fixer
+              text-editor-lists-autocomplete
+              text-editor-new-line-fixer
+              text-editor-mention-fixer="$ctrl.components.includes('mentions')"
+              class="text-angular"
+              ta-target-toolbars="{{::$ctrl.toolbarNames}}"></text-angular>
+
+<text-editor-attachments editor-name="{{::$ctrl.name}}"
+                         ng-if="$ctrl.components.includes('attachments')"></text-editor-attachments>
+
+<text-editor-mentions editor-name="{{::$ctrl.name}}"
+                      ng-if="$ctrl.components.includes('mentions')"></text-editor-mentions>
+
+<text-editor-popover editor-name="{{::$ctrl.name}}"></text-editor-popover>

@@ -1,0 +1,37 @@
+<div class="searchbox"
+     ng-click="$event.stopPropagation()">
+    <input type="text" class="searcher"
+           ng-model="$ctrl.searchString"
+           placeholder="{{$ctrl.currentType == 'auto' ? 'Search for automation' : 'Search for message'}}"/>
+    <i class="fa fa-search pointer"></i>
+</div>
+
+<div class="segment-list"
+     ri-scrollbar>
+    <a class="list-group-item flex-row"
+       ng-repeat="item in $ctrl.getMenuItems() | filter: {title: $ctrl.searchString}"
+       ui-sref=".state(::{state: item.state})"
+       ui-sref-active="active">
+        <div class="flex-auto list-group-item-name">
+            <span ng-if="::!item.isFolder">{{::item.title}} ({{::item.count[$ctrl.currentRole.state]}})</span>
+            <span ng-if="::item.isFolder"
+                  editable="!item.isEdit && (item.title + ' (' + item.count[$ctrl.currentRole.state] + ')') || item.title"
+                  is-edit="item.isEdit"
+                  placeholder="Enter Folder Name"
+                  editable-set="$ctrl.editFolder(item, $value)"></span>
+        </div>
+        <div class="flex-auto text-right list-group-item-buttons"
+             ng-if="::item.isFolder">
+            <button class="btn btn-xs btn-basic"
+                    ng-show="!item.isEdit"
+                    ng-click="$ctrl.stopEvent($event);item.isEdit = !item.isEdit"><i
+                class="fa fa-pencil"></i></button>
+            <button class="btn btn-xs btn-basic"
+                    ng-click="$ctrl.stopEvent($event);$ctrl.deleteFolder(item)"><i
+                class="fa fa-trash"></i></button>
+        </div>
+    </a>
+    <div class="text-center" ng-if="!$ctrl.menu">
+        <loader></loader>
+    </div>
+</div>

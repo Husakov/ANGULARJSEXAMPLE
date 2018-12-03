@@ -1,0 +1,54 @@
+<div class="modal-header">
+    <button type="button" class="close" ng-click="$ctrl.cancel()">
+        <span>&times;</span>
+    </button>
+    <h5 class="modal-title">
+        Export {{ $ctrl.subject }}
+    </h5>
+</div>
+<div class="modal-body--without-padding">
+    <div class="dark-bar-steps">
+        What data do you want to export?
+    </div>
+    <div class="modal-body-item" style="padding-top: 30px">
+        <form style="font-size: 100%">
+            <div class="row">
+                <div class="col-sm-2">
+                    <div
+                        class= "modal-icon-wrapper--fa modal-icon-wrapper--export"
+                    >
+                        <i class="fa fa-download" aria-hidden="true"></i>
+                    </div>
+                </div>
+                <div class="col-sm-8">
+                    <div class="m-b-sm modal-text--grey">
+                        Export
+                    </div>
+                    <div
+                        class="m-b-sm modal-text--main"
+                        ng-repeat="export in $ctrl.exportType track by $index"
+                    >
+                        <label>
+                            <input
+                                type="radio"
+                                ng-name="exportTypes"
+                                ng-model="$ctrl.exportAll"
+                                ng-value="export.value"
+                            />
+                            &nbsp; {{export.name}}
+                        </label>
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <button
+                        type="button"
+                        class="btn btn-primary pull-right"
+                        ng-click="$ctrl.close($ctrl.exportAll)"
+                    >
+                        Export
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,39 @@
+<div class="form-group">
+    Target Page
+
+    <div class="pull-right">
+        <ui-toggle ng-model="$ctrl.mediator.model.optionsGetterSetter('enableTargetPage')"
+                   ng-model-options="{getterSetter: true}"
+                   styles="round off-default"
+                   on=""
+                   off="">
+        </ui-toggle>
+    </div>
+</div>
+<div class="form-group row">
+    <div class="col-xs-12">
+        <ui-select class="input-team-member"
+                   ng-disabled="!$ctrl.mediator.model.options('enableTargetPage')"
+                   ng-model="$ctrl.mediator.model.getterSetter('target_type')"
+                   ng-model-options="{getterSetter: true}">
+            <ui-select-match class="ui-select-match"
+                             placeholder="Select target page option...">
+                <span ng-bind="$select.selected.title"></span>
+            </ui-select-match>
+            <ui-select-choices class="ui-select-choices"
+                               repeat="option.type as option in ::$ctrl.mediator.model.options('targetTypes')">
+                <span ng-bind="option.title"></span>
+            </ui-select-choices>
+        </ui-select>
+    </div>
+</div>
+<div class="form-group row">
+    <div class="col-xs-12">
+        <input class="form-control secondary-text"
+               ng-model="$ctrl.mediator.model.getterSetter('target_match')"
+               ng-model-options="{getterSetter: true}"
+               ng-disabled="!$ctrl.mediator.model.options('enableTargetPage')"
+               type="text"
+               placeholder="Enter URL to match">
+    </div>
+</div>

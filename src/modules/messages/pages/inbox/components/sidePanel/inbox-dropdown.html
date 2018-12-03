@@ -1,0 +1,22 @@
+<div ng-repeat="(key, inboxesItem) in $ctrl.inboxesList.inboxes">
+    <div class="inbox-side-panel__title" ng-if="key === 'myInbox'">MY INBOX</div>
+    <div class="inbox-side-panel__title" ng-if="key === 'teams'">TEAMS
+        <span class="edit-team-link f-s-s inline pointer"
+              ui-sref="settings.teammates">
+            <i class="fa fa-cog" aria-hidden="true"></i>
+        </span>
+    </div>
+
+    <div class="inbox-side-panel clearfix" ng-repeat="inbox in inboxesItem">
+        <a class="nav-link"
+           ui-sref-active="active"
+           ui-sref=".conversation({identifier: '{{::inbox.identifier}}', search: null, tag: null })">
+            <avatar ng-if="::inbox.avatar_emoji || inbox.avatar" item="::inbox" size="22"></avatar>
+            <i ng-if="::inbox.icon"
+               class="fa fa-fw inbox-icon fa-{{::inbox.icon}} inbox-icon-{{::inbox.name | lowercase}} pull-left"></i>
+            <span class="inbox-name" ng-bind="::inbox.name"></span>
+            <span class="inbox-count pull-right"
+                  ng-class="{'grey' : !inbox.count_opened}">{{::inbox.count_opened}}</span>
+        </a>
+    </div>
+</div>

@@ -1,0 +1,21 @@
+<div id="messages-inbox-page">
+    <div class="conversations"
+         ng-include="'${require(`./conversation.html`)}'"
+         ng-if="!!$ctrl.conversationId"
+         ng-show="!$ctrl.helper.listHelper.hasChecked">
+    </div>
+    <div class="overlap-box active"
+         ng-if="$ctrl.helper.listHelper.hasChecked">
+        <span class="deselect">
+            {{$ctrl.helper.listHelper.checkedItems.length}} conversation{{$ctrl.helper.listHelper.checkedItems.length > 1 ? 's' : ''}} selected.
+            <i class="fa fa-comments-o" aria-hidden="true"></i>
+            <a class="clear-selection"
+               ng-click="$ctrl.helper.listHelper.clearSelection(); $event.stopPropagation()">Clear selection</a>
+        </span>
+    </div>
+
+    <div ng-if="!$ctrl.conversationId"
+         class="flex-col flex-align-center flex-justify-center">
+        Please select conversation
+    </div>
+</div>

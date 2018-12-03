@@ -1,0 +1,16 @@
+te-component {
+    display: block;
+    pointer-events: none;
+    user-select: none;
+
+    .new-line {
+        height: 10px;
+        cursor: copy;
+        pointer-events: all;
+    }
+
+    .trap {
+        position: absolute;
+        z-index: -1;
+    }
+}

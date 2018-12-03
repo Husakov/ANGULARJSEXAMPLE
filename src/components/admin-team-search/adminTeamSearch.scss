@@ -1,0 +1,24 @@
+admin-team-search {
+    .active-check-icon {
+        display: none;
+    }
+
+    .unassigned-icon {
+        width: 24px;
+        height: 24px;
+        display: inline-block;
+        font-size: 24px;
+        color: #00DFB3;
+    }
+
+    .dropdown-with-category .dropdown-menu .list-group-item.active {
+        color: #9A99AB;
+        font-weight: bold;
+        background-color: #edf8ff;
+
+        .active-check-icon {
+            display: unset;
+            float: right;
+        }
+    }
+}

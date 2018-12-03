@@ -1,0 +1,32 @@
+te-video {
+    .mnh-m-video-wrapper {
+        margin: 0 auto;
+    }
+
+    .mnh-m-video {
+        cursor: pointer;
+        pointer-events: auto;
+
+        .mnh-m-video-item {
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            font-size: 0;
+            color: rgba(0, 0, 0, 0);
+
+            &:before {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                font-family: FontAwesome;
+                font-size: 45px;
+                content: '\f144';
+                color: white;
+            }
+        }
+        &:focus {
+            outline: 1px solid red;
+        }
+    }
+}

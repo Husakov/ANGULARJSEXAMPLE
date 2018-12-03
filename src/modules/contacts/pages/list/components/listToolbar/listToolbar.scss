@@ -1,0 +1,61 @@
+contacts-list-toolbar {
+    display: block;
+    padding: 0;
+    margin: 0 0 24px 0;
+
+    .action-buttons-container {
+        float: right;
+        padding: 0;
+        margin: 0;
+
+        .header-button-group {
+            display: inline-block;
+            padding: 0;
+            margin-right: 9px;
+        }
+
+        .input-search-box {
+            float: right;
+        }
+    }
+
+    .contacts-left-block {
+        display: inline-block;
+        margin: 0 10px;
+        height: 38px;
+
+        span {
+            color: #9D9CAD;
+        }
+
+        .filter-button {
+            margin-left: 10px;
+            .button-bubble {
+                position: absolute;
+                top: -10px;
+                right: -10px;
+                background: #FFFFFF;
+                box-shadow: 0 6px 16px 0 rgba(70, 162, 232, 0.43);
+                border-radius: 40px;
+                width: 19px;
+                height: 19px;
+                display: block;
+                font-size: 11px;
+                color: #9A99AB;
+                line-height: 19px;
+            }
+        }
+    }
+
+    .list-count-info {
+        display: inline-block;
+        margin-right: 6px;
+        .selected-count {
+            margin-right: 5px;
+        }
+        .clear-selection-button {
+            cursor: pointer;
+            text-decoration: none;
+        }
+    }
+}

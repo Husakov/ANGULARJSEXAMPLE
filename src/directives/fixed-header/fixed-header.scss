@@ -1,0 +1,7 @@
+.fixed-header-container {
+    position: fixed;
+    z-index: 2;
+    table {
+        table-layout: auto;
+    }
+}

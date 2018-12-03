@@ -1,0 +1,61 @@
+text-editor-attachments {
+    float: right;
+
+    .images-container {
+        margin-left: 15px;
+
+        img {
+            display: block;
+            max-width: 300px;
+            max-height: 100px;
+            width: auto;
+            height: auto;
+        }
+    }
+
+    .attachment {
+        position: relative;
+        padding: 10px 10px 10px 10px;
+        background: #fff;
+        border: 1px solid #eee;
+        border-radius: 3px;
+        color: #606273;
+        overflow: hidden;
+        white-space: nowrap;
+        text-align: left;
+        line-height: 20px;
+        min-height: 40px;
+        margin: 0;
+        display: flex;
+        align-content: center;
+        align-items: center;
+
+        &-actions {
+            margin-left: 10px;
+        }
+
+        &-body {
+            padding: 0 10px;
+
+            .attachment-title {
+                font-size: 14px;
+                color: inherit;
+                display: block;
+                line-height: 20px;
+                font-weight: bold;
+            }
+
+            .attachment-size {
+                font-size: 10px;
+                display: block;
+                line-height: 14px;
+            }
+
+            .attachment-status {
+                font-size: 9px;
+                display: block;
+                line-height: 14px;
+            }
+        }
+    }
+}

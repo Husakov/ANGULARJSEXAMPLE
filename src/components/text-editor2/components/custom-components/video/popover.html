@@ -1,0 +1,17 @@
+<div class="form-inline"
+     ng-click="$event.stopPropagation();">
+    <div class="input-group input-group-sm input-group-fixed">
+        <input type="text"
+               class="form-control te-input"
+               ng-model="$ctrl.videoUrl"
+               ng-model-options="{debounce: 500}"
+               model-formatter="$ctrl.formatter.videoUrl"
+               ng-keydown="$ctrl.onKeyInPopover($event)"
+               placeholder="Enter a video url">
+
+        <span ng-click="$ctrl.remove()"
+              class="pointer input-button-icon input-group-addon">
+            <i class="fa fa-times"></i>
+        </span>
+    </div>
+</div>

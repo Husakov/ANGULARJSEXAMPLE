@@ -1,0 +1,21 @@
+<div class="list-item">
+
+    <div class="list-left user-message" ng-if="::$ctrl.typing.user">
+        <avatar item="::$ctrl.typing.user" size="40"></avatar>
+    </div>
+
+    <div class="list-right admin-message" ng-if="::$ctrl.typing.admin">
+        <avatar item="::$ctrl.typing.admin" size="40"></avatar>
+    </div>
+
+    <div class="list-body">
+        <span class="arrow pull-top"
+              ng-class="{'right': !!$ctrl.typing.admin, 'left': !!$ctrl.typing.user}"></span>
+
+        <div class="box-body text-left">
+            <div class="message-content">
+                <typing></typing>
+            </div>
+        </div>
+    </div>
+</div>

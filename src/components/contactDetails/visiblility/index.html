@@ -1,0 +1,38 @@
+<div class="panel panel-default visibility-property" ng-click="$event.stopPropagation()">
+    <div ng-show="$ctrl.visibleItems.length > 0 && $ctrl.visibility"
+         class="panel-heading">
+        <b>Visible to you across Riika</b>
+        <span tooltip-append-to-body="true"
+              uib-tooltip="Click on an item to hide or show it in Riika.
+                This will only apply to you, not you teammates and will not affect any automessages.">
+            <i class="fa fa-fw fa-question-circle"></i>
+        </span>
+    </div>
+    <div class="panel-body"
+         ng-show="$ctrl.visibleItems.length > 0">
+        <span ng-repeat="item in $ctrl.visibleItems track by item.id">
+            <span class="label label-light">
+               <i class="fa fa-fw fa-tag"></i>
+                {{ ::item.name }}
+            </span>
+            <i class="fa fa-fw fa-eye icon-control pointer pull-right"
+               ng-show="$ctrl.visibility"
+               ng-click="$ctrl.changeVisibility(item, false);"></i>
+        </span>
+    </div>
+    <div ng-show="$ctrl.hiddenItems.length > 0 && $ctrl.visibility"
+         class="panel-heading">
+        <b>Hidden to you across Riika</b>
+    </div>
+    <div class="panel-body"
+         ng-show="$ctrl.hiddenItems.length > 0 && $ctrl.visibility">
+        <span ng-repeat="item in $ctrl.hiddenItems track by item.id">
+            <span class="label label-light">
+               <i class="fa fa-fw fa-tag"></i>
+               {{ ::item.name }}
+            </span>
+            <i class="fa fa-fw fa-eye-slash visibility-off icon-control pointer pull-right"
+               ng-click="$ctrl.changeVisibility(item, true);"></i>
+        </span>
+    </div>
+</div>

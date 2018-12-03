@@ -1,0 +1,114 @@
+<div class="title">
+    Message settings
+</div>
+
+<div class="messagge-label">
+    Message title
+</div>
+<div class="message-title">
+    {{$ctrl.mediator.model.get('title')}}
+</div>
+
+<uib-accordion close-others="true"
+               class="uib-accordion-dark settings-accordion">
+    <div uib-accordion-group
+         is-disabled="::!$ctrl.mediator.getAssign($ctrl.mediator.model.get('from_id', true))"
+         ng-class="::{'no-options': !$ctrl.mediator.getAssign($ctrl.mediator.model.get('from_id', true))}">
+        <uib-accordion-heading>
+            <i class="fa fa-fw fa-user-circle-o"></i>
+            Sender / Assignee
+        </uib-accordion-heading>
+
+        <div class="media">
+            <div class="media-left">
+                <avatar size="20"
+                        item="$ctrl.mediator.getAssign($ctrl.mediator.model.get('from_id', true))"
+                        class="bordered-image"></avatar>
+            </div>
+            <div class="media-body">
+                <div class="media-heading">{{::$ctrl.mediator.getAssignName($ctrl.mediator.model.get('from_id', true))}}</div>
+                Sender
+            </div>
+        </div>
+        <div class="media"
+             ng-if="::($ctrl.mediator.getAssign($ctrl.mediator.model.get('from_id', true)) !== $ctrl.mediator.getAssign($ctrl.mediator.model.get('assign_to_id', true)))">
+            <div class="media-left">
+                <avatar size="20"
+                        item="$ctrl.mediator.getAssign($ctrl.mediator.model.get('assign_to_id', true))"
+                        class="bordered-image"></avatar>
+            </div>
+            <div class="media-body">
+                <div class="media-heading">{{::$ctrl.mediator.getAssignName($ctrl.mediator.model.get('assign_to_id', true))}}</div>
+                Reply assigned to
+            </div>
+        </div>
+    </div>
+    <div uib-accordion-group
+         is-disabled="::!$ctrl.mediator.model.get('type')"
+         ng-class="::{'no-options': !$ctrl.mediator.model.get('type')}">
+        <uib-accordion-heading>
+            <i class="fa fa-fw fa-plug"></i>
+            Channel
+        </uib-accordion-heading>
+        {{($ctrl.mediator.model.get('type') | find:$ctrl.mediator.model.options('allMessageTypes'):'name').title | capitalize}}
+    </div>
+    <div uib-accordion-group
+         is-disabled="::!$ctrl.mediator.model.get('message_type')"
+         ng-class="::{'no-options': !$ctrl.mediator.model.get('message_type')}">
+        <uib-accordion-heading>
+            <i class="fa fa-fw fa-desktop"></i>
+            Message Type
+        </uib-accordion-heading>
+        {{$ctrl.mediator.model.get('message_type') == 'auto' ? 'Automation' : 'One-time'}}
+    </div>
+    <div uib-accordion-group
+         is-disabled="::!$ctrl.mediator.model.get('style', true)"
+         ng-class="::{'no-options': !$ctrl.mediator.model.get('style', true)}">
+        <uib-accordion-heading>
+            <i class="fa fa-fw fa-eye"></i>
+            Initial Appearance
+        </uib-accordion-heading>
+        {{$ctrl.mediator.model.get('style', true) | capitalize}}
+    </div>
+    <div uib-accordion-group
+         is-disabled="::!$ctrl.mediator.model.get('target_page')"
+         ng-class="::{'no-options': !$ctrl.mediator.model.get('target_page')}">
+        <uib-accordion-heading>
+            <i class="fa fa-fw fa-paper-plane"></i>
+            Target Page
+        </uib-accordion-heading>
+    </div>
+    <div uib-accordion-group
+         is-disabled="::!$ctrl.mediator.model.get('stop_date')"
+         ng-class="::{'no-options': !$ctrl.mediator.model.get('stop_date')}">
+        <uib-accordion-heading>
+            <i class="fa fa-fw fa-stop"></i>
+            Stop Date
+        </uib-accordion-heading>
+    </div>
+    <div uib-accordion-group
+         is-disabled="::!$ctrl.mediator.model.get('goal')"
+         ng-class="::{'no-options': !$ctrl.mediator.model.get('goal')}">
+        <uib-accordion-heading>
+            <i class="fa fa-fw fa-crosshairs"></i>
+            Goal
+        </uib-accordion-heading>
+    </div>
+    <div uib-accordion-group
+         is-disabled="::!$ctrl.mediator.model.get('schedule')"
+         ng-class="::{'no-options': !$ctrl.mediator.model.get('schedule')}">
+        <uib-accordion-heading>
+            <i class="fa fa-fw fa-clock-o"></i>
+            Schedule
+        </uib-accordion-heading>
+    </div>
+    <div uib-accordion-group
+         is-disabled="::!$ctrl.mediator.model.get('delivery_window')"
+         ng-class="::{'no-options': !$ctrl.mediator.model.get('delivery_window')}">
+        <uib-accordion-heading>
+            <i class="fa fa-fw fa-history"></i>
+            Delivery Window
+        </uib-accordion-heading>
+    </div>
+</uib-accordion>
+

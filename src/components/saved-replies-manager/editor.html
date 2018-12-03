@@ -1,0 +1,20 @@
+<div class="edit-mode-panel">
+    <text-editor-insert-toolbar name="{{::$ctrl.editorName + '.InsertToolbar'}}"
+                                exclude="::['te-saved-replies']">
+    </text-editor-insert-toolbar>
+    <span class="pull-right saved text-muted"
+          ng-show="$ctrl.saved">
+        <i class="fa fa-fw fa-floppy-o"></i>Saved
+    </span>
+</div>
+
+<div class="saved-replies-edit"
+     ri-scrollbar>
+    <text-editor name="{{::$ctrl.editorName }}"
+                 toolbars="::($ctrl.editorName + '.InsertToolbar')"
+                 placeholder="Reply text"
+                 options="::{saveDisabled: true}"
+                 on-change="$ctrl.onChangeHandler()"
+                 ng-model="$ctrl.selected.blocks">
+    </text-editor>
+</div>

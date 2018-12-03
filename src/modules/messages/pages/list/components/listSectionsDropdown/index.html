@@ -1,0 +1,55 @@
+<ul class="breadcrumb">
+    <li uib-dropdown>
+        <button class="btn btn-basic" uib-dropdown-toggle>
+            {{$ctrl.currentType == 'auto' ? 'Automation' : 'One-time'}}
+        </button>
+        <ul uib-dropdown-menu>
+            <li ui-sref-active="active">
+                <a ui-sref=".state({type: 'auto', role: $ctrl.currentRole.state, state: 'all'})"
+                   class="text-uppercase">
+                    Automation
+                    <span class="active-icon pull-right">
+                        <i class="fa fa-check"></i>
+                    </span>
+                </a>
+            </li>
+            <li ui-sref-active="active">
+                <a ui-sref=".state({type: 'manual', role: $ctrl.currentRole.state, state: 'all'})"
+                   class="text-uppercase">
+                    One-time
+                    <span class="active-icon pull-right">
+                        <i class="fa fa-check"></i>
+                    </span>
+                </a>
+            </li>
+        </ul>
+    </li>
+    <li uib-dropdown>
+        <button class="btn btn-basic" uib-dropdown-toggle>
+            {{$ctrl.currentRole.title}}
+        </button>
+        <ul uib-dropdown-menu>
+            <li ng-repeat="role in $ctrl.getRoles() track by role.state"
+                ui-sref-active="active">
+                <a ui-sref=".state({role: role.state})"
+                   class="text-uppercase">
+                    {{::role.title}}
+                    <span class="active-icon pull-right">
+                        <i class="fa fa-check"></i>
+                    </span>
+                </a>
+            </li>
+        </ul>
+    </li>
+    <li class="dropdown-with-category">
+        <button class="btn btn-basic dropdown-toggle"
+           uib-popover-template="'${require(`./dropdown.html`)}'"
+           popover-class="dropdown-menu"
+           popover-is-open="$ctrl.isMenuOpen"
+           popover-trigger="'outsideClick'"
+           popover-placement="bottom-left">
+            {{( $ctrl.currentState | find:$ctrl.getMenuItems():'state').title}}
+            ({{$ctrl.listHelper.total_count}})
+        </button>
+    </li>
+</ul>

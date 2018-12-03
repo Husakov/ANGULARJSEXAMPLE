@@ -1,0 +1,27 @@
+#import-steps {
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    > .back-button {
+        position: absolute;
+        right: 25px;
+        top: 25px;
+        z-index: 2;
+    }
+
+    > .content {
+        color: #9A99AB;
+        width: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+}

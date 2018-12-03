@@ -1,0 +1,92 @@
+@mixin bg-style($name, $color) {
+    input:checked + .slider.on-#{$name},
+    .off-#{$name} {
+        background-color: $color;
+    }
+}
+
+ui-toggle {
+    display: inline-block;
+    label {
+        position: relative;
+        display: block;
+        max-width: 100%;
+        max-height: 100%;
+        margin: 0;
+        input {
+            display: none;
+            &:checked + .slider {
+                text-align: right;
+
+                .text {
+                    padding-left: 7px;
+                    padding-right: 33px;
+                }
+
+                .handle {
+                    left: 100%;
+                    margin-right: 1px;
+                    transform: translateX(-100%) translateX(-1px) translateY(-50%);
+                }
+
+                &.inited {
+                    .off {
+                        display: none;
+                    }
+                    .on {
+                        display: inline-block;
+                    }
+                }
+            }
+        }
+
+        .slider {
+            position: relative;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-size: 12px;
+            color: #FFFFFF;
+            text-align: left;
+            display: inline-block;
+            height: 23px;
+            width: 40px;
+            .text {
+                padding: 5px 8px 5px 28px;
+                display: inline-block;
+            }
+
+            &.inited {
+                .on {
+                    display: none;
+                }
+            }
+        }
+
+        @include bg-style(primary, $brand-primary);
+        @include bg-style(success, $brand-success);
+        @include bg-style(warning, $brand-warning);
+        @include bg-style(danger, $brand-danger);
+        @include bg-style(info, $brand-info);
+        @include bg-style(default, $gray-light);
+
+        .handle {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            height: 21px;
+            width: 21px;
+            background: #FFFFFF;
+            box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.20), 0 4px 23px 0 rgba(0, 0, 0, 0.08), -2px 4px 4px 0 rgba(0, 0, 0, 0.10);
+            transition: .4s;
+            transform: translateX(1px) translateY(-50%);
+        }
+
+        .round {
+            border-radius: 34px;
+
+            .handle {
+                border-radius: 50%;
+            }
+        }
+    }
+}

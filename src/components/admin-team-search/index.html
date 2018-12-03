@@ -1,0 +1,89 @@
+<div uib-dropdown
+     is-open="isOpen"
+     class="dropdown dropdown-with-category">
+    <span ng-transclude class="clearfix">
+        <button class="btn btn-link dropdown-toggle" uib-dropdown-toggle>
+            {{::$ctrl.labels.searchButton}}
+            <span class="fa fa-chevron-down text-sm"></span>
+        </button>
+    </span>
+    <div class="dropdown-menu with-title"
+         uib-dropdown-menu
+         keys-navigation="isOpen">
+
+        <div class="searchbox"
+             ng-click="$event.stopPropagation()">
+            <input type="text" class="searcher" ng-model="$ctrl.searchHelper.input"
+                   ng-model-options="{getterSetter: true, debounce: 500}"
+                   placeholder="Search...">
+            <i class="fa fa-search pointer"></i>
+        </div>
+        <div class="segment-list"
+             ri-scrollbar>
+
+            <!-- INBOXES -->
+            <div class="list-group-title"
+                 ng-if="::$ctrl.options.inboxes"
+                 ng-click="$event.stopPropagation()">
+                {{$ctrl.labels.inboxes}}:
+            </div>
+            <a class="list-group-item with-avatar keys-navigation"
+               ng-if="::$ctrl.options.inboxes"
+               ng-repeat="inbox in $ctrl.searchHelper.inboxes"
+               ng-class="{active: inbox.id === $ctrl.activeAdminTeamId}"
+               ng-click="$ctrl.select({inbox: inbox})">
+                <i class="fa fa-fw fa-circle unassigned-icon pull-left"></i>
+                <span ng-bind-html="inbox.name | highlight: $ctrl.searchHelper.searchString"></span>
+                <i class="fa fa-check active-check-icon"></i>
+            </a>
+            <div class="list-group-item"
+                 ng-if="::$ctrl.options.inboxes"
+                 ng-click="$event.stopPropagation()"
+                 ng-hide="$ctrl.searchHelper.inboxes.length">
+                {{::$ctrl.labels.noInboxes}}
+            </div>
+
+            <!-- ADMINS -->
+            <div class="list-group-title"
+                 ng-if="::$ctrl.options.admins"
+                 ng-click="$event.stopPropagation()">
+                {{$ctrl.labels.admins}}:
+            </div>
+            <a class="list-group-item with-avatar keys-navigation"
+               ng-if="::$ctrl.options.admins"
+               ng-repeat="admin in $ctrl.searchHelper.admins"
+               ng-class="{active: admin.id === $ctrl.activeAdminTeamId}"
+               ng-click="$ctrl.select({admin: admin})">
+                <avatar item="::admin" size="20"></avatar>
+                <span ng-bind-html="admin.name | highlight: $ctrl.searchHelper.searchString"></span>
+                <i class="fa fa-check active-check-icon"></i>
+            </a>
+            <div class="list-group-item"
+                 ng-if="::$ctrl.options.admins"
+                 ng-click="$event.stopPropagation()"
+                 ng-hide="$ctrl.searchHelper.admins.length">
+                {{::$ctrl.labels.noAdmins}}
+            </div>
+            <div class="list-group-title"
+                 ng-if="::$ctrl.options.teams"
+                 ng-click="$event.stopPropagation()">
+                {{$ctrl.labels.teams}}:
+            </div>
+            <a class="list-group-item with-avatar keys-navigation"
+               ng-if="::$ctrl.options.teams"
+               ng-repeat="team in $ctrl.searchHelper.teams"
+               ng-class="{active: team.id === $ctrl.activeAdminTeamId}"
+               ng-click="$ctrl.select({team: team})">
+                <avatar item="::team" size="20"></avatar>
+                <span ng-bind-html="team.name | highlight: $ctrl.searchHelper.searchString"></span>
+                <i class="fa fa-check active-check-icon"></i>
+            </a>
+            <div class="list-group-item"
+                 ng-if="::$ctrl.options.teams"
+                 ng-click="$event.stopPropagation()"
+                 ng-hide="$ctrl.searchHelper.teams.length">
+                {{::$ctrl.labels.noTeams}}
+            </div>
+        </div>
+    </div>
+</div>

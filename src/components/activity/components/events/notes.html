@@ -1,0 +1,39 @@
+<div class="panel-body with-details"
+     ng-click="showDetails = !showDetails">
+    <div class="flex-row flex-align-top">
+        <div class="user-information flex-auto">
+            <a ui-sref="contacts.details({mode: 'admins', id: $ctrl.event.author_id})"
+               ng-click="$event.stopPropagation()"
+               ng-bind="::$ctrl.event.author.name">
+            </a>
+            <span ng-switch="::$ctrl.event.event_action">
+                <span ng-switch-when="added">created</span>
+                <span ng-switch-default="">{{::$ctrl.event.event_action}}</span>
+            </span>
+            a
+            <a ui-sref="contacts.details.notes({mode: 'users', id: '{{$ctrl.event.user_id}}', section: 'notes' })"
+               ng-click="$event.stopPropagation()"
+               ng-bind="'note'">
+            </a>
+            for
+            <a ui-sref="contacts.details({mode: 'users', id: '{{$ctrl.event.user_id}}' })"
+               ng-click="$event.stopPropagation()"
+               ng-bind="::$ctrl.event.user.name">
+            </a>
+        </div>
+        <div class="flex-auto text-right">
+            <span am-time-ago="::$ctrl.event.created_at"
+                  uib-tooltip="{{::$ctrl.event.created_at | date:'HH:mm a on d, MMM yyyy'}}"
+                  tooltip-class="tooltip-top activity-tooltip-event"
+                  tooltip-placement="top-right"
+                  tooltip-append-to-body="true"></span>
+        </div>
+    </div>
+    <div class="description"
+         ng-if="showDetails">
+        {{::$ctrl.event.note.body | limitTo : 160}}
+        <span ng-if="::$ctrl.event.note.body.length > 160">
+            ...
+        </span>
+    </div>
+</div>

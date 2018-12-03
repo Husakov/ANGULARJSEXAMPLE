@@ -1,0 +1,40 @@
+<div class="detail-item flex-row nowrap"
+     ng-repeat="item in section.items track by (item.id || item.name)"
+     ng-init="data = $ctrl.getData(item, el)"
+     ng-switch on="data.type">
+
+    <div class="prop-name flex-auto">
+        <a ng-href="{{::$ctrl.getUrl(item, section, el)}}"
+           uib-tooltip-template="'${require(`./tooltip.html`)}'"
+           tooltip-append-to-body="true"
+           tooltip-class="tooltip-top">
+            <i class="fa fa-fw fa-{{::item.icon}}"></i>
+            {{::(item.title || item.name)}}
+        </a>
+    </div>
+
+    <div class="prop-value flex-auto text-right">
+        <span ng-switch-default
+              uib-tooltip="{{::data.value || data.placeholder}}"
+              tooltip-class="tooltip-top text-xs"
+              tooltip-append-to-body="true"
+              ng-class="::{'opacity-3': data.isPlaceholder}">
+            {{::data.value || data.placeholder}}
+        </span>
+        <span ng-switch-when="date"
+              am-time-ago="data.value"
+              uib-tooltip="{{::data.value | date:'medium' || data.placeholder}}"
+              tooltip-append-to-body="true"
+              ng-class="::{'opacity-3': data.isPlaceholder}">
+            {{::data.value || data.placeholder}}
+        </span>
+        <span ng-switch-when="editable"
+              uib-tooltip="{{data.value || data.placeholder}}"
+              tooltip-append-to-body="true"
+              tooltip-class="tooltip-top text-xs"
+              editable="data.value"
+              class="editable-value"
+              editable-set="$ctrl.setAttribute(item, $value)"
+              placeholder="{{::data.placeholder}}"></span>
+    </div>
+</div>

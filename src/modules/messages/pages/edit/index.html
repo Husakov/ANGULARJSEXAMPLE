@@ -1,0 +1,17 @@
+<div id="messages-edit-page">
+
+    <div class="h-100 w-100"
+         ng-if="!$ctrl.mediator.loading"
+         ri-scrollbar>
+        <message-preview class="h-100"
+                         mediator="$ctrl.mediator"
+                         sections="$ctrl.sections">
+        </message-preview>
+    </div>
+
+    <div ng-if="$ctrl.mediator.loading" class="text-center">
+        <loader></loader>
+    </div>
+</div>
+
+

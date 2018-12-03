@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+<html lang="en" data-ng-app="riika">
+<head>
+    <meta charset="utf-8">
+    <title>App Name</title>
+    <base href="/" target="_blank">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+</head>
+
+<body ng-cloak class="app {{::$root.bodyClass}}">
+    <topmenu></topmenu>
+
+    <div class="app-container" role="main">
+        <secondmenu ui-view="secondmenu">
+        </secondmenu>
+        <div class="app-content"
+             ui-view>
+        </div>
+    </div>
+</body>
+</html>

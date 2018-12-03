@@ -1,0 +1,36 @@
+<div class="detail-item" ng-class="{'visibility-property-container' : section.visibilityProperty}">
+    <button class="btn btn-sm btn-link btn-add"
+          ng-if="data.hasAdd"
+          ng-click="data.add()">
+        <i class="fa fa-fw fa-plus"></i>
+        {{:: data.addLabel}}
+    </button>
+
+    <span class="visibility-title"
+          ng-if="!data.hasAdd && section.visibilityProperty">
+        Visibility
+    </span>
+
+    <i class="fa fa-fw fa-cog icon-control pointer pull-right"
+       ng-class="{'visibility-off' : section.visibilityState}"
+       ng-if="::section.visibilityProperty"
+       ng-click="section.visibilityState = !section.visibilityState"></i>
+
+    <span ng-if="::!section.visibilityProperty"
+          class="label label-primary"
+          ng-class="{'last': $last}"
+          ng-repeat="el in data.elements track by el.id"
+          uib-tooltip-template="'${require(`./list-tooltip.html`)}'"
+          tooltip-append-to-body="true"
+          tooltip-class="tooltip-top">
+        <i class="fa {{ data.icon(el) }}"></i>
+    {{ ::el.name }}
+    </span>
+
+    <contact-details-visibility ng-if="::section.visibilityProperty"
+                                property="::section.visibilityProperty"
+                                type="::section.name"
+                                visibility="section.visibilityState"
+                                items="::$ctrl.contact[section.name]">
+    </contact-details-visibility>
+</div>

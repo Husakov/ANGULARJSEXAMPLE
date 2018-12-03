@@ -1,0 +1,21 @@
+<!-- Audio notifications -->
+<div class="form-group">
+    <label class="form-label">Enable audio notifications</label>
+    <div>
+        <ui-toggle ng-model="ctrl.widget_audio_enabled"
+                   styles="round"
+                   on="On"
+                   off="Off">
+        </ui-toggle>
+    </div>
+</div>
+
+<!-- White list -->
+<div class="form-group">
+    <label for="whitelist" class="form-label">Whitelist your domains</label>
+    <input id="whitelist"
+           class="form-control"
+           ng-model="ctrl.whiteListGS()"
+           ng-model-options="{getterSetter: true}">
+</div>
+

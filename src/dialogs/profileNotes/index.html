@@ -1,0 +1,65 @@
+<div class="modal-header">
+    Notes
+    <button type="button"
+            class="close btn btn-link"
+            ng-click="$dismiss()">
+        &times;
+    </button>
+</div>
+<div class="modal-body"
+     id="profile-notes">
+    <div class="content">
+        <div class="form-group">
+            <form ng-submit="ctrl.addNote(ctrl.noteText)" class="clear">
+                <div class="input-group">
+                    <input ng-model="ctrl.noteText" name="note-text"
+                           class="form-control"
+                           placeholder="Write an internal note and press enter to add">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default"
+                                type="submit">Add</button>
+                    </span>
+                </div>
+            </form>
+        </div>
+        <div class="flex-row flex-align-top note-item"
+             ng-repeat="note in ctrl.notes track by $index"
+             ng-init="isEdit = true">
+            <div class="flex-auto avatar-column">
+                <a>
+                    <avatar item="note.created_by_object" size="38"
+                            class="bordered-image"></avatar>
+                </a>
+            </div>
+            <div class="flex-auto">
+                <div class="user-information">
+                    <span class="arrow-note"></span>
+                    <form class="clear"
+                          ng-submit="ctrl.editNote(note, note.text); isEdit = true">
+                        <div class="input-group">
+                            <input type="text" ng-model="note.body" ng-disabled="isEdit"
+                                   class="form-control">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default"
+                                        ng-show="isEdit"
+                                        type="button"
+                                        ng-click="isEdit = false">Edit</button>
+                                <button class="btn btn-default"
+                                        ng-show="!isEdit"
+                                        type="submit">Submit</button>
+                            </span>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="description">
+                    <span am-time-ago="note.created_at"></span>
+                    <span ng-if="note.edited"
+                          uib-tooltip-template="'${require(`./edited.html`)}'"
+                          tooltip-append-to-body="true"
+                          tooltip-class="tooltip-top">(edited)</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

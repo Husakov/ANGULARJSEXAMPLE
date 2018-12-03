@@ -1,0 +1,307 @@
+reply {
+    display: block;
+    .form-control {
+        border: none;
+    }
+
+    .box-control {
+        padding: 10px 0px;
+        flex: 0 0 130px;
+        &-icon {
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 10px;
+            cursor: pointer;
+            position: relative !important;
+            .icon {
+                line-height: 60px;
+            }
+        }
+        upload {
+            .icon {
+                color: #D9D9E1;
+                font-size: 20px;
+                &:hover {
+                    color: #46A2E8;
+                }
+            }
+        }
+    }
+
+    .nav-item {
+        border-bottom: 1px solid transparent;
+        margin-bottom: -1px;
+        border-radius: 0;
+
+        &.selected {
+            border-color: #0389ce;
+            .nav-link {
+                color: #0389ce;
+                border-color: #0389ce;
+                pointer-events: none;
+                border-radius: 0;
+            }
+        }
+
+        &:hover {
+            border-color: #0389ce;
+            .nav-link {
+                color: #546E7A;
+                border-radius: 0;
+            }
+        }
+    }
+    .nav-link {
+        color: #a7bfcb;
+        font-size: 13px;
+        font-weight: 700;
+        border-radius: 0;
+    }
+
+    .ui-select-match {
+        .btn.btn-default {
+            margin: 0;
+        }
+    }
+
+    &.short-reply-box {
+        width: calc(100% - 800px);
+    }
+
+    label {
+        cursor: pointer;
+        margin-bottom: 0;
+    }
+
+    .box-footer {
+        display: table;
+        width: 100%;
+        .icon:after {
+            display: none;
+        }
+    }
+    .hold-text {
+        display: inline-block;
+        text-align: left;
+        font-size: 12px;
+        margin-left: 10px;
+    }
+    .hold-icons,
+    .hold-btns {
+        width: 50%;
+        float: left;
+
+        &.p-y-sm {
+            padding: 0 !important;
+        }
+    }
+    .hold-btns {
+        width: 50%;
+        float: right;
+    }
+
+    .select-emojis {
+        width: 320px;
+    }
+    .ui-select-bootstrap {
+        .ui-select-choices-row {
+            &.active {
+                > a {
+                    background-color: #fff;
+                    color: rgba(0, 0, 0, 0.87);
+                }
+            }
+        }
+    }
+    span.btn.btn-default {
+        border: none;
+        box-shadow: none;
+        color: #a7bfcb;
+        height: 16px;
+        min-height: 18px;
+        padding: 0;
+        width: 24px;
+    }
+    span.ui-select-match-text {
+        color: #a7bfcb;
+        font-size: 1.35em;
+        line-height: .5em;
+    }
+    .visible.ui-select-match {
+        width: 23px;
+        height: 18px;
+    }
+
+    .hold-saved-text {
+        display: inline-block;
+
+        .text {
+            color: #a7bfcb;
+            opacity: 0;
+            transition: opacity .5s ease-in-out;
+
+            &.visible {
+                opacity: .6;
+            }
+        }
+    }
+
+    .insert-box {
+        padding: 5px 16px;
+        background: #F7F9FA;
+        border-top: 1px solid #EBEBF2;
+        border-bottom: 1px solid #EBEBF2;
+        position: relative;
+        .btn-group {
+            position: static;
+        }
+        .btn[name='te-saved-replies'] {
+            position: static;
+        }
+        .note-switch {
+            color: #BFCAD2;
+            cursor: pointer;
+            &.note-active {
+                color: #2E9FEB;
+            }
+        }
+        .note-switch:hover {
+            color: #46A2E8;
+        }
+    }
+
+    .text-box-wrapper {
+        position: relative;
+        padding: 16px;
+        width: 100%;
+        background: white;
+
+        .send-button {
+            bottom: 24px;
+            position: absolute;
+            right: 24px;
+        }
+    }
+
+    .text-box {
+        min-height: 50px;
+        max-height: 220px;
+        overflow-y: auto;
+        &.text-box--reply {
+            background: #FFFFFF;
+            border: 1px solid #ECECF2;
+            border-radius: 8px;
+            color: $text-color;
+            letter-spacing: 0.5px;
+            box-shadow: none;
+            height: auto;
+            padding: 10px 5px;
+            .text-editor {
+                padding: 0 85px 0 20px;
+            }
+            &.note-bg {
+                background-color: #fff7ef;
+                .form-control {
+                    background-color: #fff7ef;
+                }
+            }
+        }
+    }
+
+    .attachments {
+        height: 25px;
+    }
+
+    .in-progress {
+        position: relative;
+        display: inline-block;
+        clear: both;
+        max-height: 200px;
+        .overlay {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: white;
+            opacity: .6;
+
+            transition: left 1s;
+        }
+        img {
+            width: auto;
+            max-width: none;
+            height: 100%;
+        }
+    }
+
+    .text-box:empty:not(:focus):before {
+        content: attr(data-placeholder);
+        color: #999;
+        opacity: 0.5;
+        cursor: text;
+    }
+
+    .reply-box {
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        .dropup, .dropdown {
+            position: initial;
+        }
+    }
+
+    .attachments-box {
+        padding: 10px;
+    }
+}
+
+@media (max-width: 1340px) {
+
+    .reply-box {
+
+        .btn {
+            font-size: 12px;
+            line-height: 18px;
+            padding: 6px 10px 6px;
+        }
+
+        .hold-icons,
+        .hold-btns {
+            width: 100%;
+            float: none;
+            text-align: center;
+        }
+
+        .p-y-sm.text-muted {
+            text-align: center;
+        }
+
+        .hold-text {
+            display: block;
+            text-align: center;
+            margin-bottom: 5px;
+        }
+
+        .select-emojis {
+            left: 50% !important;
+            margin-left: -160px !important;
+        }
+    }
+}
+
+@media (max-width: 545px) {
+    .reply-box {
+        width: 100% !important;
+    }
+}
+
+@media (max-width: 320px) {
+    .reply-box {
+        .select-emojis {
+            width: 300px;
+            margin-left: -130px !important;
+        }
+    }
+}

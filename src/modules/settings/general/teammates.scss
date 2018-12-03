@@ -1,0 +1,178 @@
+#teammates {
+    .form-group {
+        margin-bottom: 0;
+    }
+    .toolbar {
+        margin-bottom: 15px;
+        .team-select {
+            margin-left: 58px;
+            .dropdown-menu {
+                margin-left: -8px;
+                .list-group {
+                    height: 200px;
+                    margin-bottom: 0;
+                }
+            }
+            .big-btn-with-desc {
+                background: transparent;
+                border: none;
+                .btn-text {
+                    &-main {
+                        margin-left: 15px;
+                        font-weight: bold;
+                    }
+                    &-description {
+                        margin-left: 10px;
+                        font-size: 14px;
+                    }
+                }
+                &.dropdown-toggle::before,
+                &.dropdown-toggle::after {
+                    border: none;
+                    content: none;
+                }
+                .icon-arrow {
+                    font-size: 12px;
+                    margin-left: 5px;
+                }
+            }
+            .big-btn-drop-item {
+                border: none;
+                white-space: nowrap;
+                cursor: pointer;
+                .btn-text {
+                    &-main {
+                        margin-left: 17px;
+                        margin-right: 5px;
+                    }
+                    &-description {
+                        text-align: right;
+                        margin-left: 10px;
+                        font-size: 14px;
+                    }
+                }
+            }
+        }
+        .action-menu {
+            margin-left: 10px;
+        }
+    }
+
+    .invite-input {
+        position: relative;
+        .send-invite {
+            position: absolute;
+            right: 8px;
+            top: 12px;
+            opacity: 0.27;
+            color: #C5C4D2;
+            cursor: pointer;
+            &:hover {
+                opacity: 1;
+            }
+        }
+    }
+
+    .input-team-member {
+        .fa-search {
+            position: absolute;
+            right: 8px;
+            top: 12px;
+            z-index: 99;
+            opacity: 0.27;
+            color: #C5C4D2;
+        }
+
+        .caret {
+            display: none;
+        }
+
+        .ui-select-toggle {
+            border: 1px solid $input-border;
+            border-radius: $border-radius-base;
+            background: $btn-default-bg;
+        }
+
+        input.ui-select-search {
+            border: 1px solid $input-border;
+            border-radius: $border-radius-base;
+            background: $btn-default-bg;
+        }
+        .ui-select-bootstrap {
+            .ui-select-choices-row {
+                a {
+                    color: $text-color;
+                    padding: 10px 15px;
+                    .btn-text {
+                        &-main {
+                            margin-left: 13px;
+                        }
+                    }
+                }
+                &.active {
+                    a {
+                        background-color: #f5f5f5;
+                    }
+                }
+            }
+            .btn-default-focus {
+                outline: none;
+            }
+        }
+    }
+
+    .users-list {
+        padding-top: 10px;
+    }
+
+    .user {
+        transform: translateY(0px);
+        transition: transform 0.1s linear 0s, box-shadow 0.1s linear 0s;
+        &:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 17px 25px rgba(0, 0, 0, 0.13);
+        }
+        .checkbox-column {
+            flex: 0 0 45px;
+            padding: 10px;
+        }
+
+        .avatar-column {
+            padding: 0 10px 0 0;
+            flex: 0 0 60px;
+        }
+
+        .user-information {
+            flex: 0 0 230px;
+            margin-top: 12px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            padding-right: 10px;;
+        }
+
+        .other-information {
+            margin-top: 12px;
+            a {
+                cursor: pointer;
+            }
+        }
+
+        .teams {
+            padding-left: 105px;
+            padding-top: 10px;
+            span {
+                margin-right: 10px;
+            }
+        }
+
+        .visible-on-hover {
+            visibility: hidden;
+        }
+
+        &:hover {
+            .visible-on-hover {
+                visibility: visible;
+            }
+        }
+    }
+}

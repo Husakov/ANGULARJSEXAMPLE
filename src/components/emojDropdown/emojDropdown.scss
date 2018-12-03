@@ -1,0 +1,143 @@
+$searchHeight: 40px;
+emoj-dropdown {
+
+    .icon {
+        &,
+        &.disabled,
+        &[disabled] {
+            &,
+            &:hover,
+            &.active,
+            &:active {
+                color: #BFCAD2;
+                font-size: 19px;
+            }
+        }
+        &:hover {
+            color: #46A2E8;
+        }
+    }
+
+    .dropdown-toggle:after {
+        content: none;
+    }
+
+    &.dropdown {
+        .dropdown-menu {
+            margin-top: 11px !important;
+            box-shadow: 0 0px 8px 5px rgba(0, 0, 0, 0.07);
+            &:before {
+                display: block;
+                content: "";
+                border-left: 8px solid transparent;
+                border-right: 8px solid transparent;
+                border-bottom: 8px solid #FFF;
+                width: 0px;
+                height: 0px;
+                position: absolute;
+                top: -8px;
+                left: 7px;
+            }
+        }
+    }
+    &.dropup {
+        .dropdown-menu {
+            margin-bottom: 10px !important;
+            box-shadow: 0 4px 8px 4px rgba(0, 0, 0, 0.07);
+            &:after {
+                display: block;
+                content: "";
+                border-left: 8px solid transparent;
+                border-right: 8px solid transparent;
+                border-top: 8px solid #FFF;
+                width: 0px;
+                height: 0px;
+                position: absolute;
+                bottom: -8px;
+                left: 7px;
+            }
+        }
+        &-left {
+            .dropdown-menu {
+                left: auto;
+                right: 0;
+                &:after {
+                    left: auto;
+                    right: 7px;
+                }
+            }
+        }
+    }
+    .dropdown-menu {
+        width: 330px;
+        height: 250px;
+        border-radius: 3px;
+        margin-left: -6px;
+        padding: 0 20px;
+        border: none;
+        .search {
+            height: $searchHeight;
+            width: 100%;
+            display: block;
+            text-overflow: ellipsis;
+            line-height: 21px;
+            background-color: #FFF;
+            color: #565867;
+            padding: 10px 60px 10px 25px;
+            font-size: 15px;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            border: none;
+            outline: none;
+            border-bottom: 1px solid #DDD;
+            &-icon {
+                display: block;
+                position: absolute;
+                top: 10px;
+                left: 20px;
+                width: 20px;
+                height: 20px;
+                background-image: url(data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjwhRE9DVFlQRSBzdmcgIFBVQkxJQyAnLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4nICAnaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkJz48c3ZnIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDUxMiA1MTIiIGhlaWdodD0iNTEycHgiIHZlcnNpb249IjEuMSIgdmlld0JveD0iMCAwIDUxMiA1MTIiIHdpZHRoPSI1MTJweCIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+PGcgaWQ9IkxheWVyXzYiPjxwYXRoIGQ9Ik0yMjgsNjguNjdjLTY4LjQ4LDAtMTI0LDU1LjUxLTEyNCwxMjRjMCw2OC40OCw1NS41MiwxMjQsMTI0LDEyNGM2OC40OCwwLDEyNC01NS41MiwxMjQtMTI0ICAgQzM1MiwxMjQuMTgsMjk2LjQ4LDY4LjY3LDIyOCw2OC42N3ogTTIyOCwyODMuMjdjLTUwLjA0LDAtOTAuNi00MC41NjktOTAuNi05MC42YzAtNTAuMDQsNDAuNTYtOTAuNiw5MC42LTkwLjYgICBzOTAuNiw0MC41Niw5MC42LDkwLjZDMzE4LjYsMjQyLjcsMjc4LjA0LDI4My4yNywyMjgsMjgzLjI3eiIgZmlsbD0iIzFBMUExQSIvPjxnPjxwYXRoIGQ9Ik0zOTIuNzkxLDQxNC4zMDhjNi4wOTQsOS4xNTcsNC4xMTgsMjEuMjgzLTQuMzkxLDI2Ljk0NGMtOC41MDksNS42NjItMjAuNDU3LDIuODAzLTI2LjU1MS02LjM1NSAgICBsLTg4LjY0MS0xMzMuMjA0Yy02LjA5NC05LjE1OC00LjExOC0yMS4yODMsNC4zOTEtMjYuOTQ0YzguNTEtNS42NjIsMjAuNDU4LTIuODAzLDI2LjU1Miw2LjM1NUwzOTIuNzkxLDQxNC4zMDh6IiBmaWxsPSIjMUExQTFBIi8+PC9nPjwvZz48L3N2Zz4=);
+                background-position: 50% 50%;
+                background-size: 100% auto;
+                background-repeat: no-repeat;
+                opacity: .5;
+            }
+        }
+
+        .results {
+            height: calc(100% - #{$searchHeight} - 10px);
+            padding: 5px 0;
+            .category {
+                overflow: hidden;
+                .title {
+                    color: #a8b6c2;
+                    font-size: 13px;
+                    margin: 5px;
+                    text-align: left;
+                    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+                }
+                .emotion {
+                    cursor: pointer;
+                    padding: 5px;
+                    width: 40px;
+                    line-height: 30px;
+                    vertical-align: middle;
+                    font-size: 28px;
+                    display: inline-block;
+                    float: left;
+                    &:hover {
+                        font-size: 30px;
+                    }
+                }
+            }
+            &-shadow {
+                position: absolute;
+                bottom: 10px;
+                left: 0px;
+                width: 100%;
+                height: 10px;
+                background: linear-gradient(rgba(255, 255, 255, 0), #fff);
+            }
+        }
+    }
+}

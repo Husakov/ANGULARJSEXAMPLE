@@ -1,0 +1,108 @@
+<table ng-if="$ctrl.ready"
+       fixed-header
+       class="table">
+    <thead>
+    <tr>
+        <th class="spacer"></th>
+        <th class="check-field">
+            <i class="fa fa-fw fa-info-circle"
+               tooltip-append-to-body="true"
+               uib-tooltip="Looking for the select-all checkbox? Just use the buttons above to message or tag these people."></i>
+        </th>
+
+        <th ng-repeat="attribute in $ctrl.main.headerAttributes"
+            class="pointer">
+            <i class="fa fa-fw fa-{{attribute.icon}}"></i>
+            {{attribute.title || attribute.name}}
+        </th>
+        <th class="spacer"></th>
+    </tr>
+    </thead>
+    <tbody scroll-list="$ctrl.main.fetch(params)"
+           helper="$ctrl.main.listHelper"
+           ready="!!$ctrl.main.paramsPromise"
+           scroll-container="ri-scrollbar">
+    <tr ng-repeat="item in listHelper.items track by item.id"
+        class="pointer"
+        ng-class="{'checked':item.checked}"
+        ui-sref="contacts.details({mode: $ctrl.main.params.mode, id: item.id})">
+        <td class="spacer"></td>
+        <td class="check-field"
+            ng-click="$event.stopPropagation()">
+            <label class="checkbox-inline visible-on-hover">
+                <input type="checkbox"
+                       ng-checked="item.checked"
+                       ng-click="listHelper.toggleElement(item)">
+                <i></i>
+            </label>
+        </td>
+        <td ng-repeat="attribute in $ctrl.main.headerAttributes track by attribute.name"
+            ng-init="colData = $ctrl.getColData(item, attribute)">
+            <span ng-if="::colData"
+                  ng-switch on="$ctrl.getAttrSection(attribute)">
+                <span ng-switch-default>
+                    <span ng-if="::(attribute.type !== 'date')">
+                        {{::colData}}
+                    </span>
+                    <span ng-if="::(attribute.type === 'date')">
+                        <i class="fa fa-calendar" aria-hidden="true"></i>
+                        <span am-time-ago="::colData"
+                              uib-tooltip="{{::colData | date:'medium'}}"
+                              tooltip-append-to-body="true"
+                              tooltip-class="tooltip-top text-xs">
+                        </span>
+                    </span>
+                </span>
+                <span ng-switch-when="name">
+                    <span ng-if="::!$ctrl.main.isCompanies()">
+                        <avatar item="item"
+                                size="25">
+                        </avatar>
+                        {{::colData}}
+                    </span>
+                    <span ng-if="::$ctrl.main.isCompanies()">
+                        {{::colData}}
+                    </span>
+                </span>
+                <span ng-switch-when="list">
+                    <span ng-if="::(attribute.type !== 'date')"
+                          tooltip-append-to-body="true"
+                          uib-tooltip="{{ ::$ctrl.getListString(colData, attribute) }}"
+                          ng-bind="::$ctrl.getListString(colData, attribute, true)">
+                    </span>
+                    <span ng-if="::(attribute.type === 'date')"
+                          uib-tooltip="{{::$ctrl.getListString(colData, attribute)}}"
+                          tooltip-append-to-body="true"
+                          tooltip-class="tooltip-top text-xs">
+                        <i class="fa fa-calendar" aria-hidden="true"></i>
+                        <span am-time-ago="::colData[0]">
+                        </span>
+                        <span ng-if="::colData.length > 1">
+                            ,
+                            <span am-time-ago="::colData[1]">
+                            </span>
+                        </span>
+                        <span ng-if="::colData.length > 2">
+                            , and {{::colData.length - 2}} more
+                        </span>
+                    </span>
+                </span>
+            </span>
+            <span ng-if="::!colData" class="no-data">
+                Unknown
+            </span>
+        </td>
+        <td class="spacer"></td>
+    </tr>
+    <tr ng-if="listHelper.loading">
+        <td colspan="{{$ctrl.main.headerAttributes.length + 3}}" class="text-center">
+            <loader></loader>
+        </td>
+    </tr>
+    <tr ng-if="listHelper.allLoaded && listHelper.items.length === 0">
+        <td colspan="{{$ctrl.main.headerAttributes.length + 3}}" class="text-center">
+            No {{$ctrl.main.getListType()}} match filter
+        </td>
+    </tr>
+    </tbody>
+</table>

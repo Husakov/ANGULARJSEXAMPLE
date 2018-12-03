@@ -1,0 +1,139 @@
+<div class="s-body-containter-box">
+    <form class="row general-appearance-new"
+          name="ctrl.generalAppForm">
+        <div class="col-sm-6">
+
+            <div class="form-group">
+                <label class="form-label">Set a custom color</label>
+                <div class="form-inline" uib-dropdown>
+                    <div class="input-group" ng-click="ctrl.generalAppForm.$setDirty()">
+                        <input type="text"
+                               class="form-control"
+                               ng-model="ctrl.model.base_color"
+                               type="text"
+                               maxlength="7">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button"
+                                    uib-dropdown-toggle
+                                    aria-haspopup="true"
+                                    aria-expanded="false">
+                                <span class="caret"></span>
+                            </button>
+                        </span>
+                    </div>
+                    <div class="dropdown-menu" uib-dropdown-menu>
+                        <color-picker ng-model="ctrl.model.base_color" ng-click="$event.stopPropagation()"></color-picker>
+                    </div>
+                </div>
+            </div>
+
+            <div class="wallpaper-container form-group">
+                <label class="form-label">Choose a wallpaper</label>
+                <ul class="wallpaper-list">
+                    <li ng-repeat="item in ::ctrl.wallpapers track by $index">
+                        <input type="radio"
+                               id="radio{{$index}}"
+                               ng-model="ctrl.model.messenger_background"
+                               name="wallpaper"
+                               value="{{::item.url}}">
+                        <label for="radio{{$index}}"
+                               class="wallpaper"
+                               ng-style="{'background-image': 'url(' + item.url + ')'}"></label>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input ng-model="ctrl.model.show_powered_by" type="checkbox">
+                        <i></i>Show Riika link
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">On web, show the standard launcher to:</label>
+                <div class="checkbox">
+                    <label>
+                        <input ng-model="ctrl.model.messenger_enabled_for_users" type="checkbox">
+                        <i></i>Users
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input ng-model="ctrl.model.messenger_enabled_for_visitors" type="checkbox">
+                        <i></i>Visitors
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <button type="button"
+                        class="btn btn-primary"
+                        ng-disabled="!ctrl.generalAppForm.$dirty"
+                        ng-click="ctrl.updateAppDetails()">
+                    <i class="fa fa-floppy-o" aria-hidden="true"></i>
+                    Save
+                </button>
+            </div>
+
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group text-center">
+                <div class="btn-group">
+                    <button type="button"
+                            class="btn btn-sm btn-basic"
+                            ng-click="device = 0"
+                            ng-class="!device ? 'active' : ''">
+                        <i class="fa fa-laptop" aria-hidden="true"></i>
+                    </button>
+                    <button type="button"
+                            class="btn btn-sm btn-basic"
+                            ng-click="device = 1"
+                            ng-class="device === 1 ? 'active' : ''">
+                        <i class="fa fa-apple" aria-hidden="true"></i>
+                    </button>
+                    <button type="button"
+                            class="btn btn-sm btn-basic"
+                            ng-click="device = 2"
+                            ng-class="device === 2 ? 'active' : ''">
+                        <i class="fa fa-android" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="preview-container">
+                <div class="desktop"
+                     ng-if="!device"
+                     ng-include="'${require(`./widget.html`)}'"></div>
+
+                <div ng-if="device === 1" class="apple">
+                    <div class="device device-iphone-8 device-silver">
+                        <div class="device-frame"
+                             ng-include="'${require(`./widget.html`)}'"></div>
+                        <div class="device-stripe"></div>
+                        <div class="device-header"></div>
+                        <div class="device-sensors"></div>
+                        <div class="device-btns"></div>
+                        <div class="device-power"></div>
+                    </div>
+                </div>
+
+                <div ng-if="device === 2" class="android">
+                    <div class="device device-google-pixel">
+                        <div class="device-frame"
+                             ng-include="'${require(`./widget.html`)}'"></div>
+                        <div class="device-stripe"></div>
+                        <div class="device-header"></div>
+                        <div class="device-sensors"></div>
+                        <div class="device-btns"></div>
+                        <div class="device-power"></div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </form>
+</div>

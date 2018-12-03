@@ -1,0 +1,42 @@
+<messages-sidenav mediator="$ctrl.mediator"
+                  sections="$ctrl.sections"
+                  class="message-details-sidenav message-details-sidenav"
+                  templates="$ctrl.templates">
+    <messages-sidenav-left>
+
+        <div class="a-b-test"
+             ng-if="$ctrl.mediator.model.options('hasVersions')">
+            <button class="btn btn-link btn-start"
+                    ng-if="$ctrl.mediator.model.get('variations').length < 2"
+                    ng-click="$ctrl.mediator.toggleLive()">
+                {{ $ctrl.mediator.model.options('isLive') ? 'Stop' : 'Set Live' }}
+            </button>
+
+            <ul class="versions" ng-if="$ctrl.mediator.model.get('variations').length > 1">
+                <li ng-repeat="version in $ctrl.mediator.model.get('variations') track by $index"
+                    ng-class="{'active': $ctrl.mediator.model.currentVersionIndex === $index}"
+                    ng-click="$ctrl.mediator.model.setVersion($index)">
+                    {{ ::(['A', 'B'][$index]) }}
+                    <span class="in-collapsed">version</span>
+                    <i class="fa fa-trash in-collapsed"
+                       ng-if="!$ctrl.mediator.model.options('isDraft')"
+                       title="Delete current version"
+                       ng-click="$ctrl.mediator.deleteVersion($index)"></i>
+                    <ui-toggle ng-model="$ctrl.mediator.model.optionsGetterSetter('isLive', true, $index)"
+                               ng-model-options="{getterSetter: true}"
+                               class="toggle-live in-collapsed"
+                               on-change="$ctrl.mediator.toggleLive($index, $value)"
+                               styles="round"
+                               on=""
+                               off="">
+                    </ui-toggle>
+                </li>
+            </ul>
+
+            <hr/>
+        </div>
+
+    </messages-sidenav-left>
+</messages-sidenav>
+
+

@@ -1,0 +1,79 @@
+<div ng-init="uniqId = $id;"
+     class="radio-select"
+     ng-if="$ctrl.mediator.model.options('isInApp')">
+    <div class="title">
+        Style
+    </div>
+
+    <div class="radio"
+         ng-repeat="styleType in ::$ctrl.mediator.model.options('styleTypes')">
+        <label>
+            <input type="radio"
+                   name="styleTypes{{::uniqId}}"
+                   ng-model="$ctrl.mediator.model.getterSetter('style', true)"
+                   ng-model-options="{getterSetter: true}"
+                   value="{{::styleType.name}}">
+            <i></i>
+            {{::styleType.title}}
+        </label>
+    </div>
+
+    <div class="title">
+        Reply types
+    </div>
+
+    <div class="radio"
+         ng-repeat="replyType in $ctrl.mediator.model.options('replyTypes')">
+        <label>
+            <input type="radio"
+                   name="replyTypes{{::uniqId}}"
+                   ng-model="$ctrl.mediator.model.getterSetter('reply_type', true)"
+                   ng-model-options="{getterSetter: true}"
+                   value="{{::replyType.name}}">
+            <i></i>
+            {{::replyType.title}}
+        </label>
+    </div>
+
+    <div class="title">
+        Initial Appearance
+    </div>
+
+    <div class="radio"
+         ng-repeat="type in ::$ctrl.mediator.model.options('appearances')">
+        <label>
+            <input type="radio"
+                   name="appearances{{::uniqId}}"
+                   ng-model="$ctrl.mediator.model.getterSetter('delivery_option', true)"
+                   ng-model-options="{getterSetter: true}"
+                   value="{{::type.name}}">
+            <i></i>
+            {{::type.title}}
+        </label>
+    </div>
+</div>
+
+<div class="appearance"
+     ng-if="$ctrl.mediator.model.options('isEmail')">
+    <div class="title">
+        Email template
+    </div>
+    <div uib-dropdown>
+        <button type="button"
+                class="btn btn-special"
+                uib-dropdown-toggle>
+            <i class="fa fa-fw fa-envelope-o" aria-hidden="true"></i>
+            {{($ctrl.mediator.model.get('email_template_id', true) | find:$ctrl.mediator.model.options('emailTemplates'):'id').name}}
+            <i class="fa fa-chevron-down text-sm pull-right" aria-hidden="true"></i>
+        </button>
+        <ul class="dropdown-menu w-100"
+            uib-dropdown-menu>
+            <li ng-repeat="template in $ctrl.mediator.model.options('emailTemplates') track by template.id">
+                <a ng-click="$ctrl.mediator.model.set('email_template_id', template.id, true)">
+                    <i class="fa fa-fw fa-envelope-o" aria-hidden="true"></i>
+                    {{::template.name}}
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>

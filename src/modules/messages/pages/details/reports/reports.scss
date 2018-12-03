@@ -1,0 +1,66 @@
+.message-details-report {
+    padding: 45px 45px 0 45px;
+    & > .toolbar {
+        display: block;
+        padding: 0;
+        margin: 0 0 24px 0;
+        .messages-left-block {
+            display: inline-block;
+            margin: 0 10px;
+            height: 38px;
+
+            .breadcrumb {
+                display: inline-block;
+            }
+
+            .selected-count {
+                margin-left: 10px;
+                .clear-selection-button {
+                    cursor: pointer;
+                }
+            }
+        }
+
+        .action-buttons-container {
+            float: right;
+            padding: 0;
+            margin: 0;
+
+            .header-button-group {
+                display: inline-block;
+                padding: 0;
+                margin-right: 9px;
+            }
+
+            .dropdown-report {
+                padding-top: 0;
+                min-width: 325px;
+                margin-top: 0;
+                .dropdown-header {
+                    .ui-toggle {
+                        margin-left: auto;
+                        line-height: 11px;
+                    }
+                }
+                & > li.version-switch {
+                    background: $table-bg-hover;
+                    margin: 0 0 8px 0;
+                    border-radius: 0;
+                    & > a {
+                        text-transform: uppercase;
+                        font-weight: 600;
+                        font-size: 14px;
+                        padding: 0 21px;
+                        line-height: 48px;
+                    }
+                }
+            }
+        }
+
+        .left-drop {
+            right: 0;
+            left: unset;
+        }
+
+    }
+}

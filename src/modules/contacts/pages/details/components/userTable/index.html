@@ -1,0 +1,85 @@
+<div class="toolbar"
+     ng-include="'${require(`./toolbar.html`)}'"></div>
+
+<div class="users-table-container flex flex-12"
+     ri-scrollbar>
+    <div scroll-list="$ctrl.fetch()"
+         class="users-table"
+         helper="$ctrl.listHelper"
+         scroll-container="ri-scrollbar">
+        <div ng-repeat="item in $ctrl.listHelper.items | orderBy: $ctrl.listHelper.sortingBy track by item.id"
+             ng-click="showDescription = !showDescription"
+             class="panel panel-default pointer">
+            <div class="panel-body">
+                <div class="flex-row">
+                    <div class="flex-auto checkbox-column">
+                        <div class="checkbox-inline"
+                             ng-click="$event.stopPropagation();">
+                            <label>
+                                <input type="checkbox"
+                                       ng-checked="item.checked"
+                                       ng-click="listHelper.toggleElement(item)">
+                                <i class="dark-white"></i>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="flex-auto avatar-column">
+                        <avatar size="38"
+                                item="::item"
+                                ng-click="$event.stopPropagation();"
+                                class="bordered-image"></avatar>
+                    </div>
+                    <div class="flex-auto">
+                        <div class="user-information">
+                            <a class="name"
+                               ng-click="$event.stopPropagation();"
+                               ui-sref="contacts.details({mode: 'users', id: item.id})">
+                                {{::item.name}}
+                            </a>
+
+                            <a ng-click="$event.stopPropagation();"
+                               ui-sref="contacts.details({mode: 'users', id: item.id})">
+                                {{::item.email}}
+                            </a>
+
+                            <i class="fa fa-fw toggle pull-right"
+                               ng-class="{'fa-chevron-up':showDescription, 'fa-chevron-down':!showDescription}"></i>
+                        </div>
+                        <div class="description"
+                             ng-if="showDescription">
+                            <span class="label label-light">
+                                Signed Up:
+                                <span am-time-ago="::item.created_at"></span>
+                            </span>
+
+                            <span class="label label-light">
+                                Web Sessions:
+                                {{::item.session_count}}
+                            </span>
+
+                            <span class="label label-light">
+                                First Seen:
+                                <span am-time-ago="::item.remote_created_at"></span>
+                            </span>
+
+                            <span class="label label-light">
+                                Last Seen:
+                                <span am-time-ago="::item.last_request_at"></span>
+                            </span>
+
+                            <span class="label label-light">
+                                Last Contacted:
+                                <span am-time-ago="::item.last_contacted_at"></span>
+                            </span>
+
+                            <span class="label label-light">
+                                Last Heard From:
+                                <span am-time-ago="::item.last_heard_from_at"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

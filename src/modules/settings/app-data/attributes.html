@@ -1,0 +1,64 @@
+<div class="attributes-toolbar flex flex-align-center"
+     ng-init="uniqId = $id">
+    <label class="radio-inline">
+        <input type="radio"
+               name="{{::uniqId}}"
+               ng-model="ctrl.mode"
+               ng-value="'user'"
+               ng-change="ctrl.reload()"><i></i> User data
+    </label>
+    <label class="radio-inline">
+        <input type="radio"
+               name="{{::uniqId}}"
+               ng-model="ctrl.mode"
+               ng-value="'company'"
+               ng-change="ctrl.reload()"><i></i> Company data
+    </label>
+
+    <button class="btn btn-primary create-new"
+            ng-click="ctrl.createNewAttribute()">
+        Create New
+    </button>
+</div>
+
+<div class="settings-table">
+    <table>
+        <thead>
+        <tr>
+            <th nowrap class="pointer">
+                Attribute
+            </th>
+            <th nowrap class="short-column">
+                Data type
+            </th>
+            <th nowrap class="short-column">
+                Custom
+            </th>
+        </tr>
+        </thead>
+        <tbody scroll-list="ctrl.fetch(params)"
+               helper="ctrl.listHelper"
+               ready="!!ctrl.params"
+               scroll-container="ri-scrollbar">
+            <tr ng-repeat="item in listHelper.items">
+                <td class="title">
+                    <div class="text-bold">{{::item.title}}</div>
+                    <div class="description" ng-if="item.description">{{::item.description}}</div>
+                </td>
+                <td class="title">
+                    {{::item.type}}
+                </td>
+                <td class="title">
+                    {{::item.is_custom}}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div ng-if="listHelper.loading" class="text-center">
+        <loader></loader>
+    </div>
+    <div ng-if="listHelper.allLoaded && listHelper.items.length === 0"
+         class="text-center">
+        No messages
+    </div>
+</div>

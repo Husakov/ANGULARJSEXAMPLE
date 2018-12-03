@@ -1,0 +1,111 @@
+<div class="s-body-containter-box">
+    <state-tabs tabs="::ctrl.tabs"></state-tabs>
+
+    <div class="settings-table">
+        <table>
+            <thead>
+            <tr>
+                <th nowrap class="pointer">
+                    {{ctrl.type}}
+                </th>
+                <th nowrap class="text-center">
+                    Visibility
+                </th>
+                <th nowrap
+                    class="text-center"
+                    ng-if="ctrl.type === 'tags' || ctrl.type === 'contacts'">
+                    Contacts
+                </th>
+                <th nowrap
+                    class="text-center"
+                    ng-if="ctrl.type === 'tags' || ctrl.type === 'companies'">
+                    Companies
+                </th>
+                <th nowrap
+                    class="text-center"
+                    ng-if="ctrl.type === 'tags'">
+                    Conversations
+                </th>
+            </tr>
+            </thead>
+            <tbody scroll-list="ctrl.fetch(params)"
+                   helper="ctrl.listHelper"
+                   ready="!!ctrl.params"
+                   scroll-container="ri-scrollbar">
+                <tr ng-repeat="item in listHelper.items">
+                    <td class="title">
+                        <span ng-if="!item.is_editable && ctrl.type !== 'tags'">
+                          {{item.name}}
+                        </span>
+                        <div ng-if="item.is_editable || ctrl.type === 'tags'"
+                             ng-dblclick="isEdit = true"
+                             class="editable">
+                        <span class="to-show-info">
+                            <span editable="item.name"
+                                  is-edit="isEdit"
+                                  save-on-blur="true"
+                                  editable-set="ctrl.save(item, $value)">
+                            </span>
+                            <div class="addition_information" ng-if="!isEdit">
+                                Created by {{!item.creator.is_me ? item.creator.name : 'Me'}}
+                                <avatar item="item.creator" size="20"></avatar>
+                                <span am-time-ago="item.created_at"></span>
+                            </div>
+                        </span>
+                            <i class="fa btn-drop fa-fw fa-times"
+                               ng-if="item.is_editable || ctrl.type === 'tags'"
+                               ng-click="ctrl.remove(item)"></i>
+                        </div>
+                    </td>
+                    <td class="text-center visibility pointer"
+                        ng-click="ctrl.updateVisibility(item)">
+                        <span ng-show="!item.readonly">
+                            <i class="fa fa-fw fa-eye{{ item.enabled ? ' icon-visible': '-slash' }}"></i>
+                        </span>
+                    </td>
+                    <td ng-if="ctrl.type === 'tags' || ctrl.type === 'contacts'"
+                        class="text-center">
+                        <span ng-show="ctrl.type === 'tags'">
+                            <span ng-show="item.used && item.used.users">
+                                {{item.used.users}}
+                            </span>
+                        </span>
+                        <span ng-show="ctrl.type === 'contacts'">
+                            <a class="blue-link pointer"
+                               ui-sref="contacts.list.mode({segmentId: item.id, mode: 'users'})"
+                               ng-show="item.count > 0">{{ item.count }}</a>
+                            <span ng-show="item.count < 0"> No users</span>
+                        </span>
+                    </td>
+                    <td ng-if="ctrl.type === 'tags' || ctrl.type === 'companies'"
+                        class="text-center">
+                        <span ng-show="ctrl.type === 'tags'">
+                            <span ng-show="item.used && item.used.companies">
+                                {{item.used.companies}}
+                            </span>
+                        </span>
+                        <span ng-show="ctrl.type === 'companies'">
+                            <a class="blue-link pointer"
+                               ui-sref="contacts.list.mode({segmentId: item.id, mode: 'companies'})"
+                               ng-show="item.count > 0">{{ item.count }}</a>
+                        </span>
+                        <span ng-show="ctrl.type === 'companies' && (item.count < 0)"> No companies</span>
+                    </td>
+                    <td ng-if="ctrl.type === 'tags'"
+                        class="text-center">
+                        <span ng-show="item.used && (item.used.conversations || item.used.conversations === 0)">
+                            {{item.used.conversations}}
+                        </span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div ng-if="listHelper.loading" class="text-center">
+            <loader></loader>
+        </div>
+        <div ng-if="listHelper.allLoaded && listHelper.items.length === 0"
+             class="text-center">
+            No messages
+        </div>
+    </div>
+</div>

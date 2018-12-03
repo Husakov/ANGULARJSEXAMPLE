@@ -1,0 +1,110 @@
+activity {
+    min-width: 720px;
+    display: flex;
+    height: 100%;
+    width: 100%;
+    flex-direction: column;
+    .activity-filter {
+        padding: 20px 0px 0px 25px;
+        flex: 0 0 60px;
+        .dropdown-toggle {
+            color: #878696;
+            letter-spacing: 0.3px;
+            margin-left: 55px;
+        }
+        .fa {
+            color: #CECED6;
+        }
+        button {
+            .type-icon {
+                margin-right: 10px;
+            }
+        }
+        .dropdown-menu {
+            top: 100%;
+        }
+        .btn-refresh {
+            &:hover {
+                .fa {
+                    color: #1FB6FF;
+                }
+            }
+        }
+    }
+
+    .activity-container {
+        position: relative;
+        height: 100%;
+        width: 100%;
+        padding: 0px 0px 0px 40px;
+        .activity-loader {
+            position: absolute;
+            left: 50%;
+            margin-left: -16px;
+        }
+    }
+
+    activity-event {
+        display: block;
+        position: relative;
+        clear: both;
+    }
+
+    .streamline {
+        border-left: 1px solid #CECED6;
+        margin-left: 20px;
+        margin-top: 10px;
+        padding-right: 20px;
+        .sl-icon {
+            background: #fff;
+            border: 1px solid #CECED6;
+            border-radius: 50%;
+            position: absolute;
+            top: 0;
+            left: -14px;
+            width: 28px;
+            height: 28px;
+            text-align: center;
+            i {
+                color: #CECED6;
+                position: relative;
+                top: 3px;
+                width: 20px;
+                height: 20px;
+                font-size: 12px !important;
+            }
+        }
+        .panel {
+            margin: 0 0 15px 33px;
+            .description {
+                padding-top: 10px;
+                overflow: hidden;
+                img {
+                    width: 100%;
+                }
+            }
+
+            .panel-body {
+                &.with-details {
+                    cursor: pointer;
+                }
+            }
+
+            .avatar-column {
+                padding: 0 10px 0 0;
+                flex: 0 0 60px;
+            }
+
+            .time-ago {
+                white-space: nowrap;
+            }
+        }
+    }
+    .no-activity {
+        margin: 10px 0;
+    }
+}
+
+.activity-tooltip-event {
+    white-space: nowrap;
+}

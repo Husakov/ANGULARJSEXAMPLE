@@ -1,0 +1,19 @@
+<span ng-if="!$editableCtrl.isEdit"
+      ng-click="$event.stopPropagation(); $editableCtrl.toggle()"
+      class="holder show-text-mode">
+    {{$editableCtrl.value}}
+    <span ng-if="!$editableCtrl.value"
+          class="text-muted">{{$editableCtrl.placeholder}}</span>
+    <i class="fa fa-pencil pointer icon"
+       ng-if="!$editableCtrl.outSideControlOn"></i>
+</span>
+<span class="holder edit-text-mode"
+      ng-if="$editableCtrl.isEdit"
+      ng-click="$event.stopPropagation(); $event.preventDefault()">
+    <input type="text"
+           class="form-control input-sm"
+           ng-model="$editableCtrl.value"
+           placeholder="{{::$editableCtrl.placeholder}}"
+           ng-keyup="$editableCtrl.keyUp($event)"
+           ng-blur="$editableCtrl.onBlur()">
+</span>

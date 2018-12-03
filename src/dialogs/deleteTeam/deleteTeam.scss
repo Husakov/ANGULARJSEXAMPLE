@@ -1,0 +1,70 @@
+.delete-team-dialog {
+
+    .loader-wrapper {
+        display: flex;
+        justify-content: center;
+    }
+    .list-assign {
+        position: relative;
+        height: 25vh;
+
+        .p-top {
+            padding-top: 8px !important;
+        }
+
+        .list-item {
+            overflow: auto;
+            max-height: 40vh;
+            padding: 0;
+        }
+
+        .dropdown-content {
+            width: 100%;
+            border-top: none;
+            overflow: auto;
+            max-height: 22vh;
+        }
+
+        .conversation-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+            background: rgba(252, 252, 252, .9);
+            z-index: 9;
+            .avatar-holder {
+                i {
+                    color: #818a91;
+                }
+                .avatar--right {
+                    margin-left: 11px;
+                }
+                .avatar--left {
+                    margin-right: 15px;
+                }
+            }
+            .conversation-overlay-body {
+                margin-bottom: 9px;
+                img {
+                    border-radius: 500px;
+                    width: 100%;
+                }
+                i {
+                    margin: 9px;
+                }
+            }
+            .conversation-overlay-title {
+                margin-top: 10px;
+                span {
+                    color: #818a91;
+                    font-size: 0.875rem;
+                }
+            }
+        }
+    }
+}

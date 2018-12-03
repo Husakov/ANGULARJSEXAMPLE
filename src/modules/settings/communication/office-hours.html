@@ -1,0 +1,66 @@
+<div class="row office-hours">
+    <div class="col-sm-7">
+        <div class="form-group">
+            <div>
+                <label class="form-label">Set office hours</label>
+                <div class="input-group form-group office-hours-row"
+                     ng-repeat="item in ctrl.office_hours track by $index">
+                    <select id="workingHourDay"
+                            class="form-control"
+                            ng-model="item.period"
+                            ng-options="day as (day | capitalize) for day in ctrl.days">
+                    </select>
+                    <span class="input-group-addon">from</span>
+                    <select id="workingHourFrom"
+                            class="form-control"
+                            ng-model="item.start_time"
+                            ng-options="period as (period | minutesToDayPeriods) for period in ctrl.generateDayPeriods()">
+                    </select>
+                    <span class="input-group-addon">to</span>
+                    <select id="workingHourTo"
+                            class="form-control"
+                            ng-model="item.end_time"
+                            ng-options="period as (period | minutesToDayPeriods) for period in ctrl.generateDayPeriods()">
+                    </select>
+                    <span class="input-group-addon">
+                        <i class="fa btn-drop pointer fa-minus"
+                           ng-click="ctrl.removeOfficeHour($index)"></i>
+                    </span>
+                </div>
+            </div>
+            <div>
+                <button type="button"
+                        class="btn btn-primary"
+                        ng-disabled="!ctrl.office_hours"
+                        ng-click="ctrl.addOfficeHour()">
+                    <i class="fa fa-plus" aria-hidden="true"></i>
+                    Add office hours
+                </button>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-label">Set response time
+                <i class="fa fa-info-circle"
+                   uib-tooltip="During office hours, let your customers know when they can expect a reply."
+                   tooltip-placement="right"
+                   tooltip-append-to-body="true"></i>
+            </label>
+            <div class="input-group">
+                <div ng-repeat="response in ::ctrl.responseTime track by $index" class="radio">
+                    <label>
+                        <input type="radio"
+                               ng-model="ctrl.showResponseGS()"
+                               ng-model-options="{getterSetter: true}"
+                               ng-name="response"
+                               ng-value="response.value">
+                        <i></i>
+                        {{::response.name}}
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-5 preview">
+        <div class="preview preview-img-msg-settings-tab preview-img-office-hours"></div>
+    </div>
+</div>

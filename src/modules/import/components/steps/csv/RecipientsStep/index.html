@@ -1,0 +1,57 @@
+<div class="step-wrapper">
+    <div class="panel panel-default panel-body recipients-types">
+        <div class="radio"
+               ng-repeat="type in ::$ctrl.recipientsTypes">
+            <label>
+                <input type="radio"
+                       name="recipients"
+                       ng-model="$ctrl.model.recipients"
+                       ng-value="::type.value">
+                <i class="dark-white"></i>
+                {{::type.viewValue | capitalize}}
+                <br>
+                <span class="description">{{::type.description}}</span>
+            </label>
+        </div>
+    </div>
+    <div class="panel panel-default panel-body"
+         upload-file-drop>
+        <span class="description-icon fa-stack text-xs"
+              uib-tooltip-html="::$ctrl.help"
+              tooltip-class="panel-tooltip"
+              tooltip-placement="top-left"
+              tooltip-append-to-body="true">
+            <i class="fa fa-circle-thin fa-stack-2x"></i>
+            <i class="fa fa-info fa-stack-1x"></i>
+        </span>
+
+        <div class="text-center"
+             ng-show="!$ctrl.file">
+            <div>
+                <upload on-select="$ctrl.selectFile(file)"
+                        accept="::'.csv'">
+                    <span class="fa-stack text-blue pointer">
+                        <i class="fa fa-circle-thin fa-stack-2x"></i>
+                        <i class="fa fa-plus fa-stack-1x"></i>
+                    </span>
+                </upload>
+            </div>
+            <div class="small">Drag & Drop .csv file</div>
+        </div>
+        <div class="text-center uploaded-file-name"
+             ng-show="$ctrl.file">
+            {{$ctrl.file.name}}
+            <span ng-click="$ctrl.removeFile()"
+                  class="text-danger pointer">
+                <i class="fa fa-fw fa-times-circle"></i>
+            </span>
+        </div>
+    </div>
+    <div class="text-right">
+        <button class="btn btn-primary"
+                ng-disabled="!$ctrl.validate()"
+                ng-click="$ctrl.done()">
+            Next
+        </button>
+    </div>
+</div>

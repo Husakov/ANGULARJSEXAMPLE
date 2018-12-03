@@ -1,0 +1,236 @@
+saved-replies-manager {
+    display: block;
+    position: relative;
+    min-height: 278px;
+    min-width: 600px;
+    border: 1px solid #E1E1EA;
+    border-radius: $border-radius-base;
+
+    & > * {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
+
+    .saved-replies-list {
+        display: flex;
+        flex-direction: column;
+
+        .saved-replies-search {
+            position: relative;
+            border-bottom: 1px solid #EBEBF2;
+            .fa-search {
+                position: absolute;
+                top: 21px;
+                left: 22px;
+                opacity: 0.27;
+                color: #C5C4D2;
+            }
+            .buttons {
+                position: absolute;
+                top: 9px;
+                right: 17px;
+            }
+            input {
+                padding-left: 60px;
+                height: 56px;
+                border: none;
+                box-shadow: none;
+                &:focus {
+                    box-shadow: none;
+                }
+                &::placeholder {
+                    font-size: 16px;
+                    color: $text-color;
+                    line-height: 21px;
+                    font-weight: 300;
+                }
+            }
+        }
+
+        .saved-replies-list-container {
+            position: relative;
+            flex: 100%;
+
+            .loader,
+            .scrollable {
+                position: absolute;
+                left: 0;
+                top: 0;
+                bottom: 0;
+                right: 0;
+            }
+            .saved-replies-list-item {
+                height: 44px;
+                line-height: 44px;
+                color: $text-color;
+                letter-spacing: 0.6px;
+                white-space: nowrap;
+                overflow: hidden;
+                cursor: pointer;
+                display: flex;
+                align-items: stretch;
+                .saved-reply {
+                    &-avatar {
+                        flex: 0 0 60px;
+                        text-align: center;
+                        font-size: 12px;
+                    }
+                    &-name {
+                        flex: 0 0 140px;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                        overflow: hidden;
+                    }
+                    &-body {
+                        flex: 1 1 100%;
+                        overflow: hidden;
+                        font-weight: 300;
+                    }
+                    &-edit {
+                        flex: 1 1 100px;
+                        text-align: center;
+                        .btn {
+                            color: #D9D9E1;
+                            font-size: 20px;
+                            display: none;
+                            padding: 5px 10px;
+                            &:hover {
+                                color: #c6c6cd;
+                            }
+                        }
+                    }
+                }
+                &:hover {
+                    background: #FFF7EF;
+                    .saved-reply-edit {
+                        .btn {
+                            display: inline-block;
+                        }
+                    }
+                }
+            }
+
+            .loader {
+                z-index: 1;
+                background-color: white;
+                transition: all linear 0.5s;
+
+                &.ng-leave.ng-leave-active {
+                    opacity: 0;
+                }
+
+                loader {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                }
+            }
+        }
+    }
+
+    .saved-replies-block {
+        display: flex;
+        flex-direction: column;
+        .saved-replies-buttons {
+            position: relative;
+            padding: 10px 10px 10px 60px;
+            height: 45px;
+
+            button {
+                background: none;
+            }
+
+            .back-to-list {
+                color: #D9D9E1;
+                position: absolute;
+                left: 9px;
+                top: 9px;
+                &:hover {
+                    color: #c1c1c8;
+                }
+            }
+
+            .reply-title {
+                font-size: 14px;
+                color: $text-color;
+                letter-spacing: 0.3px;
+                line-height: 30px;
+                font-weight: 500;
+                input {
+                    border: none;
+                    font-size: 14px;
+                    letter-spacing: 0.3px;
+                    width: 100%;
+                    outline: none;
+                }
+            }
+            .control-buttons {
+                position: absolute;
+                right: 15px;
+                top: 13px;
+                button {
+                    border: 1px solid #D9D9E1;
+                    border-radius: 3px;
+                    background: #D9D9E1;
+                    font-size: 16px;
+                    color: #fff;
+                    &:hover {
+                        background: #c1c1c8;
+                        border-color: #c1c1c8;
+                    }
+                }
+            }
+        }
+
+        .saved-replies-view {
+            flex: 100%;
+            overflow: auto;
+            padding: 10px 67px 0;
+            color: $text-color;
+            letter-spacing: 0.3px;
+        }
+
+        .saved-replies-editor {
+            flex: 100%;
+            display: flex;
+            flex-direction: column;
+            .edit-mode-panel {
+                background: #F7F9FA;
+                height: 45px;
+                line-height: 45px;
+                margin: 3px 0 10px;
+                padding: 0 10px;
+
+                .saved {
+                    padding: 0 10px;
+                    font-size: 13px;
+                    color: $text-color;
+                    &.ng-hide-remove {
+                        transition: all linear 0.5s;
+                    }
+                    &.ng-hide {
+                        opacity: 0;
+                    }
+                    i {
+                        opacity: 0.5;
+                        margin-right: 5px;
+                        font-size: 18px;
+                        vertical-align: text-bottom;
+                    }
+                }
+            }
+
+            .saved-replies-edit {
+                flex: 100%;
+                position: relative;
+                text-editor {
+                    height: 100%;
+                }
+            }
+        }
+    }
+}

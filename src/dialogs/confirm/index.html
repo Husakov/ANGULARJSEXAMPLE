@@ -1,0 +1,20 @@
+<div class="modal-header">
+    <h5 class="modal-title">{{$ctrl.options.title}}</h5>
+</div>
+<div class="modal-body p-lg">
+    <p ng-bind-html="$ctrl.options.body"></p>
+</div>
+<div class="modal-footer">
+    <button type="button"
+            class="btn p-x-md {{$ctrl.options.cancelClass}}"
+            data-dismiss="modal"
+            ng-click="$ctrl.cancel()">
+        {{$ctrl.options.cancelText}}
+    </button>
+    <button type="button"
+            class="btn p-x-md {{$ctrl.options.closeClass}}"
+            data-dismiss="modal"
+            ng-click="$ctrl.close()">
+        {{$ctrl.options.closeText}}
+    </button>
+</div>

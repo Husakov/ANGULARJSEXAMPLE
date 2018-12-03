@@ -1,0 +1,9 @@
+<div ng-style="{'text-align': $ctrl.model.align}"
+     class="mnh-m-btn-wrapper">
+    <a class="mnh-m-btn mnh-m-btn-message"
+       href="#"
+       ng-keydown="$ctrl.onKey($event)"
+       ng-focus="$ctrl.open($event)"
+       ng-click="$ctrl.open($event)"
+       ng-bind="$ctrl.model.text || 'Enter text'"></a>
+</div>

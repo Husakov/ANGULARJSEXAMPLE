@@ -1,0 +1,89 @@
+<div class="messaging">
+    <form role="form" name="messagingSettingsForm">
+        <div class="form-group">
+            <label for="template" class="form-label">Begin new messages with</label>
+            <div class="input-group">
+                <input id="template"
+                       ng-model="ctrl.model.comment_placeholder"
+                       type="text"
+                       class="form-control"
+                       maxlength="50"
+                       placeholder="Define template">
+                <span class="input-group-addon borderless" tooltip-append-to-body="true"
+                      uib-tooltip="To use recipient�s name include { { first_name | fallback: 'there'  } }.
+                       The fallback will be used if the recipient doesn�t have a name">
+                    <i class="fa fa-fw fa-question-circle"></i>
+                </span>
+            </div>
+        </div>
+
+        <hr/>
+
+        <div class="form-group">
+            <label for="recipient" class="form-label">Assign new messages to</label>
+            <div class="input-group">
+                <select id="recipient" class="form-control" ng-model="ctrl.model.default_assignee_id">
+                    <option ng-value="null"> No Body</option>
+                    <option ng-repeat="u in ctrl.assignTo"
+                            ng-value="u.id">
+                        <img class="fa-fw img-circle" ng-src="{{ u.avatar || u.icon }}"> {{ u.name }}
+                    </option>
+                </select>
+                <span class="input-group-addon borderless">
+                    <i class="fa fa-fw fa-question-circle"
+                       tooltip-append-to-body="true"
+                       uib-tooltip="The assigned user will receive emails for all new messages from users
+                       (assuming they have email enabled in their personal settings)."></i>
+                </span>
+            </div>
+            <small>When Nobody is selected, you can still choose to be notified about new messages in <a href>your
+                personal settings</a>.
+            </small>
+        </div>
+
+        <hr/>
+
+        <div class="form-group">
+            <label class="form-label">Incoming Email Address for App</label>
+            <div class="input-group">
+                <p class="form-control-static">{{ ctrl.model.incoming_email_address }}</p>
+                <span class="input-group-addon borderless">
+                    <i class="fa fa-fw fa-question-circle"
+                       tooltip-append-to-body="true"
+                       uib-tooltip="Auto-forward your support email (e.g. support@your-domain.com)
+                       to this address and use Riika as your support inbox."></i>
+                </span>
+            </div>
+        </div>
+
+        <hr/>
+
+        <div class="form-group">
+            <label class="form-label">Unsubscribe</label>
+            <div class="row">
+                <div class="checkbox">
+                    <label>
+                        <input ng-model="ctrl.model.hide_all_unsubscribe_links"
+                                  type="checkbox">
+                        <i class="dark-white"></i> Hide all unsubscribe links in auto messages
+                    </label>
+                </div>
+            </div>
+            <small>You may want to do this if you handle unsubscribes within your own app and are sending
+                this data to Riika in your users' settings. <a href>Learn more about unsubscribing</a>.
+            </small>
+        </div>
+
+        <hr/>
+
+        <div class="form-group">
+            <button type="button"
+                    class="btn btn-sm btn-primary"
+                    ng-disabled="!messagingSettingsForm.$dirty"
+                    ng-click="ctrl.updateModel()">
+                <i class="fa fa-floppy-o" aria-hidden="true"></i>
+                Save
+            </button>
+        </div>
+    </form>
+</div>

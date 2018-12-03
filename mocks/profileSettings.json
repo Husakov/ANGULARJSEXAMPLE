@@ -1,0 +1,35 @@
+{
+    "notifications":{
+        "assignedToMe":{
+            "desktop":false,
+            "email":true
+        },
+        "assignedToTeam":{
+            "email":true
+        },
+        "unassigned":{
+            "email":false
+        },
+        "assignedToOthers":{
+            "email":true
+        },
+        "mentionedMe":{
+            "email":true
+        },
+        "unassignedAlerts":{
+            "alert":true
+        },
+        "browserAlerts":{
+            "sound":true
+        },
+        "dailySingnups":{
+            "email":true,
+            "type":"users"
+        }
+    },
+    "conversation":{
+        "assignmentSettings":{
+            "type":"assignToMe"
+        }
+    }
+}

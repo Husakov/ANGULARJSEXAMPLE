@@ -1,0 +1,9 @@
+<div id="messages-details-page" class="h-100">
+    <div ui-view
+         class="h-100"
+         ng-if="!$ctrl.mediator.loading"></div>
+
+    <div ng-if="$ctrl.mediator.loading" class="h-100 flex flex-justify-center">
+        <loader></loader>
+    </div>
+</div>

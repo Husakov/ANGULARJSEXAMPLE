@@ -1,0 +1,42 @@
+<div uib-dropdown class="dropdown dropdown-hover dropdown-with-category">
+    <button class="btn btn-link dropdown-toggle" uib-dropdown-toggle>
+        {{$ctrl.selectedSegment.name || "Segments"}}
+        <span class="fa fa-chevron-down text-sm"></span>
+    </button>
+    <div class="dropdown-menu pull-left"
+         uib-dropdown-menu
+         ng-click="$event.stopPropagation()">
+
+        <div class="nav-tabs flex">
+            <a ui-sref="contacts.list.mode({mode: 'users'})"
+                ui-sref-opts="{ inherit: false }"
+                ui-sref-active="active">
+                <span class="radio-mimic"></span>
+                User
+            </a>
+            <a ui-sref="contacts.list.mode({mode: 'companies'})"
+                ui-sref-opts="{ inherit: false }"
+                ui-sref-active="active">
+                <span class="radio-mimic"></span>
+                Companies
+            </a>
+        </div>
+
+        <div class="searchbox">
+            <input type="text" class="searcher" ng-model="$ctrl.searchString" placeholder="Search for a group..." />
+            <i class="fa fa-search pointer" ng-click="$ctrl.searchByWord()"></i>
+        </div>
+        <div class="segment-list"
+             ri-scrollbar>
+            <a class="list-group-item"
+               ng-repeat="segment in $ctrl.segments | filter: {name: $ctrl.searchString} | orderBy:'id' track by segment.id"
+               ui-sref=".mode({segmentId: segment.id, predicates: null})"
+               ng-class="{'active': segment.id === $ctrl.selectedSegment.id, 'special' : segment.name === 'All Users' || segment.name === 'All Visitors'}">
+                {{ segment.name }}
+                <span class="count">({{ segment.count }})</span>
+                <i class="fa fa-check-circle"
+                   ng-if="segment.id === $ctrl.selectedSegment.id"></i>
+            </a>
+        </div>
+    </div>
+</div>

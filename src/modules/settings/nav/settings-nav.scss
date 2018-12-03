@@ -1,0 +1,90 @@
+settings-nav {
+    height: 100%;
+    width: 300px;
+    margin-bottom: 0;
+    border-right: 1px solid #F3F8F9;
+    position: relative;
+
+    .settings-list {
+        padding-top: 20px;
+        height: 100%;
+    }
+
+    .panel {
+        box-shadow: none;
+        border: none;
+        .panel-heading {
+            padding: 0;
+        }
+        .panel-title {
+            color: #AAAAAA;
+            padding: 13px 30px 15px 40px;
+            font-weight: normal;
+            position: relative;
+            font-size: 16px;
+            .toggle-icon {
+                display: none;
+                right: 30px;
+                top: 11px;
+            }
+            &:hover {
+                cursor: pointer;
+                .toggle-icon {
+                    display: block;
+                }
+            }
+            a {
+                text-decoration: none;
+            }
+        }
+
+        &.active {
+            .toggle-icon {
+                display: block;
+            }
+        }
+
+        .panel-body {
+            border-top: none !important;
+            padding: 0;
+        }
+
+        ul.settings-sections {
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            li {
+                margin-top: 0;
+                cursor: pointer;
+                &:hover {
+                    color: #2E9FEB;
+                    background: #FBFDFE;
+                    a {
+                        text-decoration: none;
+                    }
+                }
+                a {
+                    padding: 13px 30px 15px 64px;
+                    border-radius: 0;
+                    color: #AAAAAA;
+                    transition: background ease-in-out .2s;
+                    width: 100%;
+                    display: block;
+                }
+                &.active {
+                    background: #FBFDFE;
+                    a {
+                        padding: 13px 30px 15px 62px;
+                        color: #2E9FEB;
+                        font-weight: bold;
+                        border-left: 2px solid #2E9FEB;
+                        &:hover {
+                            text-decoration: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

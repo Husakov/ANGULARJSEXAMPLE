@@ -1,0 +1,35 @@
+<div uib-dropdown
+     auto-close="outsideClick"
+     is-open="$ctrl.open">
+    <span uib-dropdown-toggle class="icon">
+        GIF
+    </span>
+
+    <div class="dropdown-menu" uib-dropdown-menu>
+        <input type="text"
+               class="search"
+               placeholder="Search GIFs..."
+               ng-model="$ctrl.search"
+               ng-model-options="{debounce: 500}">
+        <div class="search-icon"></div>
+        <div class="results-wrapper" ri-scrollbar>
+            <div scroll-list="$ctrl.load(params)"
+                 helper="$ctrl.listHelper"
+                 ready="$ctrl.open"
+                 scroll-container="ri-scrollbar"
+                 class="results">
+                <div class="gif-wrapper"
+                     ng-repeat="item in $ctrl.listHelper.items">
+                    <div class="gif-container pointer"
+                         ng-click="$ctrl.select(item)"
+                         ng-style="::{'background-image': 'url(' + item.images.fixed_height.url + ')'}">
+                    </div>
+                </div>
+                <loader ng-show="$ctrl.listHelper.loading" class="w-full"></loader>
+            </div>
+        </div>
+        <div class="results-shadow">
+        </div>
+        <a class="giphy-copy" href="//giphy.com/" rel="noopener noreferrer" target="_blank"></a>
+    </div>
+</div>

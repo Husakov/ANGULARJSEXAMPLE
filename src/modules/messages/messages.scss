@@ -1,0 +1,45 @@
+#messages-container {
+    height: 100%;
+    background: $main-background-color;
+    .versions {
+        list-style: none;
+        border-bottom: 1px solid $input-border;
+        padding: 0;
+        float: right;
+        margin-bottom: 0;
+
+        > li {
+            display: inline-block;
+            padding: 0 10px;
+
+            > .pre-label {
+                font-size: 14px;
+                color: $text-color;
+                text-transform: uppercase;
+                margin: 9px 5px;
+                display: inline-block;
+                vertical-align: middle;
+                font-weight: bold;
+            }
+
+            &.active {
+                border-bottom: 2px solid $brand-primary;
+                .pre-label {
+                    color: $brand-primary;
+                }
+            }
+
+            > .fa-close {
+                background: $btn-default-bg;
+                border-radius: 30px;
+                display: inline-block;
+                width: 24px;
+                height: 24px;
+                color: $text-color;
+                text-align: center;
+                line-height: 22px;
+                cursor: pointer;
+            }
+        }
+    }
+}

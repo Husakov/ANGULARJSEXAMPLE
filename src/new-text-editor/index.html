@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" data-ng-app="riika.textEditor">
+<head>
+    <meta charset="utf-8">
+    <title>New Text Editor</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+</head>
+
+<body ng-cloak
+      class="app flex-col"
+      ng-controller="BaseController as $ctrl">
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Editor</h3>
+        <text-editor-insert-toolbar editor="$ctrl.editor"></text-editor-insert-toolbar>
+    </div>
+    <div class="panel-body">
+        <text-editor ng-model="$ctrl.model"
+                     refer="$ctrl.editor"
+                     options="::{parseVideoUrls: false}"
+                     placeholder="Please enter text">
+        </text-editor>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title clearfix">
+            Blocks
+            <span class="pull-right">
+                <button class="btn btn-default btn-sm"
+                        ng-click="$ctrl.setBlocks()">
+                    Set blocks
+                </button>
+                <button class="btn btn-default btn-sm"
+                        ng-click="$ctrl.editor.clear()">
+                    Clear
+                </button>
+            </span>
+        </h3>
+    </div>
+    <pre class="panel-body">{{$ctrl.model|json}}</pre>
+</div>
+
+</body>
+</html>

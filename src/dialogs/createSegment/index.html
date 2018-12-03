@@ -1,0 +1,74 @@
+<div class="modal-header">
+    {{$ctrl.mode === 'create' ? 'Create' : 'Update' }} segment
+    <button
+        type="button"
+        class="close"
+        ng-click="$ctrl.cancel()">
+        &times;
+    </button>
+</div>
+<div class="modal-description">
+    Edit or create a new segment
+</div>
+<div class="modal-body">
+    <div class="content">
+
+        <div class="list-option">
+            <div class="radio">
+                <label>
+                    <input type="radio"
+                           name="mode"
+                           ng-model="$ctrl.mode"
+                           value="update"/>
+                    <i class="dark-white"></i>
+                    Save changes to the segment
+                    <strong> '{{$ctrl.segment.name}}' </strong>
+                </label>
+            </div>
+        </div>
+        <div class="list-option form-inline">
+            <div class="radio-inline">
+                <label>
+                    <input type="radio"
+                           name="mode"
+                           ng-model="$ctrl.mode"
+                           value="create"/>
+                    <i class="dark-white"></i>
+                    Create new segment
+                </label>
+            </div>
+            <div class="form-group">
+                <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Enter new segment name"
+                    ng-disabled="$ctrl.mode === 'update'"
+                    ng-model="$ctrl.name"/>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button
+        class="btn btn-link btn-manage-segments pull-left"
+        type="button"
+        ng-click="$ctrl.onManageSegments()">
+        <i class="fa fa-cog" aria-hidden="true"></i>
+        Manage segments
+    </button>
+
+    <button
+        class="btn btn-sm btn-default"
+        type="button"
+        ng-click="$ctrl.cancel()">
+        Cancel
+    </button>
+
+    <button
+        class="btn btn-sm btn-primary"
+        type="button"
+        ng-disabled="$ctrl.mode === 'create' && !$ctrl.name"
+        ng-click="$ctrl.close()">
+        {{$ctrl.mode === 'create' ? 'Create' : 'Save' }} segment
+    </button>
+</div>

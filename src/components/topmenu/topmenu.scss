@@ -1,0 +1,163 @@
+topmenu {
+    transition: all 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+    height: 100%;
+    flex: 0 0 80px;
+    display: block;
+    color: rgba(255, 255, 255, 0.87);
+    z-index: 1006;
+    border-right: 1px solid #E2E0EA;
+    background: #fff;
+
+    @media(max-width: 768px) {
+        display: none;
+    }
+
+    .logo-wrap {
+        font-size: 20px;
+        color: $brand-primary;
+        cursor: pointer;
+        font-weight: bold;
+        padding: 30px 16px 20px;
+    }
+
+    .nav-light {
+        position: relative;
+        height: calc(100vh - 72px);
+        top: 0;
+
+        ul.nav {
+            li {
+                transition: all .2s ease-in;
+                width: 100%;
+                a {
+                    cursor: pointer;
+                    padding: 10px 15px 10px 27px;
+                    margin: 8px 0;
+                    text-align: left;
+                    background: transparent;
+                    &:hover {
+                        border-left: 2px solid $brand-primary;
+                        padding: 10px 15px 10px 25px;
+                    }
+                    .nav-caret {
+                        display: none;
+                    }
+                    .nav-text {
+                        transition: all .1s ease-in-out;
+                        margin-left: 10px;
+                        display: none;
+                    }
+                    .nav-icon {
+                        vertical-align: middle;
+                        width: 22px;
+                        height: 22px;
+                        display: inline-block;
+                        text-align: center;
+                        overflow: hidden;
+                    }
+                }
+                &.foldable {
+                    position: relative;
+                    .nav-sub {
+                        position: absolute;
+                        opacity: 0;
+                        right: -220px;
+                        background: #FFFFFF;
+                        box-shadow: 0 2px 10px 0 $main-shadow-color;
+                        border-radius: 8px;
+                        z-index: 999;
+                        width: 230px;
+                        top: 0;
+                        padding: 5px 0;
+                        pointer-events: none;
+                        li {
+                            padding: 4px 8px;
+                            background: none !important;
+                            &.li-header {
+                                border-bottom: 1px solid #E6E6EE;
+                                padding-bottom: 10px;
+                            }
+                            a {
+                                padding: 4px 12px;
+                                margin: 0;
+                                color: $text-color;
+                                text-decoration: none !important;
+                                width: 100%;
+                                display: block;
+                                &:hover {
+                                    border-left: none;
+                                    background: $main-background-color;
+                                    border-radius: 6px;
+                                }
+                                > span {
+                                    display: inline;
+                                    &.nav-text {
+                                        font-size: 14px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    &:hover {
+                        & > .nav-sub {
+                            pointer-events: initial;
+                            animation: .2s fadeInDown;
+                            list-style: none;
+                            animation-fill-mode: forwards;
+                        }
+                    }
+                }
+
+                &.selected {
+                    a {
+                        border-left: 2px solid $brand-primary;
+                        padding: 10px 15px 10px 25px;
+                    }
+
+                    .nav-sub a {
+                        border-left: none;
+                    }
+                }
+
+                &.topmenu-avatar {
+                    position: absolute;
+                    bottom: 0;
+                    .selected a {
+                        border-left: 0;
+                    }
+                    a {
+                        padding: 10px 15px 10px 23px;
+                        &:hover {
+                            border-left: none;
+                        }
+                    }
+                    & > .nav-sub {
+                        bottom: 20px;
+                        top: initial;
+                        .nav-sub {
+                            bottom: 0px;
+                            top: initial;
+                        }
+                    }
+                    .toggle-status {
+                        margin-top: -2px;
+                    }
+                }
+            }
+        }
+    }
+
+    &.opened {
+        flex: 0 0 210px;
+        .nav-light {
+            ul.nav {
+                a {
+                    width: 210px;
+                }
+                .nav-text {
+                    display: inline-block;
+                }
+            }
+        }
+    }
+}

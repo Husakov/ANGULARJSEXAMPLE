@@ -1,0 +1,48 @@
+<div class="modal-header">
+    <button type="button"
+            class="btn close"
+            ng-click="$ctrl.cancel()">
+        <span>&times;</span>
+    </button>
+    <span ng-if="::$ctrl.isNew">
+        Create team
+    </span>
+    <span ng-if="::!$ctrl.isNew">
+        Edit team
+    </span>
+</div>
+<div class="modal-body">
+    <form role="form" name="saveTeamForm">
+        <div class="form-inline">
+            <div class="input-group">
+                <div class="input-group-btn emoj-dropdown">
+                    <emoj-dropdown ng-model="$ctrl.team.avatar_emoji"
+                                   is-model="true"></emoj-dropdown>
+                </div>
+                <input ng-model="$ctrl.team.name"
+                       type="text"
+                       class="form-control"
+                       maxlength="50"
+                       placeholder="Team name"
+                       required>
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default"
+                    ng-click="$ctrl.cancel()">
+                Cancel
+            </button>
+            <button type="button" class="btn btn-primary"
+                    ng-disabled="!saveTeamForm.$valid"
+                    ng-click="$ctrl.saveTeam()">
+                <span ng-if="::$ctrl.isNew">
+                    Create
+                </span>
+                <span ng-if="::!$ctrl.isNew">
+                    Save
+                </span>
+            </button>
+        </div>
+    </form>
+</div>

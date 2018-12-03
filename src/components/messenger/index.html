@@ -1,0 +1,27 @@
+<div class="messages-container">
+    <div class="messages"
+         ri-scrollbar
+         scroll-fix>
+        <div ng-repeat="(timeStampBlock, groupedMessages) in $ctrl.messages | groupBy : 'created_at_block'">
+            <div class="flex flex-justify-center">
+                <span class="message-date-stamp">{{timeStampBlock}}</span>
+            </div>
+
+            <messenger-message message="message"
+                               ng-repeat="message in groupedMessages"
+                               ng-class="{'text-right': !!message.user}">
+            </messenger-message>
+        </div>
+
+        <messenger-message ng-repeat="typing in $ctrl.typing"
+                           typing="::typing"
+                           ng-class="::{'text-right': !!typing.user}">
+        </messenger-message>
+    </div>
+</div>
+
+<div class="loader-wrapper" ng-if="$ctrl.loading">
+    <loader></loader>
+</div>
+
+<reply></reply>

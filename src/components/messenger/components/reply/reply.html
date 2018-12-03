@@ -1,0 +1,46 @@
+<div recompile>
+    <div class="attachments-box clearfix">
+
+    </div>
+
+    <div class="insert-box dropup">
+        <text-editor-insert-toolbar editor="$ctrl.editor"
+                                    exclude="['video']"
+                                    class="inline">
+        </text-editor-insert-toolbar>
+
+        <button class="btn btn-icon btn-sm note-switch"
+                ng-if="::!$root.STAGE_OR_PROD"
+                ng-class="{'note-active': $ctrl.isNote}"
+                ng-click="$ctrl.switchNote()">
+            <i class="fa fa-files-o" aria-hidden="true"></i>
+        </button>
+    </div>
+    <div class="box-body text-box-wrapper">
+        <div class="form-control text-box text-box--reply"
+             ng-click="$ctrl.showSendButton = true"
+             click-outside="$ctrl.showSendButton = false"
+             ng-class="{'note-bg':$ctrl.isNote}">
+            <div class="text-editor">
+                <text-editor ng-model="$ctrl.blocks"
+                             ng-if="!$ctrl.isNote"
+                             placeholder="Send message…"
+                             refer="$ctrl.editor"
+                             on-keypress="$ctrl.onKeypress($event)"
+                             options="::{parseVideoUrls: true, newLineOnEnter: false, saveStateId: 'reply-text' + $ctrl.messenger.conversationId}"></text-editor>
+                <text-editor ng-model="$ctrl.blocks"
+                             ng-if="$ctrl.isNote"
+                             placeholder="@mention your teammates in notes and they will be notified by email"
+                             refer="$ctrl.editor"
+                             options="::{parseVideoUrls: true, newLineOnEnter: false, saveStateId: 'reply-note' + $ctrl.messenger.conversationId}"></text-editor>
+
+                <button class="btn btn-sm send-button btn-primary ng-animate-disabled"
+                        ng-click="$ctrl.send()"
+                        ng-class="{'disabled':!$ctrl.canSend()}"
+                        ng-show="$ctrl.blocks.length || $ctrl.showSendButton">
+                    Send
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,58 @@
+.uib-accordion-dark {
+    .panel-group {
+        .panel {
+            box-shadow: none;
+            .panel-heading {
+                padding: 0;
+                background: $dark-theme-bg;
+                .panel-title {
+                    font-size: $font-size-base;
+                    a {
+                        padding: 10px 12px;
+                        width: 100%;
+                        display: block;
+                    }
+                }
+                &:hover {
+                    background: $dark-theme-bg-hover;
+                }
+                .switch-icon {
+                    margin-top: 3px;
+                    font-size: 75%;
+                }
+                .status-icon {
+                    width: 9px;
+                    height: 9px;
+                    border-radius: 50%;
+                    display: block;
+                    background: #9F9EAF;
+                    margin-right: 5px;
+                    margin-top: 5px;
+                    &.enabled {
+                        background: #39B54A;
+                    }
+                }
+            }
+            .panel-body {
+                padding: 10px 14px;
+                border-top: none;
+                background: $dark-theme-bg;
+                .form-control {
+                    padding: 10px 12px;
+                    border: 1px solid $text-color;
+                }
+                users-filter {
+                    .form-control {
+                        border: none;
+                    }
+                }
+                .messages-filter-panel {
+                    box-shadow: 0 2px 40px 0 $main-shadow-color;
+                }
+            }
+            &.active .panel-heading {
+                background: $dark-theme-bg-hover;
+            }
+        }
+    }
+}

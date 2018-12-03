@@ -1,0 +1,23 @@
+[ri-draggable],
+ri-draggable {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+
+    .ri-draggable-pointer {
+        display: inline-block;
+        height: 30px;
+        text-align: center;
+        line-height: 30px;
+        cursor: move;
+        color: $brand-primary;
+        border-right: 1px dashed $brand-primary;
+        margin-left: 6px;
+        padding-right: 12px;
+        &.ri-draggable-icon:after {
+            font-family: FontAwesome;
+            content: '\f0c9'
+        }
+    }
+}

@@ -1,0 +1,9 @@
+<span class="text-xs">
+        Created
+    <span ng-if="el.created_by">
+        by
+        <avatar item="el.created_by" size="20"></avatar>
+    </span>
+
+    <span am-time-ago="el.created_at"></span>
+</span>

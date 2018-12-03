@@ -1,0 +1,58 @@
+<div class="widget flex flex-col">
+    <div class="widget-header flex" ng-style="{'background-color': ctrl.model.base_color}">
+        <div class="icon">
+            <i class="fa fa-angle-left" aria-hidden="true"></i>
+        </div>
+        <div class="info">
+            <img class="avatar"
+                 src="../assets/images/avatar.png">
+            <div class="user-name">
+                {{::ctrl.fakeUserName}}<br/>
+                <span class="activity">Active in the last 30m</span>
+            </div>
+        </div>
+    </div>
+    <div class="widget-body"
+         ng-style="ctrl.getWallpaper() && {'background-image': 'url(' + ctrl.getWallpaper() + ')'}">
+
+        <div class="message-date">
+            December 1
+        </div>
+
+        <div class="message-body flex">
+            <img class="avatar"
+                 src="../assets/images/avatar.png">
+            <div class="content">
+                Hi there,<br/><br/>
+                I'd love to show you our new on-boarding feature. Ready?
+            </div>
+        </div>
+
+        <div class="message-date">
+            December 2
+        </div>
+
+        <div class="message-body">
+            <div class="content right"
+                 ng-style="{'background-color': ctrl.model.base_color}">
+                Yes, please!
+            </div>
+            <div class="time">
+                Just now. Seen
+            </div>
+        </div>
+
+        <div ng-if="ctrl.model.show_powered_by" class="show-link-meassage">
+            We run on Riika
+        </div>
+    </div>
+    <div class="widget-footer">
+        Write a reply...
+        <i class="fa fa-paperclip icon"></i>
+        <i class="fa fa-smile-o icon"></i>
+    </div>
+</div>
+
+<div ng-if="!device && (ctrl.model.messenger_enabled_for_users || ctrl.model.messenger_enabled_for_visitors)"
+     class="widget-notification" ng-style="{'background-color': ctrl.model.base_color}">
+</div>

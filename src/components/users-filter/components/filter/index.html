@@ -1,0 +1,59 @@
+<div class="header filter-row flex-row flex-align-center"
+     ng-hide="$ctrl.limit && $ctrl.limit <= $ctrl.predicates.length">
+    <div class="uf-left flex-auto" ng-transclude="left"></div>
+
+    <div class="uf-icon flex-auto">
+        <i class="fa fa-plus search-icon"></i>
+    </div>
+
+    <users-filter-search class="flex-auto"
+                         attribute-categories="$ctrl.attributesCategories"
+                         on-select="$ctrl.addAttribute($attribute)">
+    </users-filter-search>
+
+    <div class="flex-auto uf-control" ng-transclude="right"></div>
+</div>
+
+<div class="attribute-list"
+     ri-scrollbar>
+    <users-filter-predicate ng-if="!$ctrl.hideMode && $ctrl.modePredicate.active"
+                            class="filter-row flex-row flex-align-center"
+                            predicate="$ctrl.modePredicate"
+                            disabled="$ctrl.fixedMode"
+                            attribute="$ctrl.predicatesHelper.modeAttribute">
+    </users-filter-predicate>
+    <div dnd-list="$ctrl.predicates">
+        <div class="dndPlaceholder filter-row"></div>
+
+        <div ng-repeat="item in $ctrl.predicates">
+            <users-filter-predicate ng-if="!item.predicates"
+                                    ng-class="{'not-valid' : !$ctrl.isValidPredicate(item)}"
+                                    class="filter-row flex-row flex-align-center"
+                                    predicate="item"
+                                    dnd-draggable="item"
+                                    dnd-effect-allowed="move"
+                                    dnd-moved="$ctrl.predicates.splice($index, 1)"
+                                    is-or-rule="::false"
+                                    toggle-predicates-rule="$ctrl.togglePredicatesRule(item)"
+                                    attribute="$ctrl.getPredicateAttribute(item)">
+            </users-filter-predicate>
+            <div ng-if="item.predicates"
+                 class="or-container"
+                 dnd-list="item.predicates">
+                <div class="dndPlaceholder filter-row"></div>
+                <users-filter-predicate ng-repeat="cItem in item.predicates"
+                                        ng-class="{'not-valid' : !$ctrl.isValidPredicate(cItem)}"
+                                        class="filter-row flex-row flex-align-center"
+                                        predicate="cItem"
+                                        dnd-draggable="cItem"
+                                        dnd-effect-allowed="move"
+                                        dnd-moved="item.predicates.splice($index, 1)"
+                                        is-or-rule="$index !== 0"
+                                        toggle-predicates-rule="$ctrl.togglePredicatesRule(cItem)"
+                                        attribute="$ctrl.getPredicateAttribute(cItem)">
+                </users-filter-predicate>
+            </div>
+        </div>
+
+    </div>
+</div>

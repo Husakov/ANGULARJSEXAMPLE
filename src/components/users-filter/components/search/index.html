@@ -1,0 +1,40 @@
+<input ng-model="$ctrl.searchWord"
+       type="text"
+       class="form-control"
+       ng-focus="$ctrl.toggle(true)"
+       placeholder="Search for an attribute...">
+
+<div class="dropdown-menu attribute-dropdown flex-col"
+     ng-show="$ctrl.isOpen">
+    <div uib-dropdown
+         class="select-attribute-type flex-auto">
+        <button class="btn btn-link dropdown-toggle"
+                uib-dropdown-toggle>
+            {{ $ctrl.category.title || 'Loading...' }}
+            <span class="caret pull-right"></span>
+        </button>
+        <ul class="dropdown-menu"
+            uib-dropdown-menu>
+            <li ng-repeat="(key, value) in $ctrl.attributeCategories track by key"
+                ng-click="$ctrl.selectCategory(value)">
+                {{ value.title }}
+            </li>
+        </ul>
+    </div>
+
+
+    <div class="attribute-list"
+         keys-navigation="$ctrl.isOpen"
+         ri-scrollbar>
+        <div class="list-group-item keys-navigation"
+             ng-repeat="item in $ctrl.category.attributes | filter:$ctrl.attributesFilter | filter: { title: $ctrl.searchWord } track by item.id"
+             ng-click="$ctrl.select(item)">
+            <i class="fa fa-fw fa-{{item.icon}}"></i>
+            {{ item.title || item.name }}
+        </div>
+        <div ng-hide="$ctrl.category.attributes.length"
+             class="list-group-item">
+            NO ATTRIBUTES
+        </div>
+    </div>
+</div>

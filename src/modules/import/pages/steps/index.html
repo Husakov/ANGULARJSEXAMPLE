@@ -1,0 +1,10 @@
+<div id="import-steps">
+    <button class="btn btn-link back-button"
+            ng-click="$ctrl.cancel()">
+        <i class="fa fa-times"></i>
+    </button>
+    <div class="content">
+        <import-steps-manager steps="$ctrl.import.steps"
+                              done="$ctrl.done($model)"></import-steps-manager>
+    </div>
+</div>

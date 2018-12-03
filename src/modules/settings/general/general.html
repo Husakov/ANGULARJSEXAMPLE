@@ -1,0 +1,129 @@
+<div class="s-body-containter-box">
+    <form role="form" name="generalAppForm">
+        <div class="form-group">
+            <label for="appName"
+                   class="form-label">Name of your App</label>
+            <div class="form-inline">
+                <input id="appName"
+                       ng-model="ctrl.model.app_name"
+                       type="text"
+                       class="form-control"
+                       maxlength="50"
+                       placeholder="Enter App name"
+                       required>
+            </div>
+        </div>
+        <hr/>
+        <div class="form-group">
+            <label for="timeZone" class="form-label">Time zone</label>
+            <div class="form-inline">
+                <select id="timeZone" class="form-control" ng-model="ctrl.model.time_zone_name">
+                    <option ng-repeat="zone in ctrl.timeZones"
+                            value="{{::zone.name}}">
+                        ({{ ::zone.offset }}) {{ ::zone.name }}
+                    </option>
+                </select>
+            </div>
+        </div>
+        <hr/>
+        <div class="form-group">
+            <label class="form-label">Teammate Authentication</label>
+            <div class="radio">
+                <label>
+                    <input ng-model="ctrl.teammateAuthenticationGetterSetter"
+                           ng-model-options="{ getterSetter: true }"
+                           type="radio"
+                           ng-value="1">
+                    <i></i>
+                    Require Google sign on for everyone
+                    <small class="description">
+                        Sign in using your Google domain. This can lock teammates out of Riika
+                        if they don't use Google.
+                    </small>
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input ng-model="ctrl.teammateAuthenticationGetterSetter"
+                           ng-model-options="{ getterSetter: true }"
+                           type="radio"
+                           ng-value="2">
+                    <i></i>
+                    Require two-factor authentication (2FA) or Google sign on
+                    <small class="description">
+                        Advise teammates to set up 2FA if you choose this option.
+                    </small>
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input ng-model="ctrl.teammateAuthenticationGetterSetter"
+                           ng-model-options="{ getterSetter: true }"
+                           type="radio"
+                           ng-value="0">
+                    <i></i>
+                    Allow all authentication methods
+                </label>
+            </div>
+        </div>
+        <hr/>
+        <div class="form-group">
+            <label class="form-label">Gather social data about your users</label>
+            <div class="checkbox">
+                <label>
+                    <input ng-model="ctrl.model.should_gather_social_data" type="checkbox">
+                    <i></i>
+                    Gather social profiles (e.g. Linkedin, Twitter, etc) for my users via a third party
+                </label>
+            </div>
+        </div>
+        <hr/>
+
+        <div class="form-group">
+            <label class="form-label">Companies</label>
+            <div class="checkbox">
+                <label>
+                    <input ng-model="ctrl.model.companies_enabled" type="checkbox">
+                    <i></i>
+                    Enable company related features throughout Riika (company profiles, company lists, etc)
+                </label>
+            </div>
+        </div>
+        <hr/>
+
+        <div class="form-group">
+            <label class="form-label">Test version</label>
+            <div class="checkbox">
+                <label>
+                    <input ng-model="ctrl.model.uses_test_app" type="checkbox">
+                    <i></i>
+                    Enable a test version of Riika for your non-production environments
+                </label>
+            </div>
+        </div>
+        <hr/>
+
+        <div class="form-group">
+            <button type="button"
+                    class="btn btn-sm btn-primary"
+                    ng-disabled="!generalAppForm.$dirty || !generalAppForm.$valid"
+                    ng-click="ctrl.updateAppDetails()">
+                Save & Close
+                <i class="fa fa-floppy-o" aria-hidden="true"></i>
+            </button>
+        </div>
+
+        <hr>
+
+        <div class="form-group">
+            <label class="form-label">Extreme measures</label>
+            <div>
+                <button type="button"
+                        class="btn btn-danger"
+                        ng-click="ctrl.deleteApp()">
+                    Delete this App
+                </button>
+            </div>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,106 @@
+$collapsible-color: #f0f4f7;
+$collapse-hover-color: #f0f4f7;
+
+#integrations {
+
+    .generic-logo {
+        background-image: url('assets/images/generic.png');
+    }
+    .stripe-logo {
+        background-image: url('assets/images/stripe.png');
+    }
+    .facebook-logo {
+        background-image: url('assets/images/facebook.png');
+    }
+    .mailchimp-logo {
+        background-image: url('assets/images/mailchimp.png');
+    }
+    .twitter-logo {
+        background-image: url('assets/images/twitter.png');
+    }
+    .sparkpost-logo {
+        background-image: url('assets/images/sparkpost.png');
+    }
+
+    a {
+        color: #545369;
+        cursor: pointer;
+        .underlined {
+            text-decoration: underline;
+        }
+    }
+
+    h2 {
+        font-size: 21px;
+    }
+
+    h3 {
+        font-size: 16px;
+        padding: 0;
+        margin: 0;
+    }
+
+    &.app-sub-header {
+        span.h2 {
+            line-height: 36px;
+        }
+    }
+
+    .row-body {
+        @media only screen and (min-width: 768px) {
+            padding-left: 1.8rem;
+            padding-right: 1.8rem;
+        }
+
+        .inner {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+    }
+
+    .box {
+        box-shadow: 0 0px 1px rgba(0, 0, 0, 0.15);
+    }
+
+    .box-header {
+        padding: 30px;
+
+        &.collapsed {
+            background: $collapsible-color;
+        }
+    }
+
+    .box-body {
+        padding: 20px;
+    }
+
+    .collapsable .box-header {
+        &:hover {
+            background: $collapse-hover-color;
+        }
+
+        &.collapsed:hover {
+            background: $collapsible-color;
+        }
+    }
+
+    .collapse.panel-collapse {
+        background: $collapsible-color;
+        border-top: none;
+    }
+
+    .logo {
+        display: inline-block;
+        outline: 0;
+        background-size: cover;
+        width: 48px;
+        height: 48px;
+    }
+    .blurb-icon {
+        position: absolute;
+        color: #0288d1;
+    }
+    .blurb-text {
+        margin-left: 70px;
+    }
+}

@@ -1,0 +1,18 @@
+<div class="text-center"
+     ng-if="!$ctrl.loading">
+    <div class="title">PREVIEW</div>
+    <div class="user-preview">
+        <div ng-repeat="user in $ctrl.users | limitTo: $ctrl.limitTo">
+            <avatar item="::user" size="28" uib-tooltip="{{::user.name}}"></avatar>
+        </div>
+    </div>
+    <div class="users-total clearfix">
+        <span class="count" ng-bind="$ctrl.totalCount || 0"></span>
+        users
+    </div>
+</div>
+
+<div class="text-center"
+     ng-if="$ctrl.loading">
+    <loader></loader>
+</div>

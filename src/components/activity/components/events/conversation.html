@@ -1,0 +1,75 @@
+<div class="panel-body"
+     ng-class="{'with-details' : $ctrl.event.message}"
+     ng-click="showDetails = !showDetails">
+    <div class="flex-row flex-align-top">
+        <div class="user-information flex-auto">
+            <a ui-sref="contacts.details({mode: 'admins', id: $ctrl.event.author_id})"
+               ng-click="$event.stopPropagation()"
+               ng-bind="::$ctrl.event.author.name">
+            </a>
+            <span ng-switch="::$ctrl.event.event_action">
+                <span ng-switch-when="comment_created">replied to a</span>
+                <span ng-switch-when="opened">re-opened a</span>
+                <span ng-switch-when="closed">closed a</span>
+                <span ng-switch-when="assigned">was assigned to a</span>
+                <span ng-switch-when="conversation_created">created a</span>
+                <span ng-switch-when="note_created">added an</span>
+                <span ng-switch-default="">{{::$ctrl.event.event_action}}</span>
+            </span>
+
+            <span ng-switch="::$ctrl.event.event_action">
+                <span ng-switch-when="note_created">
+                    <a class="blue-txt"
+                       ng-click="$event.stopPropagation()"
+                       ui-sref="messages.inbox.conversation({identifier: '{{$ctrl.event.conversation.id}}', id: '{{$ctrl.event.conversation.id}}' })">
+                        internal note
+                    </a>
+                    for
+                </span>
+                <span ng-switch-default="">
+                    <a class="blue-txt"
+                       ng-click="$event.stopPropagation()"
+                       ui-sref="messages.inbox.conversation({identifier: '{{$ctrl.event.conversation.id}}', id: '{{$ctrl.event.conversation.id}}' })">
+                        conversation
+                    </a>
+                    with
+                </span>
+            </span>
+
+            <a class="blue-txt"
+               ng-click="$event.stopPropagation()"
+               ui-sref="contacts.details({mode: 'users', id: '{{$ctrl.user.id}}' })"
+               ng-bind="::$ctrl.user.name">
+            </a>
+
+            <span ng-if="$ctrl.event.mentioned_admins">
+                and mention
+                <div class="inline"
+                     ng-repeat="admin in $ctrl.event.mentioned_admins_profile">
+                    <span ng-if="!$first">, </span>
+                    <a class="blue-txt"
+                       ui-sref="contacts.details({mode: 'admins', id: '{{admin.id}}' })"
+                       ng-bind="::admin.name">
+                    </a>
+                </div>
+            </span>
+        </div>
+        <div class="flex-auto text-right time-ago">
+            <span am-time-ago="::$ctrl.event.created_at"
+                  uib-tooltip="{{::$ctrl.event.created_at | date:'HH:mm a on d, MMM yyyy'}}"
+                  tooltip-class="tooltip-top activity-tooltip-event"
+                  tooltip-placement="top-right"
+                  tooltip-append-to-body="true"></span>
+        </div>
+    </div>
+    <div class="description"
+         ng-if="showDetails && $ctrl.event.message">
+        <span ng-repeat="block in $ctrl.event.message.blocks"
+              ng-switch="block.type">
+            <img ng-switch-when="image"
+                 src="{{::block.url}}" />
+            <span ng-switch-default=""
+                  ng-bind="block.text | removeHtmlTags | limitWithDots: 180"></span>
+        </span>
+    </div>
+</div>

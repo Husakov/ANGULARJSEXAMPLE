@@ -1,0 +1,172 @@
+contacts-details {
+    width: 350px;
+    border-right: 1px solid #ECECF2;
+    position: relative;
+
+    .detail-container {
+        padding-top: 10px;
+        height: 100%;
+        background: $main-background-color;
+
+        .panel-group {
+            margin-bottom: 0;
+        }
+        .panel {
+            box-shadow: none;
+            border: none;
+            background: none;
+            & + .panel {
+                margin-top: 0 !important;
+            }
+        }
+        .panel-heading {
+            padding: 0;
+            border-bottom: none;
+        }
+
+        .accordion-panel {
+            .panel-title {
+                padding: 0;
+                margin: 0;
+                font-size: inherit;
+                a {
+                    color: $text-color;
+                    font-weight: normal;
+                    padding-top: 15px;
+                    padding-bottom: 15px;
+                    padding-left: 20px;
+                    position: relative;
+                    width: 100%;
+                    display: block;
+                    text-decoration: none;
+                }
+                .fa {
+                    color: #46A2E8;
+                    margin-right: 10px;
+                }
+                .toggle-icon {
+                    right: 20px;
+                    top: 14px;
+                    display: none;
+                }
+                &:hover {
+                    cursor: pointer;
+                    .toggle-icon {
+                        display: block;
+                    }
+                }
+
+                .hidden-items {
+                    padding: 0 3px;
+                    line-height: 1;
+                }
+
+            }
+        }
+
+        .panel-body {
+            background: #fff;
+            padding: 0;
+            border-top: none !important;
+            .detail-item {
+                color: $text-color;
+                padding: 15px 15px 15px 20px;
+                .prop-name {
+                    min-width: 100px;
+                    max-width: 200px;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+
+                .prop-value {
+                    padding-left: 10px;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    .editable-value {
+                        color: #46A2E8;
+                    }
+                }
+
+                a {
+                    color: $text-color;
+                    text-decoration: none;
+                }
+                .fa {
+                    color: #46A2E8;
+                    margin-right: 5px;
+                }
+                .label {
+                    margin-right: 5px;
+                    background: #FFFFFF;
+                    box-shadow: 0 0 5px 0 $main-shadow-color;
+                    color: $text-color;
+                    letter-spacing: 0.34px;
+                    border-radius: 30px;
+                    font-weight: normal;
+                    clear: both;
+                    float: left;
+                    margin-bottom: 8px;
+                    &.last {
+                        margin-bottom: 0;
+                    }
+                    .fa {
+                        color: $text-color;
+                    }
+                }
+
+                &.visibility-property-container {
+                    padding-top: 0px;
+
+                    .btn-add {
+                        margin: 5px 0;
+                        color: $brand-primary;
+                    }
+
+                    .visibility-title {
+                        color: $text-color;
+                        margin: 5px 0;
+                        padding: 6px 1px;
+                        display: inline-block;
+                    }
+
+                    .icon-control {
+                        margin-top: 14px;
+
+                        &.visibility-off {
+                            color: #CECED6;
+                        }
+                    }
+
+                    .visibility-property {
+                        .panel-heading {
+                            margin: 0 -20px 10px -15px;
+                            padding: 5px 15px;
+                            font-size: 12px;
+                            text-transform: uppercase;
+                            &:not(:first-child) {
+                                margin-top: 5px;
+                            }
+                        }
+                        .panel-body {
+                            .icon-control {
+                                margin-top: 4px;
+                            }
+                            span {
+                                margin-bottom: 5px;
+                                padding-left: 11px;
+                            }
+                        }
+                    }
+                }
+            }
+
+        }
+    }
+
+    loader {
+        top: 50%;
+        position: absolute;
+        left: 50%;
+        margin-left: -16px;
+    }
+}

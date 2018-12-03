@@ -1,0 +1,39 @@
+<div class="checkbox-inline"
+     ng-click="$event.stopPropagation();">
+    <label>
+        <input type="checkbox"
+               ng-click="$ctrl.listHelper.checkAll()"
+               ng-checked="$ctrl.listHelper.checkedItems.length == $ctrl.listHelper.total_count"
+               ng-disabled="$ctrl.listHelper.checkedItems.length == $ctrl.listHelper.total_count">
+        <i class="dark-white"></i>
+    </label>
+</div>
+<span ng-if="$ctrl.listHelper.hasChecked">
+    <strong>
+        {{$ctrl.listHelper.checkedItems.length}}
+    </strong>
+    selected
+    <a class="fa fa-times-circle"
+       uib-tooltip="Clear selection"
+       tooltip-append-to-body="true"
+       ng-click="$ctrl.listHelper.clearSelection()"></a>
+</span>
+<span>
+    {{$ctrl.listHelper.total_count}} users
+</span>
+
+<div class="btn-group dropdown pull-right" uib-dropdown>
+    <button class="btn btn-link" uib-dropdown-toggle>
+        {{$ctrl.listHelper.sortingBy ? $ctrl.getCurrentSortingName($ctrl.listHelper.sortingBy).name : 'Order by'}}
+        <i class="fa fa-chevron-down text-sm"></i>
+    </button>
+    <ul class="dropdown-menu" uib-dropdown-menu>
+        <li ng-repeat="field in $ctrl.sortingFields">
+            <a ng-click="$ctrl.listHelper.sortingBy = field.alias"
+               ng-class="{'active': $ctrl.listHelper.sortingBy == field.alias}">
+                <i class="fa fa-sort-amount-asc fa-fw"></i>
+                {{field.name}}
+            </a>
+        </li>
+    </ul>
+</div>

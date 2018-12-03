@@ -1,0 +1,32 @@
+<div class="list-item message-notification-type" ng-class="::$ctrl.message._wrappers">
+    <div class="list-right" ng-if="::$ctrl.message.admin">
+        <avatar item="::$ctrl.message.admin" size="32"></avatar>
+    </div>
+
+    <div class="list-body">
+        <div class="box-body text-left">
+            <div ng-include="'${require(`../templates/message-dropdown-actions.html`)}'"></div>
+
+            <div ng-bind-html="::$ctrl.body"
+                 class="message-content">
+            </div>
+            <div ng-if="::$ctrl.hasAttachment()"
+                 class="message-content"
+                 ng-include="::$ctrl.templates.attachment"
+                 ng-repeat="file in ::$ctrl.message.uploads">
+            </div>
+
+            <div ng-include="'${require(`../templates/message-tags.html`)}'"></div>
+        </div>
+
+        <span class="text-muted message-info">
+            Internal note
+            added.
+            <span uib-tooltip="{{::$ctrl.message.created_at | date:'medium'}}"
+                  tooltip-append-to-body="true"
+                  tooltip-class="tooltip-top">
+                {{ ::$ctrl.message.created_at | amTimeAgo }}
+            </span>
+        </span>
+    </div>
+</div>

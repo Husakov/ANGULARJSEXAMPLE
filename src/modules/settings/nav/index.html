@@ -1,0 +1,28 @@
+<div class="settings-list"
+     ri-scrollbar>
+    <uib-accordion>
+        <div uib-accordion-group
+             ng-repeat="category in ctrl.categories"
+             is-open="category.active"
+             ng-click="ctrl.setActiveCategory(category)"
+             ng-if="::!category.hidden"
+             open-class="active">
+
+            <uib-accordion-heading>
+                {{::category.name}}
+                <i class="toggle-icon"
+                     ng-class="{'open-icon': !category.active}"></i>
+            </uib-accordion-heading>
+
+            <ul class="settings-sections">
+                <li ng-repeat="section in ctrl.sections | filter: { category: category.alias }"
+                    ng-class="{'active': ctrl.sectionIsActive(section)}"
+                    ng-if="::!section.hidden">
+                    <a ui-sref=".{{section.alias}}">
+                        {{::section.name}}
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </uib-accordion>
+</div>

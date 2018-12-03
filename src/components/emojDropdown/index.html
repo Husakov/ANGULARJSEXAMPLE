@@ -1,0 +1,38 @@
+<div uib-dropdown
+     auto-close="outsideClick"
+     is-open="$ctrl.isOpen">
+    <span uib-dropdown-toggle class="icon" ng-disabled="$ctrl.isDisabled">
+        <span ng-if="::$ctrl.isModel" class="btn btn-default form-control text-md">
+            <span>{{ $ctrl.model }}</span>
+            <i class="fa fa-fw fa-caret-down"></i>
+        </span>
+        <span ng-if="::!$ctrl.isModel">
+            <i class="fa fa-smile-o" aria-hidden="true"></i>
+        </span>
+    </span>
+
+    <div class="dropdown-menu" uib-dropdown-menu>
+        <input type="text"
+               class="no-border search"
+               placeholder="Search emojis..."
+               ng-model="$ctrl.search"
+               ng-model-options="{debounce: 500}">
+        <div class="search-icon"></div>
+        <div class="results" ri-scrollbar ng-if="$ctrl.isOpen">
+            <div ng-repeat="category in $ctrl.emojis" class="category">
+                <div class="title">
+                    {{ ::category.title }}
+                </div>
+                <div class="emotions">
+                    <span class="emotion"
+                         ng-repeat="emotion in ::category.list"
+                         ng-click="$ctrl.onSelectEmotion(emotion[0])"
+                         ng-bind-html="::emotion[0] | emojis:24">
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="results-shadow">
+        </div>
+    </div>
+</div>

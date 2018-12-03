@@ -1,0 +1,13 @@
+#messages-list-page {
+    padding: 45px 45px 0 45px;
+    table {
+        th, td {
+            &.version-column {
+                width: 110px;
+            }
+            &.from-column {
+                width: 140px;
+            }
+        }
+    }
+}

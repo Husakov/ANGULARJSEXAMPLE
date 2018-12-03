@@ -1,0 +1,76 @@
+<div class="row team-intro">
+    <div class="col-sm-5">
+        <!-- Language select -->
+        <div class="row">
+            <div class="form-group col-sm-12">
+                <label for="defaultLanguage" class="form-label">Choose a Default language</label>
+                <select id="defaultLanguage"
+                        class="form-control"
+                        ng-model="ctrl.defaultsCode"
+                        ng-change="ctrl.checkDefaultLang(ctrl.defLang, ctrl.defaultsCode)"
+                        ng-click="ctrl.defLang = ctrl.defaultsCode"
+                        ng-options="language.locale_id as language.name for language in ctrl.available_locales">
+                </select>
+            </div>
+            <div class="form-group col-sm-12">
+                <textarea ng-model="ctrl.defLangObject.user_welcome_message"
+                          class="form-control"
+                          maxlength="200"></textarea>
+                <div ng-if="!ctrl.defLangObject.user_welcome_message.length || ctrl.defLangObject.user_welcome_message.length <= 160"
+                     class="help-block">
+                    {{160 - ctrl.defLangObject.user_welcome_message.length}} characters remaining
+                </div>
+            </div>
+        </div>
+        <!-- Add more languages -->
+        <div class="form-group tab-ti-other-language">
+            <label class="form-label">Add multiple languages</label>
+        </div>
+        <div ng-repeat="other in ctrl.otherLangs track by $index">
+            <div class="form-group">
+                <div class="input-group">
+                    <select id="otherLanguage{{ $index }}"
+                            class="form-control"
+                            ng-model="other.locale_id"
+                            ng-change="ctrl.checkOtherLang(currentLang, other.locale_id, $index)"
+                            ng-click="currentLang = ctrl.otherLangs[$index].locale_id"
+                            ng-options="language.locale_id as language.name for language in ctrl.available_locales">
+                    </select>
+                    <div class="input-group-btn">
+                        <button ng-disabled="!other.locale_id"
+                                class="btn btn-default"
+                                ng-click="ctrl.makeDefault($index, other.locale_id)">
+                            Make default
+                        </button>
+                        <button class="btn btn-default"
+                                ng-click="ctrl.removeOtherLanguage($index)">
+                            <i class="fa fa-fw fa-times-circle"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <textarea ng-model="other.user_welcome_message"
+                          class="form-control"
+                          maxlength="200"></textarea>
+                <div ng-if="!other.user_welcome_message.length || other.user_welcome_message.length <= 160"
+                     class="help-block">
+                    {{160 - other.user_welcome_message.length}} characters remaining
+                </div>
+            </div>
+            <hr ng-if="!$last" />
+        </div>
+        <div class="form-group">
+            <button type="button"
+                    class="btn btn-primary"
+                    ng-click="ctrl.addOtherLanguage()">
+                <i class="fa fa-language" aria-hidden="true"></i>
+                Add other language
+            </button>
+        </div>
+    </div>
+
+    <div class="col-sm-7 preview">
+        <div class="preview preview-img-msg-settings-tab preview-img-team-intro"></div>
+    </div>
+</div>

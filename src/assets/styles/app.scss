@@ -1,0 +1,73 @@
+@import "~bootstrap-sass/assets/stylesheets/_bootstrap.scss";
+@import "~angular-color-picker/angular-color-picker.css";
+@import "~angular-ui-notification/dist/angular-ui-notification.min.css";
+@import "~font-awesome/css/font-awesome.min.css";
+@import "~leaflet/dist/leaflet.css";
+@import "~mnh-shared/dist/messages.css";
+@import "~emojione/extras/css/emojione.min.css";
+@import "~emojione-assets/sprites/emojione-sprite-64.min.css";
+@import "~emojione-assets/sprites/emojione-sprite-32.min.css";
+@import "~emojione-assets/sprites/emojione-sprite-24.min.css";
+@import "~devices.css/src/devices.scss";
+@import "buttons.scss";
+@import "dropdowns.scss";
+@import "flexboxgrid.scss";
+@import "form.scss";
+@import "keyframes.scss";
+@import "mnh-message.scss";
+@import "modals.scss";
+@import "panels.scss";
+@import "tables.scss";
+@import "ui-elements.scss";
+@import "accordions.scss";
+@import "helpers.scss";
+
+@font-face {
+    font-family: 'Colfax Regular';
+    src: local('Colfax Regular'), url('../fonts/Colfax-Regular.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Colfax Regular';
+    src: local('Colfax Regular'), url('../fonts/Colfax-Medium.woff') format('woff');
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: 'Colfax Regular';
+    src: local('Colfax Regular'), url('../fonts/Colfax-RegularItalic.woff') format('woff');
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Colfax Regular';
+    src: local('Colfax Regular'), url('../fonts/Colfax-MediumItalic.woff') format('woff');
+    font-weight: bold;
+    font-style: italic;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+}
+
+.app-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    transition: transform 0.5s linear;
+}
+
+.app-content {
+    width: 100%;
+}
+
+img {
+    vertical-align: unset;
+}

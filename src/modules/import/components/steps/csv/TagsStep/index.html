@@ -1,0 +1,35 @@
+<div class="step-wrapper">
+    <div class="panel panel-default panel-body">
+        <span class="fa-stack pull-right text-xs"
+              uib-tooltip-html="::$ctrl.help"
+              tooltip-class="panel-tooltip"
+              tooltip-placement="top-left"
+              tooltip-append-to-body="true">
+                <i class="fa fa-circle-thin fa-stack-2x"></i>
+                <i class="fa fa-info fa-stack-1x"></i>
+            </span>
+        <h5 class="text-bold text-uppercase">
+            Tags
+        </h5>
+
+        <div class="tag-list">
+            <div class="tag">
+                <i class="fa fa-fw fa-tag"></i>
+                {{::$ctrl.model.fileData.tag_name}}
+            </div>
+            <div class="tag"
+                 ng-repeat="tag in $ctrl.tags track by tag.id">
+                <i class="fa fa-fw fa-tag"></i>
+                {{::tag.name}}
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default panel-body add-tags-button text-center ">
+        <button class="btn btn-link text-blue text-bold"
+                ng-click="$ctrl.tagPanel.toggle()">
+            Add more tags
+        </button>
+    </div>
+</div>
+

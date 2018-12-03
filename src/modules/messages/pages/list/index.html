@@ -1,0 +1,181 @@
+<div id="messages-list-page">
+    <div class="messages-content">
+
+        <messages-list-toolbar list-helper="$ctrl.listHelper"></messages-list-toolbar>
+
+        <div class="panel panel-default table-container table-fixed-header"
+             ri-scrollbar>
+            <table scroll-list="$ctrl.fetch(params)"
+                   fixed-header
+                   class="table"
+                   helper="$ctrl.listHelper"
+                   ready="!!$ctrl.params"
+                   scroll-container="ri-scrollbar">
+                <thead>
+                <tr>
+                    <th class="spacer"></th>
+                    <th class="check-field trigger-column">
+                        <label class="checkbox-inline"
+                               ng-click="$event.stopPropagation();">
+                            <input type="checkbox"
+                                   ng-checked="listHelper.checkedItems.length === listHelper.items.length"
+                                   ng-click="$ctrl.checkAllToggle()" />
+                            <i></i>
+                        </label>
+                    </th>
+                    <th>Title</th>
+                    <th class="version-column"></th>
+                    <th class="from-column" ng-if="$ctrl.isDraft()">From</th>
+                    <th class="narrow-column" ng-if="$ctrl.isDraft()">Type</th>
+                    <th class="narrow-column" ng-if="$ctrl.isDraft()">Created</th>
+
+                    <th class="narrow-column" ng-if="!$ctrl.isDraft()">Sent</th>
+                    <th class="narrow-column" ng-if="!$ctrl.isDraft()">Opened</th>
+                    <th class="narrow-column" ng-if="!$ctrl.isDraft()">Clicked</th>
+                    <th class="narrow-column" ng-if="!$ctrl.isDraft()">Goal</th>
+                </tr>
+                </thead>
+                <tbody ng-repeat="item in listHelper.items">
+                    <tr ng-class="{'checked':item.checked, 'expand-rows':item.compareAB}"
+                        class="pointer"
+                        ui-sref="^.details(::{type: $ctrl._params.type, role: $ctrl._params.role, id: item.id})">
+                        <td class="spacer"></td>
+                        <td class="check-field trigger-column"
+                            ng-click="$event.stopPropagation()">
+                            <label class="checkbox-inline visible-on-hover">
+                                <input type="checkbox"
+                                       ng-checked="item.checked"
+                                       ng-click="listHelper.toggleElement(item)">
+                                <i class="dark-white"></i>
+                            </label>
+                        </td>
+                        <td>
+                            {{::item.title}}
+                            <label class="label label-default visible-on-hover">{{::item.state | capitalize}}</label>
+                        </td>
+                        <td class="version-column text-center">
+                            <span ng-if="item.variations.length > 1"
+                                  ng-click="$event.stopPropagation()">
+                                <a class="blue-link"
+                                   ng-if="!item.compareAB"
+                                   ng-click="item.compareAB = !item.compareAB;">
+                                    A/B Test <i class="fa fa-chevron-down"></i></a>
+                                <a class="blue-link"
+                                   ng-if="item.compareAB"
+                                   ng-click="item.compareAB = !item.compareAB;">
+                                    Version A <i class="fa fa-chevron-down"></i></a>
+                            </span>
+                        </td>
+                        <td class="from-column"
+                            ng-if="$ctrl.isDraft()">
+                            <avatar size="24"
+                                    item="::$ctrl.getFromPerson(item)"
+                                    uib-tooltip="{{::$ctrl.getFromPerson(item).name}}"
+                                    tooltip-class="tooltip-top"
+                                    tooltip-placement="top"
+                                    tooltip-append-to-body="true">
+                            </avatar>
+                            {{$ctrl.getFromPerson(item).name}}
+                        </td>
+                        <td class="narrow-column"
+                            ng-if="$ctrl.isDraft()">
+                            {{::item.type | capitalize}}
+                        </td>
+                        <td class="narrow-column capitalize"
+                            ng-if="$ctrl.isDraft()">
+                            <span am-time-ago="::item.variations[0].created_at"
+                                  uib-tooltip="{{::item.variations[0].created_at | date:'HH:mm a on d, MMM yyyy'}}"
+                                  tooltip-class="tooltip-top"
+                                  tooltip-placement="top-right"
+                                  tooltip-append-to-body="true"></span>
+                        </td>
+
+                        <td class="narrow-column"
+                            ng-if="::!$ctrl.isDraft()">
+                            {{::item.variations[0].stats.sent_count | dash}}
+                        </td>
+                        <td class="narrow-column"
+                            ng-if="::!$ctrl.isDraft()">
+                            {{::item.variations[0].stats.open_count | dash}}
+                        </td>
+                        <td class="narrow-column"
+                            ng-if="::!$ctrl.isDraft()">
+                            {{::item.variations[0].stats.click_count | dash}}
+                        </td>
+                        <td class="narrow-column"
+                            ng-if="::!$ctrl.isDraft()">
+                            {{::item.variations[0].stats.goal_count | dash}}
+                        </td>
+                    </tr>
+                    <tr class="expanded-row pointer"
+                        ng-class="{'checked':item.checked}"
+                        ui-sref="^.details(::{type: $ctrl._params.type, role: $ctrl._params.role, id: item.id})"
+                        ng-show="item.compareAB">
+                        <td class="spacer"></td>
+                        <td class="check-field trigger-column">
+                        </td>
+                        <td>
+                            {{::item.title}}
+                            <label class="label label-default visible-on-hover">{{::item.state | capitalize}}</label>
+                        </td>
+                        <td class="version-column text-center">
+                            <a class="blue-link">Version B</a>
+                        </td>
+                        <td class="from-column"
+                            ng-if="$ctrl.isDraft()">
+                            <avatar size="24"
+                                    item="::$ctrl.getFromPerson(item)"
+                                    uib-tooltip="{{::$ctrl.getFromPerson(item).name}}"
+                                    tooltip-class="tooltip-top"
+                                    tooltip-placement="top"
+                                    tooltip-append-to-body="true">
+                            </avatar>
+                            {{$ctrl.getFromPerson(item).name}}
+                        </td>
+                        <td class="narrow-column"
+                            ng-if="$ctrl.isDraft()">
+                            {{::item.type | capitalize}}
+                        </td>
+                        <td class="narrow-column capitalize"
+                            ng-if="$ctrl.isDraft()">
+                            <span am-time-ago="::item.variations[1].created_at"
+                                  uib-tooltip="{{::item.variations[1].created_at | date:'HH:mm a on d, MMM yyyy'}}"
+                                  tooltip-class="tooltip-top"
+                                  tooltip-placement="top-right"
+                                  tooltip-append-to-body="true"></span>
+                        </td>
+
+                        <td class="narrow-column"
+                            ng-if="::!$ctrl.isDraft()">
+                            {{::item.variations[1].stats.sent_count | dash}}
+                        </td>
+                        <td class="narrow-column"
+                            ng-if="::!$ctrl.isDraft()">
+                            {{::item.variations[1].stats.open_count | dash}}
+                        </td>
+                        <td class="narrow-column"
+                            ng-if="::!$ctrl.isDraft()">
+                            {{::item.variations[1].stats.click_count | dash}}
+                        </td>
+                        <td class="narrow-column"
+                            ng-if="::!$ctrl.isDraft()">
+                            {{::item.variations[1].stats.goal_count | dash}}
+                        </td>
+                    </tr>
+                </tbody>
+                <tbody>
+                    <tr ng-if="listHelper.loading">
+                        <td colspan="{{$ctrl.isDraft() ? 7 : 8}}" class="text-center">
+                            <loader></loader>
+                        </td>
+                    </tr>
+                    <tr ng-if="listHelper.allLoaded && listHelper.items.length === 0">
+                        <td colspan="{{$ctrl.isDraft() ? 7 : 8}}" class="text-center">
+                            No messages
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

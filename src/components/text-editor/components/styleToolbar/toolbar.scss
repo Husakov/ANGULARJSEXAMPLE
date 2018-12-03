@@ -1,0 +1,45 @@
+.text-editor-style-toolbar {
+    margin-top: -10px;
+    text-angular-toolbar {
+        display: block;
+        padding: 5px 10px;
+        .btn-toolbar-group {
+            display: flex;
+            margin-left: 0;
+            position: relative;
+            float: left;
+            .btn-toolbar {
+                color: #BFCAD2;
+                font-size: 18px;
+                border: 0;
+                background: #fff;
+                padding: 5px 6px;
+                position: relative;
+                text-align: center;
+                width: 35px;
+                &.active,
+                &:hover {
+                    box-shadow: none;
+                    color: #46A2E8;
+                }
+                &:not(:first-child) {
+                    position: absolute;
+                }
+                &:first-child {
+                    z-index: 5;
+                }
+                &.active {
+                    + .btn-toolbar {
+                        z-index: 10;
+                    }
+                }
+                &:only-child {
+                    display: inline-block;
+                }
+                + .btn-toolbar {
+                    margin-left: 0;
+                }
+            }
+        }
+    }
+}

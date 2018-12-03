@@ -1,0 +1,41 @@
+<contacts-list-segments-dropdown selected-segment="$ctrl.main.params.segment"
+                                 segments="$ctrl.main.segments">
+</contacts-list-segments-dropdown>
+
+<div class="action-buttons-container">
+    <div class="header-button-group">
+        <contacts-list-actions main="$ctrl.main">
+        </contacts-list-actions>
+    </div>
+
+    <list-search class="input-search-box"
+                 word-icon="user"
+                 word-placeholder="People for"
+                 on-search="$ctrl.onSearch(name, tag)"></list-search>
+</div>
+
+<div class="contacts-left-block">
+    <div class="list-count-info">
+        <span class="selected-count" ng-if="$ctrl.main.listHelper.checkedItems.length">
+            <strong>{{$ctrl.main.listHelper.checkedItems.length}}</strong>
+            selected
+            <a class="fa fa-times-circle clear-selection-button"
+               uib-tooltip="Clear selection"
+               tooltip-append-to-body="true"
+               ng-click="$ctrl.main.listHelper.clearSelection()"></a>
+        </span>
+        <span>
+            {{$ctrl.main.listHelper.total_count}} {{$ctrl.main.getListType()}}
+        </span>
+    </div>
+    <div class="btn-group" uib-dropdown>
+        <button class="btn btn-primary filter-button"
+                ng-click="$ctrl.main.toggleFilter()">
+            Filter <i class="fa fa-filter"></i>
+            <span class="button-bubble"
+                  ng-if="$ctrl.main.predicates.size">
+                {{$ctrl.main.predicates.size}}
+            </span>
+        </button>
+    </div>
+</div>

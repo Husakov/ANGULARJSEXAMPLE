@@ -1,0 +1,92 @@
+<div class="btn-group visible-lg-inline-block"
+     uib-dropdown>
+    <button id="first"
+            type="button"
+            class="btn btn-default"
+            uib-dropdown-toggle
+            ng-disabled="!$ctrl.main.listHelper.hasChecked">
+        Message
+        <i class="fa fa-chevron-down text-sm"></i>
+    </button>
+    <ul class="dropdown-menu"
+        uib-dropdown-menu
+        role="menu"
+        aria-labelledby="first">
+        <li role="menuitem">
+            <a ui-sref="messages.new({type: 'manual', role: $ctrl.main.currentRole, userIds: $ctrl.main.getUserIds()})">
+                <i class="fa fa-fw fa-wrench"></i>
+                One-time Message
+            </a>
+        </li>
+        <li role="menuitem">
+            <a ui-sref="messages.new({type: 'auto', role: $ctrl.main.currentRole, userIds: $ctrl.main.getUserIds()})">
+                <i class="fa fa-fw fa-cog"></i>
+                Auto message
+            </a>
+        </li>
+    </ul>
+</div>
+<button type="button"
+        class="btn btn-default visible-lg-inline-block"
+        ng-disabled="!$ctrl.main.listHelper.hasChecked"
+        ng-click="$ctrl.main.tagPanel.toggle()">
+    Tag
+</button>
+
+<div class="btn-group" uib-dropdown>
+    <button id="second"
+            type="button"
+            class="btn btn-default mid-dot-button"
+            uib-dropdown-toggle>
+        &middot;&middot;&middot;
+    </button>
+    <ul class="dropdown-menu"
+        uib-dropdown-menu
+        role="menu"
+        aria-labelledby="second">
+        <li role="menuitem"
+            class="hidden-lg"
+            ng-class="{'disabled': !$ctrl.main.listHelper.hasChecked}">
+            <a ng-disabled="!$ctrl.main.listHelper.hasChecked"
+               ui-sref="messages.new({type: 'manual', role: $ctrl.main.currentRole, userIds: $ctrl.main.getUserIds()})">
+                <i class="fa fa-fw fa-wrench"></i>
+                One-time Message
+            </a>
+        </li>
+        <li role="menuitem"
+            class="hidden-lg"
+            ng-class="{'disabled': !$ctrl.main.listHelper.hasChecked}">
+            <a ng-disabled="!$ctrl.main.listHelper.hasChecked"
+               ui-sref="messages.new({type: 'auto', role: $ctrl.main.currentRole, userIds: $ctrl.main.getUserIds()})">
+                <i class="fa fa-fw fa-cog"></i>
+                Auto message
+            </a>
+        </li>
+        <li role="menuitem" class="hidden-lg"
+            ng-class="{'disabled': !$ctrl.main.listHelper.hasChecked}">
+            <a ng-click="$ctrl.main.tagPanel.toggle()"
+               ng-disabled="!$ctrl.main.listHelper.hasChecked">
+                <i class="fa fa-fw fa-tags"></i>
+                Tag
+            </a>
+        </li>
+        <li role="menuitem">
+            <a ui-sref="import.steps({type: 'csv'})">
+                <i class="fa fa-fw fa-download"></i>
+                Import {{$ctrl.main.getListType()}}
+            </a>
+        </li>
+        <li role="menuitem">
+            <a ng-click="$ctrl.main.openExport()">
+                <i class="fa fa-fw fa-upload"></i>
+                Export {{$ctrl.main.getListType()}}
+            </a>
+        </li>
+        <li role="menuitem">
+            <a ng-click="$ctrl.deleteList()">
+                <i class="fa fa-fw fa-trash"></i>
+                Delete
+            </a>
+        </li>
+    </ul>
+</div>

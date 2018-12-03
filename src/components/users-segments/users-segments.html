@@ -1,0 +1,48 @@
+<uib-accordion close-others="true" class="user-segments-accordion">
+    <div uib-accordion-group
+         is-open="ctrl.segmentAccordion.predefined"
+         open-class="active">
+
+        <uib-accordion-heading>
+            <strong class="accordion-title d-inline-block">Pre-defined Segments</strong>
+            <i class="fa" ng-class="{ 'fa-caret-down' : !ctrl.segmentAccordion.predefined, 'fa-caret-up' : ctrl.segmentAccordion.predefined}"></i>
+        </uib-accordion-heading>
+
+        <a class="super nav-link"
+           ng-repeat="segment in ctrl.segments | filter: {is_editable: false} | orderBy:ctrl.segmentsOrder track by segment.id"
+           ui-sref="{{ ctrl.listState }}({segmentId: segment.id})"
+           ui-sref-opts="{inherit: false, reload: true}"
+           ng-class="{'active': segment == ctrl.selectedSegment, 'special' : segment.name === 'All Users' || segment.name === 'All Visitors'}">
+            <i class="fa fa-fw {{ segment.icon() }}"></i>
+            {{ segment.name }}
+            <small class="text-muted">({{ segment.count }})</small>
+
+            <i class="fa fa-check text-primary m-l" ng-if="segment == ctrl.selectedSegment"></i>
+        </a>
+    </div>
+    <div uib-accordion-group
+         is-open="ctrl.segmentAccordion.custom"
+         open-class="active">
+
+        <uib-accordion-heading>
+            <strong class="accordion-title d-inline-block">Custom Segments</strong>
+            <i class="fa" ng-class="{ 'fa-caret-down' : !ctrl.segmentAccordion.custom, 'fa-caret-up' : ctrl.segmentAccordion.custom}"></i>
+        </uib-accordion-heading>
+
+        <a class="super nav-link d-block clearfix"
+           ng-repeat="segment in ctrl.segments | filter: {is_editable: true} | orderBy: ctrl.segmentsOrder track by segment.id"
+           ui-sref="{{ ctrl.listState }}({segmentId: segment.id})"
+           ui-sref-opts="{inherit: false, reload: true}">
+
+            <span class="custom-segment-name text-ellipsis pull-left" ng-class="{ 'selected' : segment === ctrl.selectedSegment}">
+                  <i class="fa fa-fw {{ segment.icon() }}"></i> {{ segment.name }}
+            </span>
+            <span class="d-inline-block pull-left">
+                  <small class="text-muted">({{ segment.count }})</small>
+
+            <i class="fa fa-check text-primary m-l" ng-if="segment == ctrl.selectedSegment"></i>
+            </span>
+
+        </a>
+    </div>
+</uib-accordion>

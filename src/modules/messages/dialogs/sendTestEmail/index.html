@@ -1,0 +1,29 @@
+<div class="modal-header">
+    <button type="button" class="close" ng-click="$ctrl.cancel()">
+        <span>&times;</span>
+    </button>
+    <h5 class="modal-title">
+        Send Test Email
+    </h5>
+</div>
+<div class="modal-body">
+    <form role="form" name="inputEmailForm">
+        <div class="form-group">
+            <label for="inputEmail">Email address</label>
+            <input class="form-control"
+                   required
+                   type="email"
+                   id="inputEmail"
+                   name="inputEmail"
+                   placeholder="Email"
+                   ng-model="$ctrl.emailToSend"
+            />
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-default" ng-click="$ctrl.cancel()">Cancel</button>
+    <button type="button" class="btn btn-primary"
+            ng-click="$ctrl.sendEmail()"
+            ng-disabled="!inputEmailForm.$valid">Send</button>
+</div>

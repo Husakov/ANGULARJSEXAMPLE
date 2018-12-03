@@ -1,0 +1,111 @@
+inbox-profile-panel {
+    display: flex;
+    flex-direction: column;
+    border-left: 1px solid #ECECF2;
+    width: 350px;
+    position: relative;
+    height: 100%;
+    overflow: hidden;
+    background: #fff;
+
+    .data-on-map-conversation {
+        position: relative;
+        flex: 0 0 200px;
+        z-index: 400;
+        overflow: hidden;
+
+        .marker-icon {
+            background: #007f82;
+        }
+
+        .customer-display-as {
+            color: white !important;
+            font-weight: 600;
+            font-size: 1.25rem;
+        }
+
+        .leaflet-container {
+            height: 200px;
+        }
+
+        .btn-switch {
+            position: absolute;
+            top: 11px;
+            left: 10px;
+            z-index: 1001;
+            .btn {
+                background: none;
+                border: 1px solid #E4E4E4;
+                border-radius: 3px;
+                font-size: 11px;
+                color: #E4E4E4;
+                padding: 2px 4px;
+                height: auto;
+            }
+        }
+        .profile-main-info {
+            position: absolute;
+            z-index: 999;
+            top: 10px;
+            text-align: center;
+            font-size: 18px;
+            color: #FFFFFF;
+            width: 100%;
+            padding-top: 50px;
+            .user-name {
+                display: block;
+                font-size: 18px;
+                color: #FFFFFF;
+                line-height: 20px;
+                margin-top: 12px;
+                text-decoration: none;
+            }
+            .action-dropdown {
+                top: 45px;
+                left: 50%;
+                margin-left: 40px;
+                position: absolute;
+                .btn {
+                    background: none;
+                    padding: 0;
+                    box-shadow: none;
+                    font-size: 18px;
+                    :hover {
+                        box-shadow: none;
+                    }
+                }
+            }
+        }
+        .profile-addition-info {
+            position: absolute;
+            z-index: 999;
+            bottom: 10px;
+            width: 100%;
+            text-align: center;
+            left: 0;
+            font-size: 12px;
+            color: #E3E3E3;
+            line-height: 22px;
+            .fa {
+                font-size: 130%;
+                vertical-align: text-bottom;
+            }
+        }
+    }
+
+    .conversation-info-profile {
+        height: 100%;
+        display: flex;
+        contacts-details {
+            width: 100%;
+        }
+        .select-company-containter {
+            padding: 0px 15px;
+            .select-company {
+                font-size: 13px;
+                margin-bottom: 8px;
+                margin-top: 5px;
+            }
+        }
+    }
+}

@@ -1,0 +1,25 @@
+slides {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    & > .wrapper {
+        position: relative;
+        height: 100%;
+        width: auto;
+        white-space: nowrap;
+        transition: left 1s ease-out;
+        left: 0;
+    }
+
+    slide {
+        display: inline-block;
+        height: 0;
+        position: relative;
+        width: 100%;
+        vertical-align: top;
+        &.active {
+            height: 100%;
+        }
+    }
+}

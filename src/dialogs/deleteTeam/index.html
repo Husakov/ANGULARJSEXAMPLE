@@ -1,0 +1,79 @@
+<div class="modal-header">
+    <h5 class="modal-title" ng-bind="$ctrl.options.title"></h5>
+</div>
+<div class="modal-body">
+    <p ng-bind="$ctrl.options.body"></p>
+    <div class="loader-wrapper" ng-if="!$ctrl.convercations_ids">
+        <loader></loader>
+    </div>
+    <div ng-if="$ctrl.convercations_ids.length > 0" class="list-assign">
+        <div ng-if="$ctrl.overlay" class="conversation-overlay" ng-include="$ctrl.ovarlayTmpl"></div>
+        <div class="dropdown inline" uib-dropdown>
+            <div class="input-group input-group-sm" ng-click="$event.stopPropagation()">
+                <span class="input-group-addon no-border no-bg">
+                    <i class="fa fa-search"></i>
+                </span>
+                <input type="text"
+                       class="form-control no-border no-bg"
+                       ng-model="$ctrl.assignSearch.input"
+                       ng-model-options="{getterSetter: true, debounce: 500}"
+                       placeholder="Search teammates and teams" uib-dropdown-toggle>
+            </div>
+            <div class="dropdown-menu dropdown-content" aria-labelledby="simple-dropdown" uib-dropdown-menu>
+                <label class="form-label dropdown-header">Assign to teammate</label>
+                <div class="list inset">
+                    <button ng-repeat="admin in $ctrl.assignSearch.admins"
+                            ng-click="$ctrl.changeStatus(admin)"
+                            ng-hide="admin.id == $ctrl.options.currentUser.id">
+                        <div class="list-left">
+                            <avatar item="::admin" size="24"></avatar>
+                        </div>
+                        <div class="list-body no-border">
+                            <div class="text-ellipsis"
+                                 ng-bind-html="admin.name | highlight: $ctrl.assignSearch.searchString">
+                            </div>
+                        </div>
+                    </button>
+                    <div class="list-item pointer disabled"
+                         ng-click="$event.stopPropagation()"
+                         ng-hide="$ctrl.assignSearch.admins.length">
+                        <div class="list-body no-border">
+                            <div class="text-ellipsis">
+                                No teammates found
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="list inset">
+                    <label class="form-label dropdown-header">Assign to team</label>
+                    <button ng-class="{'p-t-sm p-l-md': team.icon}"
+                            ng-click="$ctrl.changeStatus(team)"
+                            ng-hide="team.id == $ctrl.options.team.id">
+                        <avatar item="::team" size="24"></avatar>
+                        <span ng-bind-html="team.name | highlight: $ctrl.assignSearch.searchString"></span>
+                    </button>
+                    <span class="disabled"
+                          ng-click="$event.stopPropagation()"
+                          ng-hide="$ctrl.assignSearch.teams.length">
+                        No teams found
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button"
+            class="btn {{$ctrl.options.cancelClass}}"
+            data-dismiss="modal"
+            ng-click="$ctrl.cancel()"
+            ng-bind="$ctrl.options.cancelText">
+    </button>
+    <button type="button"
+            class="btn {{$ctrl.options.closeClass}}"
+            data-dismiss="modal"
+            ng-click="$ctrl.close()"
+            ng-bind="$ctrl.options.closeText"
+            ng-disabled="!($ctrl.avilableToRemove || $ctrl.convercations_ids.length === 0)">
+    </button>
+</div>

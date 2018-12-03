@@ -1,0 +1,503 @@
+{
+    "app": {
+        "name": "Stroman - Lubowitz",
+        "timeZone": "EST",
+        "teammate": "method-2",
+        "socialData": true,
+        "companies": true,
+        "campaigns": true,
+        "testVersion": true
+    },
+    "teammates": {
+        "invitation": {
+            "email": "",
+            "access": "full",
+            "exportDenied": false,
+            "messagingRestricted": false
+        },
+        "invites": [
+            {
+                "id": 0,
+                "email": "Dariana.Leannon@gmail.com",
+                "draft": true,
+                "permissions": {
+                    "access": "restricted",
+                    "exportDenied": false,
+                    "messagingRestricted": false
+                }
+            },
+            {
+                "id": 1,
+                "email": "Ian.Beier@yahoo.com",
+                "draft": true,
+                "permissions": {
+                    "access": "restricted",
+                    "exportDenied": true,
+                    "messagingRestricted": true
+                }
+            },
+            {
+                "id": 2,
+                "email": "Magali.Krajcik81@yahoo.com",
+                "draft": true,
+                "permissions": {
+                    "access": "restricted",
+                    "exportDenied": true,
+                    "messagingRestricted": false
+                }
+            },
+            {
+                "id": 3,
+                "email": "Audreanne.Schulist@gmail.com",
+                "draft": true,
+                "permissions": {
+                    "access": "restricted",
+                    "exportDenied": false,
+                    "messagingRestricted": true
+                }
+            }
+        ],
+        "teams": [
+            {
+                "id": 0,
+                "avatar": "school",
+                "icon": "http://lorempixel.com/640/480/abstract",
+                "name": "Baby"
+            },
+            {
+                "id": 1,
+                "avatar": "angry",
+                "icon": "http://lorempixel.com/640/480/abstract",
+                "name": "Shoes"
+            },
+            {
+                "id": 2,
+                "avatar": "dog",
+                "icon": "http://lorempixel.com/640/480/abstract",
+                "name": "Baby"
+            },
+            {
+                "id": 3,
+                "avatar": "angry",
+                "icon": "http://lorempixel.com/640/480/abstract",
+                "name": "Electronics"
+            },
+            {
+                "id": 4,
+                "avatar": "dog",
+                "icon": "http://lorempixel.com/640/480/abstract",
+                "name": "Baby"
+            }
+        ],
+        "users": [
+            {
+                "id": 0,
+                "role": "lead",
+                "createdAt": "2016-03-14T12:54:06.686Z",
+                "lastSeenAt": 1481482027003,
+                "sessionCount": 38,
+                "name": "John Smith",
+                "email": "Blanche_King87@hotmail.com",
+                "avatar": "a0-5144714c444677f693e5ddfd35bc2d79.jpg",
+                "permissions": {
+                    "access": "full",
+                    "exportDenied": true,
+                    "messagingRestricted": false
+                }
+            },
+            {
+                "id": 1,
+                "role": "user",
+                "createdAt": "2016-06-05T23:54:38.014Z",
+                "lastSeenAt": 1481309227006,
+                "sessionCount": 44,
+                "name": "Raphael Marvin Dr.",
+                "email": "Norbert37@hotmail.com",
+                "avatar": "a1-a79308eacc3a27fd21f9811ca8332c78.jpg",
+                "permissions": {
+                    "access": "full",
+                    "exportDenied": false,
+                    "messagingRestricted": false
+                }
+            },
+            {
+                "id": 2,
+                "role": "user",
+                "createdAt": "2016-07-08T20:28:33.284Z",
+                "lastSeenAt": 1481222827007,
+                "sessionCount": 39,
+                "name": "Fern Cummings Miss",
+                "email": "Sheridan.Kling@hotmail.com",
+                "avatar": "a2-db9d516719b9cccbb896f23bd49d4780.jpg",
+                "permissions": {
+                    "access": "restricted",
+                    "exportDenied": true,
+                    "messagingRestricted": true
+                }
+            },
+            {
+                "id": 3,
+                "role": "lead",
+                "createdAt": "2015-12-21T00:34:53.986Z",
+                "lastSeenAt": 1480963627007,
+                "sessionCount": 56,
+                "name": "Elbert Brown",
+                "email": "Alvah_Crist@hotmail.com",
+                "avatar": "a3-8793b2ba50b325e9b4dae57617fd48d0.jpg",
+                "permissions": {
+                    "access": "restricted",
+                    "exportDenied": false,
+                    "messagingRestricted": false
+                }
+            },
+            {
+                "id": 4,
+                "role": "user",
+                "createdAt": "2016-12-04T03:16:35.179Z",
+                "lastSeenAt": 1480877227008,
+                "sessionCount": 13,
+                "name": "Hazle Grimes",
+                "email": "Dayne.Bernier87@gmail.com",
+                "avatar": "a4-d2d1ddad6d40dc828f56a0d51d7bbb10.jpg",
+                "permissions": {
+                    "access": "restricted",
+                    "exportDenied": true,
+                    "messagingRestricted": true
+                }
+            },
+            {
+                "id": 5,
+                "role": "user",
+                "createdAt": "2016-09-13T08:26:31.561Z",
+                "lastSeenAt": 1480704427009,
+                "sessionCount": 11,
+                "name": "Dixie Ritchie",
+                "email": "Janice5@yahoo.com",
+                "avatar": "a5-a24cb8e2fb74584d678f24ed64c5afc2.jpg",
+                "permissions": {
+                    "access": "restricted",
+                    "exportDenied": true,
+                    "messagingRestricted": true
+                }
+            },
+            {
+                "id": 6,
+                "role": "lead",
+                "createdAt": "2016-03-23T03:03:50.876Z",
+                "lastSeenAt": 1480877227009,
+                "sessionCount": 17,
+                "name": "Wade Considine",
+                "email": "Georgianna_Runte45@yahoo.com",
+                "avatar": "a6-934d6762544185ed5ec6bcd2fe1d3cec.jpg",
+                "permissions": {
+                    "access": "restricted",
+                    "exportDenied": true,
+                    "messagingRestricted": false
+                }
+            },
+            {
+                "id": 7,
+                "role": "user",
+                "createdAt": "2016-02-04T13:58:47.217Z",
+                "lastSeenAt": 1480704427009,
+                "sessionCount": 52,
+                "name": "Nettie Corkery",
+                "email": "Clare.Barrows10@gmail.com",
+                "avatar": "a7-a2d2a36c9ae37fbabaaedaf4a22d680c.jpg",
+                "permissions": {
+                    "access": "restricted",
+                    "exportDenied": false,
+                    "messagingRestricted": false
+                }
+            },
+            {
+                "id": 8,
+                "role": "user",
+                "createdAt": "2016-08-13T01:45:56.893Z",
+                "lastSeenAt": 1480963627010,
+                "sessionCount": 70,
+                "name": "Sherwood Greenholt",
+                "email": "Sierra95@gmail.com",
+                "avatar": "a8-ca4f64deeedc25fc21d10f913ce8cf31.jpg",
+                "permissions": {
+                    "access": "full",
+                    "exportDenied": true,
+                    "messagingRestricted": true
+                }
+            },
+            {
+                "id": 9,
+                "role": "lead",
+                "createdAt": "2016-08-14T20:06:25.011Z",
+                "lastSeenAt": 1480877227010,
+                "sessionCount": 23,
+                "name": "Miss Johathan Leannon",
+                "email": "Bonita.Heaney77@hotmail.com",
+                "avatar": "a0-5144714c444677f693e5ddfd35bc2d79.jpg",
+                "permissions": {
+                    "access": "restricted",
+                    "exportDenied": true,
+                    "messagingRestricted": false
+                }
+            },
+            {
+                "id": 10,
+                "role": "user",
+                "createdAt": "2016-09-28T22:14:20.118Z",
+                "lastSeenAt": 1480877227010,
+                "sessionCount": 21,
+                "name": "Alysha Littel",
+                "email": "Hellen66@yahoo.com",
+                "avatar": "a1-a79308eacc3a27fd21f9811ca8332c78.jpg",
+                "permissions": {
+                    "access": "restricted",
+                    "exportDenied": true,
+                    "messagingRestricted": false
+                }
+            },
+            {
+                "id": 11,
+                "role": "user",
+                "createdAt": "2016-08-29T04:19:18.508Z",
+                "lastSeenAt": 1480790827011,
+                "sessionCount": 20,
+                "name": "Christopher Kulas",
+                "email": "Ben_Treutel@yahoo.com",
+                "avatar": "a2-db9d516719b9cccbb896f23bd49d4780.jpg",
+                "permissions": {
+                    "access": "restricted",
+                    "exportDenied": false,
+                    "messagingRestricted": true
+                }
+            },
+            {
+                "id": 12,
+                "role": "lead",
+                "createdAt": "2016-05-30T20:59:54.649Z",
+                "lastSeenAt": 1480790827011,
+                "sessionCount": 46,
+                "name": "Alysson Hessel Dr.",
+                "email": "Cleta_Turner80@hotmail.com",
+                "avatar": "a3-8793b2ba50b325e9b4dae57617fd48d0.jpg",
+                "permissions": {
+                    "access": "restricted",
+                    "exportDenied": true,
+                    "messagingRestricted": true
+                }
+            },
+            {
+                "id": 13,
+                "role": "user",
+                "createdAt": "2016-03-25T02:09:21.954Z",
+                "lastSeenAt": 1481136427012,
+                "sessionCount": 55,
+                "name": "Ila Braun",
+                "email": "Lucio_Hackett@gmail.com",
+                "avatar": "a4-d2d1ddad6d40dc828f56a0d51d7bbb10.jpg",
+                "permissions": {
+                    "access": "full",
+                    "exportDenied": false,
+                    "messagingRestricted": true
+                }
+            },
+            {
+                "id": 14,
+                "role": "user",
+                "createdAt": "2016-02-28T03:41:11.468Z",
+                "lastSeenAt": 1481050027012,
+                "sessionCount": 37,
+                "name": "Estel Farrell",
+                "email": "Kendall.McKenzie90@gmail.com",
+                "avatar": "a5-a24cb8e2fb74584d678f24ed64c5afc2.jpg",
+                "permissions": {
+                    "access": "restricted",
+                    "exportDenied": true,
+                    "messagingRestricted": false
+                }
+            },
+            {
+                "id": 15,
+                "role": "lead",
+                "createdAt": "2016-11-28T03:27:50.443Z",
+                "lastSeenAt": 1481395627012,
+                "sessionCount": 44,
+                "name": "Isabella Herman",
+                "email": "Claire.Conn19@gmail.com",
+                "avatar": "a6-934d6762544185ed5ec6bcd2fe1d3cec.jpg",
+                "permissions": {
+                    "access": "restricted",
+                    "exportDenied": false,
+                    "messagingRestricted": false
+                }
+            },
+            {
+                "id": 16,
+                "role": "user",
+                "createdAt": "2016-11-27T03:48:12.765Z",
+                "lastSeenAt": 1480790827012,
+                "sessionCount": 35,
+                "name": "Jerome Klein",
+                "email": "Jaylon51@yahoo.com",
+                "avatar": "a7-a2d2a36c9ae37fbabaaedaf4a22d680c.jpg",
+                "permissions": {
+                    "access": "full",
+                    "exportDenied": false,
+                    "messagingRestricted": false
+                }
+            },
+            {
+                "id": 17,
+                "role": "user",
+                "createdAt": "2016-01-06T07:09:19.057Z",
+                "lastSeenAt": 1481050027012,
+                "sessionCount": 41,
+                "name": "Else Windler",
+                "email": "Aylin.Kerluke@hotmail.com",
+                "avatar": "a8-ca4f64deeedc25fc21d10f913ce8cf31.jpg",
+                "permissions": {
+                    "access": "full",
+                    "exportDenied": false,
+                    "messagingRestricted": false
+                }
+            },
+            {
+                "id": 18,
+                "role": "lead",
+                "createdAt": "2016-05-09T20:16:25.243Z",
+                "lastSeenAt": 1480963627012,
+                "sessionCount": 52,
+                "name": "Viola Adams",
+                "email": "Adah33@gmail.com",
+                "avatar": "a0-5144714c444677f693e5ddfd35bc2d79.jpg",
+                "permissions": {
+                    "access": "restricted",
+                    "exportDenied": false,
+                    "messagingRestricted": true
+                }
+            },
+            {
+                "id": 19,
+                "role": "user",
+                "createdAt": "2016-10-30T20:12:38.024Z",
+                "lastSeenAt": 1480618027012,
+                "sessionCount": 22,
+                "name": "Bertrand Parisian",
+                "email": "Ena37@gmail.com",
+                "avatar": "a1-a79308eacc3a27fd21f9811ca8332c78.jpg",
+                "permissions": {
+                    "access": "full",
+                    "exportDenied": true,
+                    "messagingRestricted": true
+                }
+            },
+            {
+                "id": 20,
+                "role": "user",
+                "createdAt": "2016-06-30T03:22:29.303Z",
+                "lastSeenAt": 1480963627012,
+                "sessionCount": 54,
+                "name": "Elsie Willms",
+                "email": "Geovany_Schmitt@hotmail.com",
+                "avatar": "a2-db9d516719b9cccbb896f23bd49d4780.jpg",
+                "permissions": {
+                    "access": "full",
+                    "exportDenied": false,
+                    "messagingRestricted": true
+                }
+            },
+            {
+                "id": 23,
+                "name": "Angelina Kozey",
+                "email": "Adrian.Heathcote@yahoo.com",
+                "avatar": "a2-db9d516719b9cccbb896f23bd49d4780.jpg",
+                "role": "user",
+                "createdAt": "2016-04-12T01:50:32.304Z",
+                "lastSeenAt": 1481309227013,
+                "sessionCount": 63,
+                "isBlocked": true,
+                "blockedBy": 1,
+                "blockedAt": "2016-06-07T01:42:03.433Z",
+                "permissions": {
+                    "access": "restricted",
+                    "exportDenied": true,
+                    "messagingRestricted": false
+                }
+            }
+        ]
+    },
+    "messaging": {
+        "template": "Hi {{first_name | fallback: \"there\" }},",
+        "recipient": {},
+        "internalEmail": "internal@mail.com",
+        "unsubscribed": false
+    },
+    "emailAddresses": {
+        "user": "Blanche_King87@hotmail.com",
+        "provided": "John.Smith@aa-72f1ec29e6f0.mail.company.io",
+        "usedForSend": "provided",
+        "custom": {
+            "emails": [
+                {
+                    "name": "Sender Name #1",
+                    "email": "d@ds.ru",
+                    "verified": false
+                },
+                {
+                    "name": "Sender Name #2",
+                    "email": "d@ds2.ru",
+                    "verified": true
+                }
+            ],
+            "domains": [
+                {
+                    "name": "ds.ru",
+                    "verified": false,
+                    "dns": {
+                        "name": "intercom._domainkey.ds.ru",
+                        "type": "CNAME",
+                        "value": "02cf8a1c-9eb6-4b61-8295-b7d6e6f82e55.dkim.intercom.io"
+                    }
+                },
+                {
+                    "name": "ds2.ru",
+                    "verified": true,
+                    "dns": {
+                        "name": "intercom._domainkey.ds2.ru",
+                        "type": "CNAME",
+                        "value": "02cf8a1c-9eb6-4b61-8295-b7d6e6f82e55.dkim2.intercom.io"
+                    }
+                }
+            ]
+        }
+    },
+    "messenger": {
+        "settings": {
+            "usersButton": true,
+            "visitorsButton": true,
+            "audioFeedback": false,
+            "showResponse": 0,
+            "whitelist": "",
+            "color": "#1f8ceb",
+            "background": "",
+            "showlink": true,
+            "showToUsers": true,
+            "showToVisitors": false
+        },
+        "message": {
+            "forQuestions": "We'll notify you here and by email when we reply.",
+            "defaults": {
+                "code": "en",
+                "forUsers": "",
+                "forVisitors": "Have a question? Chat with us"
+            },
+            "others": [
+                {
+                    "id": 0,
+                    "code": "no",
+                    "forUsers": "",
+                    "forVisitors": "Have a question? Chat with us"
+                }
+            ]
+        }
+    }
+}

@@ -1,0 +1,20 @@
+let mod = module.exports = angular.module('riika.services', []);
+
+require('./app')(mod);
+require('./attributesHelper')(mod);
+require('./auth')(mod);
+require('./contactPredicatesHelper')(mod);
+require('./conversationsManager')(mod);
+require('./dropdownHelper')(mod);
+require('./emojis')(mod);
+require('./menus')(mod);
+require('./messengerIO')(mod);
+require('./notifier')(mod);
+require('./detectPlatform')(mod);
+require('./permissions')(mod);
+require('./predicatesHelper')(mod);
+require('./pubSub')(mod);
+require('./slidePanelManager')(mod);
+require('./socket-srv')(mod);
+require('./timezones')(mod);
+require('./uploader')(mod);

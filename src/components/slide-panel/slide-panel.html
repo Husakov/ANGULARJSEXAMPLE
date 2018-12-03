@@ -1,0 +1,13 @@
+<div ng-if="$ctrl.isOpen && $ctrl.background"
+     class="slide-panel-background"
+     ng-class="{'dark': $ctrl.darkBackground}"
+     ng-click="$ctrl.close()"></div>
+
+<div class="slide-panel"
+     ng-transclude
+     ng-class="{
+        'from-bottom': $ctrl.fromBottom,
+        'with-transition': !$ctrl.slideAppContainer,
+        'opened': ($ctrl.isOpen && !$ctrl.slideAppContainer)
+     }">
+</div>

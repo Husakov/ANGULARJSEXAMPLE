@@ -1,0 +1,150 @@
+users-filter {
+    $row-height: 48px;
+
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    height: 100%;
+    min-width: 100px;
+
+    .search-icon {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        font-size: 9px;
+        line-height: 21px;
+        background-color: $btn-default-bg;
+        color: #979797;
+        transition: transform 0.25s ease-out;
+        border-radius: 50%;
+        text-align: center;
+        &:hover {
+            transform: rotate(180deg);
+        }
+    }
+
+    & > .attribute-list {
+        position: relative;
+        flex: 2;
+        display: flex;
+    }
+
+    .filter-row {
+        position: relative;
+        height: $row-height;
+        padding: 0 5px;
+        border-bottom: 1px solid #EBEBF2;
+        &.header {
+            flex: 0 0 72px;
+        }
+        &:not(.header):hover {
+            background: $main-background-color;
+        }
+
+        &.not-valid {
+            border-left: 2px solid $state-danger-text;
+            background: lighten($state-danger-bg, 5%);
+            padding: 0 3px;
+            &:hover {
+                background: lighten($state-danger-bg, 5%);
+            }
+            input.bulleted-input {
+                border-color: $state-danger-text;
+            }
+        }
+
+        .uf-left {
+            flex: 0 0 50px;
+            text-align: center;
+            button {
+                font-size: 13px;
+                font-weight: 600;
+            }
+        }
+
+        .uf-icon {
+            flex: 0 0 40px;
+            text-align: center;
+            color: #D9D9E1;
+        }
+
+        .uf-control {
+            button {
+                margin-right: 10px;
+            }
+        }
+    }
+
+    .or-container {
+        position: relative;
+
+        &:after {
+            content: '';
+            position: absolute;
+            left: 30px;
+            top: $row-height / 2;
+            bottom: $row-height / 2;
+            height: auto;
+            width: 0;
+            border-left: 3px solid $btn-default-bg;
+            z-index: 1;
+        }
+
+        .filter-row:not(.not-valid) {
+            background: $main-background-color;
+        }
+
+        .btn-rule {
+            position: relative;
+            z-index: 2;
+        }
+    }
+
+    [dnd-list]  {
+        .dndDraggingSource {
+             display: none;
+        }
+
+        .dndDragging {
+            z-index: 2;
+        }
+
+        .dndPlaceholder {
+            background: $state-info-bg;
+        }
+
+        &.or-container.dndDragover {
+            background: $state-info-bg;
+            .dndPlaceholder {
+                background: darken($state-info-bg, 10%);
+            }
+            &:after,
+            > * {
+                z-index: 1;
+                opacity: 0.6;
+            }
+        }
+    }
+
+    &.small-filter {
+        .filter-row {
+            padding-right: 10px;
+            &.header {
+                height: 52px;
+            }
+            .uf-left {
+                button {
+                    font-size: 11px;
+                    padding: 2px 4px;
+                }
+            }
+            > .uf-icon {
+                display: none;
+                & ~ .uf-icon {
+                    display: block;
+                    flex: 0 0 25px;
+                }
+            }
+        }
+    }
+}

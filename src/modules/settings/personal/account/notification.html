@@ -1,0 +1,82 @@
+<div class="notification">
+    <form class="form" name="notificationUserForm">
+        <div class="form-group">
+            <label class="form-label">Notifications</label>
+            <div class="row">
+                <div class="col-sm-7">
+                    Get notifications by
+                </div>
+                <div class="col-sm-5 text-right notification-checkbox">
+                    <div class="col-sm-6">
+                        <div class="checkbox-inline">
+                            <label>
+                                <input type="checkbox" ng-model="ctrl.model.desktop_notifications">
+                                <i></i> Desktop
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="checkbox-inline">
+                            <label>
+                                <input type="checkbox" ng-model="ctrl.model.email_notifications">
+                                <i></i> Email
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="form-label">Browser Alerts</label>
+            <div class="checkbox">
+                <label>
+                    <input ng-model="ctrl.model.browser_alert_setting" type="checkbox">
+                    <i></i> Blink tab when new activity
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input ng-model="ctrl.model.browser_audio_alerts" type="checkbox">
+                    <i></i> Play a sound on new activity
+                </label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="form-label">Daily Digest</label>
+            <div class="checkbox">
+                <label>
+                    <input ng-model="ctrl.model.daily_summary_email_enabled"
+                           ng-model-options="{ getterSetter: true }"
+                           type="checkbox">
+                    <i></i>  Get a daily digest by email
+                </label>
+            </div>
+            <div class="checkbox sub-checkbox" ng-show="ctrl.daily_summary_email_enabled()">
+                <label>
+                    <input ng-model="ctrl.model.daily_summary_new_user_list" name="dailySingnupsType" type="checkbox"
+                           value="users">
+                    <i></i> List of new users
+                </label>
+            </div>
+            <div class="checkbox sub-checkbox" ng-show="ctrl.daily_summary_email_enabled()">
+                <label>
+                    <input ng-model="ctrl.model.daily_summary_new_companies_list" name="dailySingnupsType" type="checkbox"
+                           value="companies">
+                    <i></i> List of new companies
+                </label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <button type="submit"
+                    class="btn btn-primary"
+                    ng-disabled="!notificationUserForm.$valid"
+                    ng-click="ctrl.updateModel()">
+                <i class="fa fa-floppy-o" aria-hidden="true"></i>
+                Save
+            </button>
+        </div>
+    </form>
+</div>

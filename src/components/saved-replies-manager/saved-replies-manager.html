@@ -1,0 +1,43 @@
+<div ng-include="'${require(`./list.html`)}'"
+     class="saved-replies-list"
+     ng-if="!$ctrl.selected">
+</div>
+
+<div class="saved-replies-block" ng-if="$ctrl.selected">
+    <div class="saved-replies-buttons">
+        <button class="back-to-list btn btn-sm btn-link"
+                type="button"
+                title="Back to list"
+                ng-click="$ctrl.clear()">
+            <i class="fa fa-list" aria-hidden="true"></i>
+        </button>
+
+        <div class="reply-title">
+            <input type="text"
+                   placeholder="Reply title"
+                   ng-change="$ctrl.onChangeHandler()"
+                   ng-model="$ctrl.selected.name">
+        </div>
+
+        <div class="control-buttons">
+            <button class="delete-reply"
+                    ng-disabled="!$ctrl.selected"
+                    type="button"
+                    title="Delete"
+                    ng-click="$ctrl.delete()">
+                <i class="fa fa-trash" aria-hidden="true"></i>
+            </button>
+            <button class="insert-reply"
+                    ng-disabled="!$ctrl.selected"
+                    type="button"
+                    title="Select"
+                    ng-click="$ctrl.select()">
+                <i class="fa fa-files-o" aria-hidden="true"></i>
+            </button>
+        </div>
+    </div>
+
+    <div class="saved-replies-editor"
+         ng-include="'${require(`./editor.html`)}'">
+    </div>
+</div>

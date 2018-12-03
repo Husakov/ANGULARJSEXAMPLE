@@ -1,0 +1,33 @@
+contacts-list-table-headers {
+    display: inline-block;
+    .dropdown-menu {
+        padding: 12px 15px;
+        box-shadow: 0 2px 40px 0 $main-shadow-color;
+        .attribute-container {
+            position: relative;
+            height: 300px;
+            width: 260px;
+        }
+        .h-displayed-attributes {
+            color: #9A99AB;
+            padding: 0 0 5px;
+            font-weight: bold;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+        .list-group {
+            .list-group-item {
+                padding: 3px 0;
+                border: none;
+                color: #9A99AB;
+                label {
+                    width: 100%;
+                    overflow: hidden;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                }
+            }
+        }
+    }
+}

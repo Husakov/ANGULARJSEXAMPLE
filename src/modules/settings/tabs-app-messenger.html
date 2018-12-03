@@ -1,0 +1,18 @@
+<div class="s-body-containter-box">
+    <div class="app-messenger">
+        <state-tabs tabs="::ctrl.tabs"></state-tabs>
+        <form role="form" name="ctrl.appMessengerSettingsForm">
+            <div ui-view></div>
+
+            <div class="form-group">
+                <button type="button"
+                        class="btn btn-primary"
+                        ng-disabled="!ctrl.appMessengerSettingsForm.$dirty"
+                        ng-click="ctrl.updateModel()">
+                    <i class="fa fa-floppy-o" aria-hidden="true"></i>
+                    Save
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

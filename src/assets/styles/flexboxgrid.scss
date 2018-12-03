@@ -1,0 +1,100 @@
+.flex {
+    display: flex;
+
+    &-row,
+    &-row-reverse,
+    &-col,
+    &-col-reverse {
+        display: flex;
+    }
+
+    &-row {
+        flex-direction: row;
+        width: 100%;
+        &-reverse {
+            flex-direction: row-reverse;
+            width: 100%;
+        }
+    }
+
+    &-col {
+        flex-direction: column;
+        height: 100%;
+        &-reverse {
+            flex-direction: column-reverse;
+            height: 100%;
+        }
+    }
+
+    &-inline {
+        display: inline-flex;
+    }
+
+    &-justify {
+        &-start {
+            justify-content: flex-start;
+        }
+        &-end {
+            justify-content: flex-end;
+        }
+        &-center {
+            justify-content: center;
+        }
+        &-s-between {
+            justify-content: space-between;
+        }
+        &-s-around {
+            justify-content: space-around;
+        }
+    }
+
+    &-align {
+        &-start {
+            align-items: flex-start;
+        }
+        &-end {
+            align-items: flex-end;
+        }
+        &-center {
+            align-items: center;
+        }
+        &-baseline {
+            align-items: baseline;
+        }
+    }
+
+    &-align-content {
+        &-start {
+            align-content: flex-start;
+        }
+        &-end {
+            align-content: flex-end;
+        }
+        &-center {
+            align-content: center;
+        }
+        &-s-between {
+            align-content: space-between;
+        }
+        &-s-around {
+            align-content: space-around;
+        }
+    }
+
+    &-wrap {
+        flex-wrap: wrap;
+        &-reverse {
+            flex-wrap: wrap-reverse;
+        }
+    }
+
+    &-auto {
+        flex: auto;
+    }
+
+    @for $i from 1 through 12 {
+        &-#{$i} {
+            flex: $i;
+        }
+    }
+}

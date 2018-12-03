@@ -1,0 +1,101 @@
+.te-popover {
+    border: 1px solid rgba(0, 0, 0, .15);
+    border-radius: 3px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, .08);
+    min-width: 80px;
+
+    &-container {
+        .form-group {
+            margin: 0;
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+
+        .input-button-icon {
+            padding: 6px;
+            border: none;
+            background-color: white;
+
+            &:hover {
+                color: black;
+            }
+        }
+
+        .te-input {
+            border: none;
+            min-width: 220px;
+            padding: 8px;
+        }
+
+        .horizontal-delimiter {
+            margin: 0;
+        }
+    }
+
+    &:before,
+    &:after {
+        position: absolute;
+        display: block;
+        width: 0;
+        height: 0;
+        border-color: transparent;
+        border-style: solid;
+        content: "";
+        left: 50%;
+    }
+    &:before {
+        border-width: 7px;
+        margin-left: -7px;
+    }
+    &:after {
+        border-width: 6px;
+        margin-left: -6px;
+    }
+    &.top {
+        margin-top: -6px;
+
+        &:before {
+            bottom: -7px;
+            border-top-color: rgba(0, 0, 0, .15);
+            border-bottom-width: 0;
+        }
+        &:after {
+            bottom: -6px;
+            border-top-color: #fff;
+            border-bottom-width: 0;
+        }
+    }
+    &.bottom {
+        margin-top: 6px;
+        &:before {
+            top: -7px;
+            border-top-width: 0;
+            border-bottom-color: rgba(0, 0, 0, .15);
+        }
+        &:after {
+            top: -6px;
+            border-top-width: 0;
+            border-bottom-color: #fff;
+        }
+    }
+    &.left {
+        &:before,
+        &:after {
+            left: 20px;
+        }
+    }
+    &.right {
+        &:before,
+        &:after {
+            left: auto;
+            right: 20px;
+        }
+        &:before {
+            margin-right: -7px;
+        }
+        &:after {
+            margin-right: -6px;
+        }
+    }
+}

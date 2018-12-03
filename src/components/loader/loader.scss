@@ -1,0 +1,17 @@
+loader {
+    min-height: 32px;
+    min-width: 32px;
+    position: relative;
+    display: inline-block;
+
+    .loader-icon {
+        position: absolute;
+        top: calc(50% - 16px);
+        left: calc(50% - 16px);
+        fill: rgba(0, 0, 0, 0.2);
+        animation-name: spin;
+        animation-duration: 1s;
+        animation-iteration-count: infinite;
+        animation-timing-function: ease;
+    }
+}

@@ -1,0 +1,76 @@
+#messages-inbox-page {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    .conversations {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+
+        .conversation-toolbar {
+            padding: 20px;
+            border-bottom: 1px solid #ECECF2;
+            display: flex;
+            justify-content: space-between;
+            height: 80px;
+            &.one-item {
+                justify-content: flex-end;
+            }
+            a.user-name {
+                display: inline-block;
+                margin-top: 3px;
+                color: #9A99AB;
+                letter-spacing: 0.5px;
+                text-decoration: none;
+            }
+            .toggle-btn {
+                font-size: 25px;
+                line-height: 20px;
+                height: 20px;
+                padding: 0;
+            }
+        }
+    }
+
+    .overlap-box {
+        position: relative;
+        &.active {
+            visibility: hidden;
+            height: 100%;
+        }
+        .deselect {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            font-size: 13px;
+            font-weight: 400;
+            color: #78909c;
+            visibility: initial;
+            transform: translate(-50%, -50%);
+
+            .clear-selection {
+                color: #0385cd;
+                text-decoration: none;
+                cursor: pointer;
+            }
+
+            i.fa-comments-o {
+                position: absolute;
+                top: -36px;
+                left: 50%;
+                font-size: 65px;
+                visibility: initial;
+                transform: translate(-50%, -50%);
+            }
+        }
+    }
+
+    @media (max-width: 545px) {
+        .conversation-toolbar {
+            position: fixed;
+            z-index: 10;
+            width: 100%;
+            background-color: #f0f0f0;
+        }
+    }
+}

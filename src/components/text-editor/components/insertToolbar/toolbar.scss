@@ -1,0 +1,37 @@
+text-editor-insert-toolbar {
+    text-angular-toolbar {
+        display: inline-block;
+        .btn-group {
+            float: none !important;
+            & > .btn {
+                color: #BFCAD2;
+                font-size: 19px;
+                border: 0;
+                background: none;
+                cursor: pointer;
+                padding: 0 10px;
+                height: auto;
+                &:hover {
+                    background: none;
+                    box-shadow: none;
+                    color: #46A2E8;
+                }
+                .dropdown-menu {
+                    cursor: default;
+                }
+                &.te-button {
+                    line-height: 20px;
+                    font-size: 22px;
+                    i {
+                        vertical-align: middle;
+                    }
+                }
+            }
+        }
+
+        .dropdown-menu.saved-replies {
+            padding: 0;
+            border-radius: $border-radius-base;
+        }
+    }
+}

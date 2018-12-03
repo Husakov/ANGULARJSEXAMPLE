@@ -1,0 +1,21 @@
+<div uib-dropdown
+     class="nav-caret-wrapper"
+     dropdown-append-to-body="true">
+
+    <div uib-dropdown-toggle class="nav-caret-btn pointer">
+        <i class="fa fa-angle-down"></i>
+    </div>
+
+    <ul uib-dropdown-menu
+        class="dropdown-menu"
+        ng-class="{'dropdown-menu-right': $ctrl.message.admin, 'dropdown-menu-left': !$ctrl.message.admin}">
+
+        <li>
+            <a ng-click="$ctrl.editTags()">Tag a message</a>
+        </li>
+
+        <li ng-show="::$ctrl.message.admin">
+            <a ng-click="$ctrl.saveReply()">Save as a Reply</a>
+        </li>
+    </ul>
+</div>

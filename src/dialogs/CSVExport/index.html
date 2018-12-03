@@ -1,0 +1,52 @@
+<div class="modal-header">
+    Export
+    <button
+        type="button"
+        class="close btn btn-link"
+        ng-click="$dismiss()">
+        &times;
+    </button>
+</div>
+<div class="modal-description">
+    <span ng-if="::($ctrl.count === 0)">
+        Export all users who match these filters
+    </span>
+    <span ng-if="::($ctrl.count > 0)">
+        Export {{::$ctrl.count}} selected users
+    </span>
+</div>
+<div class="modal-body">
+    <div class="content">
+        <div ng-repeat="export in ::$ctrl.exportTypes track by $index"
+             class="list-option">
+            <div class="radio">
+                <label>
+                    <input class="radio-input"
+                           type="radio"
+                           ng-name="exportTypes"
+                           ng-model="$ctrl.exportAll"
+                           ng-value="export.value"/>
+                    <i class="dark-white"></i>
+                    <span ng-bind="::export.name"></span>
+                </label>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-footer text-right">
+    <button type="button"
+            class="btn btn-primary btn-sm"
+            ng-click="$ctrl.ok()">
+        Export
+    </button>
+    <button type="button"
+            class="btn btn-default btn-sm"
+            ng-click="$dismiss()">
+        Cancel
+    </button>
+</div>
+
+<div class="overlay"
+     ng-if="$ctrl.loading">
+    <loader></loader>
+</div>

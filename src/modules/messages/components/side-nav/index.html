@@ -1,0 +1,66 @@
+<div class="loader"
+     ng-if="$ctrl.mediator.loading">
+    <loader></loader>
+</div>
+
+<div class="sections-container"
+     ng-if="!$ctrl.mediator.loading">
+    <div class="flex-col main-sections"
+         ng-class="{'collapsed' : $ctrl.collapsed}"
+         ri-scrollbar>
+
+        <div ng-transclude="left"></div>
+
+        <div class="section"
+             ng-class="{active: section.active, root: section.items, disabled: section.isDisabled()}"
+             ng-repeat="section in $ctrl.sections.items"
+             ng-hide="section.isHidden()">
+            <div class="header"
+                 ng-click="!section.isDisabled() && $ctrl.setActive(section, 0);">
+                <i class="fa fa-fw {{::section.icon}}"></i>
+                <span class="in-collapsed">{{::section.title}}</span>
+            </div>
+
+            <div class="body" ng-if="section.items">
+                <div class="section"
+                     ng-class="{active: section.active, disabled: section.isDisabled()}"
+                     ng-repeat="section in section.items"
+                     ng-hide="section.isHidden()">
+                    <div class="header in-collapsed"
+                         ng-click="!section.isDisabled() && $ctrl.setActive(section, 1)">
+                        {{::section.title}}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div ng-if="$ctrl.sections.backButton"
+             class="back-button control-button"
+             ng-click="$ctrl.sections.backButton.action()">
+            <i class="fa fa-fw fa-chevron-left"></i>
+            <span class="in-collapsed">{{$ctrl.sections.backButton.title}}</span>
+        </div>
+        <div class="collapse-button control-button"
+             uib-tooltip="Collapse menu"
+             tooltip-class="nowrap"
+             tooltip-placement="top"
+             ng-click="$ctrl.toggleSidebar();">
+            <i class="fa fa-fw"
+               ng-class="{'fa-chevron-left' : !$ctrl.collapsed, 'fa-chevron-right' : $ctrl.collapsed}"></i>
+        </div>
+    </div>
+
+    <div class="flex-col second-sections"
+         ng-class="$ctrl.activeSection.className"
+         ng-if="$ctrl.activeSection.sectionTemplateName">
+        <div ng-include="$ctrl.getTemplateUrl($ctrl.activeSection.sectionTemplateName)">
+        </div>
+        <div class="collapse-button control-button"
+             uib-tooltip="Collapse submenu"
+             tooltip-class="nowrap"
+             tooltip-placement="top"
+             ng-click="$ctrl.destroy()">
+            <i class="fa fa-fw fa-chevron-left"></i>
+        </div>
+    </div>
+</div>

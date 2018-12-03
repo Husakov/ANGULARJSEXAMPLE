@@ -1,0 +1,63 @@
+<div class="detail-container"
+     ri-scrollbar>
+    <div ng-if="!$ctrl.loading" recompile>
+        <uib-accordion>
+            <div uib-accordion-group
+                 class="accordion-panel"
+                 ng-repeat="section in $ctrl.sections track by section.name"
+                 ng-switch on="section.type"
+                 is-open="section.tab">
+                <uib-accordion-heading>
+                    {{::section.title}}
+                    <i class="toggle-icon"
+                         ng-class="{'open-icon': !section.tab}"></i>
+                </uib-accordion-heading>
+
+                <div ng-switch-when="accordion"
+                     ng-init="data = $ctrl.initArray(section)">
+
+                    <uib-accordion ng-if="data.elements.length > 0">
+                        <div uib-accordion-group
+                             class="accordion-panel"
+                             ng-repeat="el in ::data.elements track by el.id"
+                             is-open="el.tab">
+                            <uib-accordion-heading>
+                                <span uib-tooltip="{{::el.name}}"
+                                      tooltip-append-to-body="true"
+                                      tooltip-class="tooltip-top">
+                                    <i class="fa fa-fw"
+                                       aria-hidden="true"
+                                       ng-class="::section.icon"></i>
+                                    {{::el.name}}
+                                    <i class="toggle-icon"
+                                         ng-class="{'open-icon': !el.tab}"></i>
+                                </span>
+                            </uib-accordion-heading>
+                            <div ng-include="'${require(`./sections.html`)}'"></div>
+                        </div>
+                    </uib-accordion>
+
+                    <div ng-if="data.elements.length === 0" class="detail-item">
+                        Empty
+                    </div>
+
+                </div>
+
+                <div ng-switch-when="list"
+                     ng-init="data = $ctrl.initList(section)">
+                    <div ng-include="'${require(`./list.html`)}'"></div>
+                </div>
+
+                <div ng-switch-when="teams"
+                     ng-init="data = $ctrl.initArray(section)">
+                    <div ng-include="'${require(`./teams.html`)}'"></div>
+                </div>
+
+                <div ng-switch-default>
+                    <div ng-include="'${require(`./sections.html`)}'"></div>
+                </div>
+            </div>
+        </uib-accordion>
+    </div>
+    <loader ng-if="$ctrl.loading"></loader>
+</div>

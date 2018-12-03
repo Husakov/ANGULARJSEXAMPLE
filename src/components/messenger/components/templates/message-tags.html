@@ -1,0 +1,14 @@
+<div ng-if="$ctrl.message.tags.length" class="message-tags">
+    <a class="label label-default"
+       ng-repeat="tag in $ctrl.message.tags">
+
+        <i class="fa fa-tag"></i>
+
+        {{ ::tag.name }}
+
+        <span ng-click="$ctrl.removeTag(tag)"
+              class="text-sm pointer tag-item-remove">
+            <i class="fa fa-times-circle"></i>
+        </span>
+    </a>
+</div>

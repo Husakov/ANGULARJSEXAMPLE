@@ -1,0 +1,24 @@
+<div class="panel-body">
+    <div class="flex-row flex-align-top">
+        <div class="user-information flex-auto">
+            <a class="blue-txt"
+               ui-sref="contacts.details({mode: 'users', id: '{{$ctrl.user.id}}' })"
+               ng-bind="::$ctrl.user.name">
+            </a> triggered an event
+        </div>
+        <div class="flex-auto text-right time-ago">
+            <span am-time-ago="::$ctrl.event.created_at"
+                  uib-tooltip="{{::$ctrl.event.created_at | date:'HH:mm a on d, MMM yyyy'}}"
+                  tooltip-class="tooltip-top activity-tooltip-event"
+                  tooltip-placement="top-right"
+                  tooltip-append-to-body="true"></span>
+        </div>
+    </div>
+    <div class="description flex">
+        <div class="flex-auto">
+            <div ng-repeat="(key, value) in $ctrl.event.metadata">
+                <span class="text-bold">{{key}}</span>: <span>{{value}}</span>
+            </div>
+        </div>
+    </div>
+</div>

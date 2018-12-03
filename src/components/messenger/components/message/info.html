@@ -1,0 +1,28 @@
+<div ng-if="$ctrl.message.body" ng-include="'${require(`./message.html`)}'"></div>
+
+<div class="list-item message-info text-center">
+    <avatar item="::$ctrl.message.admin" size="16"></avatar>
+    <span class="name">{{::$ctrl.message.admin.name}}</span>
+    <span ng-switch="$ctrl.message.sub_type">
+        <span ng-switch-when="open">
+            re-opened this conversation
+        </span>
+        <span ng-switch-when="close">
+            closed this conversation
+        </span>
+        <span ng-switch-when="assignment">
+            assigned this conversation to
+            <avatar size="16"
+                    item="::$ctrl.message.assignee"
+                    ng-if="$ctrl.message.assignee_id">
+            </avatar>
+            <span class="name">{{::$ctrl.message.assignee.name}}</span>
+        </span>
+    </span>
+
+    <span class="created-at" uib-tooltip="{{::$ctrl.message.created_at | date:'medium'}}"
+       tooltip-append-to-body="true"
+       tooltip-class="tooltip-top">
+        {{ ::$ctrl.message.created_at | amTimeAgo }}
+    </span>
+</div>

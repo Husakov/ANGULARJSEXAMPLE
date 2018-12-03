@@ -1,0 +1,13 @@
+leaflet-map {
+    display: block;
+    position: relative;
+    .marker-icon {
+        border-radius: 50%;
+        border: 2px solid #fff;
+        background: #1074ae;
+        width: 20px !important;
+        height: 20px !important;
+        margin-left: -10px !important;
+        margin-top: -10px !important;
+    }
+}

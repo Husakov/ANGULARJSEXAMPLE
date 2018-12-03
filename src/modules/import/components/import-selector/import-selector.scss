@@ -1,0 +1,22 @@
+import-selector {
+    .flex-container {
+        padding: 10px 30px;
+        min-width: 400px;
+        display: flex;
+        flex-direction: column;
+        .header {
+            text-align: center;
+        }
+        .description {
+            padding: 10px 0;
+            line-height: 20px;
+        }
+        .import-types {
+            padding: 10px 0;
+            .btn {
+                font-size: 12px;
+            }
+        }
+    }
+}
+

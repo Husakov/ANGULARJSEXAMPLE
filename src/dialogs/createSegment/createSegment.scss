@@ -1,0 +1,21 @@
+.create-segment {
+    .modal-dialog {
+        top: 50%;
+        margin-top: -163px;
+        width: 700px;
+        height: 327px;
+    }
+    .btn-manage-segments {
+        margin-top: -8px;
+        margin-left: 17px;
+        i.fa {
+            font-size: 140%;
+            vertical-align: middle;
+            margin-right: 4px;
+        }
+    }
+    input[type='text'] {
+        margin-left: 5px;
+        width: calc(100% + 20px);
+    }
+}

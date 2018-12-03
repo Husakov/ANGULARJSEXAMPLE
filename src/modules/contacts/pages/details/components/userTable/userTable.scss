@@ -1,0 +1,61 @@
+contacts-details-users-table {
+    .toolbar {
+        padding: 5px 40px 0px 40px;
+        font-size: 14px;
+        flex: 0 0 50px;
+    }
+
+    .checkbox-inline {
+        padding: 10px;
+    }
+
+    .users-table-container {
+        position: relative;
+        height: 100%;
+        width: 100%;
+        .users-table {
+            padding: 0 20px;
+        }
+    }
+
+    .checkbox-column {
+        flex: 0 0 45px;
+    }
+
+    .avatar-column {
+        padding: 0 10px 0 0;
+        flex: 0 0 60px;
+    }
+
+    .user-information {
+        margin-top: 12px;
+        position: relative;
+        a {
+            color: $text-color;
+            &.name {
+                font-size: 18px;
+                margin-right: 5px;
+                font-weight: bold;
+            }
+        }
+        .toggle {
+            font-size: 12px;
+            &.fa-chevron-up {
+                margin-top: 1px;
+            }
+        }
+    }
+
+    .description {
+        padding-bottom: 5px;
+        > span {
+            white-space: nowrap;
+            margin-top: 10px;
+            display: inline-block;
+            font-size: 16px;
+            &:not(:last-child) {
+                margin-right: 10px;
+            }
+        }
+    }
+}

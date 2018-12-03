@@ -1,0 +1,37 @@
+@media (max-width: 545px) {
+    .people-more-segments-wrap {
+        display: none;
+    }
+}
+
+user-segments {
+    margin-top: 2px;
+    a {
+        display: block;
+        padding: 5px 10px;
+    }
+}
+
+user-segments .dropdown-toggle {
+    position: relative;
+    top: 2px;
+}
+
+.user-segments-accordion {
+    .accordion-title {
+        font-size: 0.875rem;
+        color: #3C5059;
+        width: calc(100% - 1.5rem);
+        + .fa {
+            font-size: 0.875rem;
+        }
+    }
+    .custom-segment-name {
+        display: inline-block;
+        margin-right: 5px;
+        max-width: calc(100% - 30px);
+        &.selected {
+            max-width: calc(100% - 60px);
+        }
+    }
+}

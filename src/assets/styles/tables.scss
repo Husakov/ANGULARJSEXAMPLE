@@ -1,0 +1,184 @@
+.table {
+    margin-bottom: 0px;
+    table-layout: fixed;
+
+    > thead,
+    > tbody,
+    > tfoot {
+        > tr {
+            > th,
+            > td {
+                height: 56px;
+                vertical-align: middle;
+                padding: 0 5px;
+                &.narrow-column {
+                    width: 100px;
+                }
+                &.avatar-td {
+                    width: 50px;
+                }
+                &.spacer {
+                    width: 15px;
+                    padding: 0 !important;
+                    &:last-child {
+                        width: 40px;
+                    }
+                }
+            }
+        }
+    }
+    > thead > tr > th {
+        background: $main-background-color;
+        text-transform: uppercase;
+        font-weight: 600;
+        color: $text-color;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+        &.check-field {
+            width: 40px;
+            text-align: center;
+            padding-left: 10px;
+        }
+        &.trigger-column {
+            width: 120px;
+            text-transform: none;
+            overflow: visible;
+            button {
+                text-transform: uppercase;
+                font-weight: 600;
+            }
+            .dropdown-menu {
+                min-width: 280px;
+            }
+        }
+    }
+    > tbody {
+        > tr {
+            > td {
+                line-height: 52px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                color: $text-color;
+                white-space: nowrap;
+
+                &.check-field {
+                    width: 40px;
+                    text-overflow: unset;
+                    .checkbox-inline {
+                        margin-left: 4px;
+                    }
+                }
+                &.trigger-column {
+                    width: 120px;
+                    text-align: center;
+                    .handler {
+                        color: #CCCFCF;
+                        font-size: 20px;
+                        cursor: move;
+                        margin-right: 20px;
+                        vertical-align: middle;
+                    }
+                    .ui-check {
+                        float: right;
+                        margin-top: 4px;
+                    }
+                }
+
+                span,
+                a {
+                    color: $text-color;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-decoration: none;
+                    label {
+                        &:first-child {
+                            margin-left: 10px;
+                        }
+                    }
+                }
+
+                a.blue-link {
+                    cursor: pointer;
+                    color: $brand-primary;
+                    i.fa {
+                        font-size: 12px;
+                        vertical-align: text-top;
+                        margin-top: 4px;
+                        margin-left: 4px;
+                    }
+                }
+
+                avatar {
+                    margin-right: 4px;
+                }
+
+                &.name-td {
+                    line-height: 24px;
+                    vertical-align: middle;
+                }
+
+                .no-data {
+                    opacity: 0.4;
+                }
+            }
+
+            .visible-on-hover {
+                visibility: hidden;
+                opacity: 0;
+            }
+
+            &:hover,
+            &.checked {
+                background: #fff7ef !important;
+                .visible-on-hover {
+                    visibility: visible;
+                    opacity: 1;
+                }
+            }
+
+            &.expand-rows,
+            &.expanded-row {
+                position: relative;
+                z-index: 60;
+                opacity: 1;
+                background: $main-background-color;
+            }
+        }
+    }
+}
+
+.table-container {
+    display: block;
+    height: calc(100vh - 110px);
+    width: 100%;
+    position: relative;
+    .scrollContainer {
+        height: 100%;
+        position: relative;
+    }
+    .table-buttons {
+        position: absolute;
+        right: 15px;
+        top: 7px;
+        color: $text-color;
+        padding: 10px;
+        z-index: 5;
+        text-transform: uppercase;
+        .btn {
+            padding: 0;
+            height: auto;
+        }
+    }
+}
+
+.table-fixed-header {
+    & > .ri-scrollbar-container {
+        padding-top: 56px;
+    }
+    table:not(.fixed-header) > thead {
+        visibility: hidden;
+    }
+}

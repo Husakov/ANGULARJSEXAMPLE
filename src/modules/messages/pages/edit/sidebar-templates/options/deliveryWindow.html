@@ -1,0 +1,40 @@
+<div class="form-group">
+    Delivery Window
+    <div class="pull-right">
+        <ui-toggle ng-model="$ctrl.mediator.model.optionsGetterSetter('deliveryWindow.enabled')"
+                   ng-model-options="{getterSetter: true}"
+                   styles="round off-default"
+                   on=""
+                   off="">
+        </ui-toggle>
+    </div>
+</div>
+<fieldset ng-disabled="!$ctrl.mediator.model.options('deliveryWindow.enabled')">
+    <div class="form-group">
+        <div class="form-inline time-picker">
+            <input type="time"
+                   class="form-control"
+                   ng-model="$ctrl.mediator.model.optionsGetterSetter('deliveryWindow.start_time')"
+                   ng-model-options="{getterSetter: true}"
+                   placeholder="HH:mm" required/>
+            <label class="text-bold">to</label>
+            <input type="time"
+                   class="form-control"
+                   ng-model="$ctrl.mediator.model.optionsGetterSetter('deliveryWindow.end_time')"
+                   ng-model-options="{getterSetter: true}"
+                   placeholder="HH:mm" required/>
+        </div>
+    </div>
+    <div class="form-group">
+        <div ng-repeat="(key, value) in $ctrl.mediator.model.options('deliveryWindow.days') track by key"
+             class="checkbox">
+            <label>
+                <input type="checkbox"
+                       ng-model="$ctrl.mediator.model.optionsGetterSetter('deliveryWindow.days.' + key)"
+                       ng-model-options="{getterSetter: true}">
+                <i></i>
+                <span ng-bind="key | limitTo: 3 | capitalize"></span>
+            </label>
+        </div>
+    </div>
+</fieldset>

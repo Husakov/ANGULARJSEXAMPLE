@@ -1,0 +1,97 @@
+<div class="message-details-report">
+    <div class="toolbar"
+         ng-include="'${require(`./toolbar.html`)}'">
+    </div>
+
+    <div class="panel panel-default table-container table-fixed-header" ri-scrollbar>
+        <table fixed-header
+               class="table">
+            <thead>
+            <tr>
+                <th class="spacer"></th>
+                <th class="check-field">
+                <th class="avatar-td"></th>
+                <th>User</th>
+                <th>Sent</th>
+                <th>Opened</th>
+                <th>Clicked</th>
+                <th>Replied</th>
+                <th>Goal</th>
+            </tr>
+            </thead>
+            <tbody scroll-list="$ctrl.fetch(params)"
+                   helper="$ctrl.listHelper"
+                   ready="!!$ctrl.section"
+                   scroll-container="ri-scrollbar">
+            <tr ng-repeat="item in listHelper.items"
+                ng-class="{'checked': item.checked}">
+                <td class="spacer">
+                </td>
+                <td class="check-field">
+                    <label class="checkbox-inline visible-on-hover">
+                        <input type="checkbox"
+                               ng-checked="item.checked"
+                               ng-click="listHelper.toggleElement(item)">
+                        <i class="dark-white"></i>
+                    </label>
+                </td>
+                <td class="avatar-td text-center">
+                    <avatar item="::item.user"
+                            size="24">
+                    </avatar>
+                </td>
+                <td>
+                    {{::(item.user.name || item.user.display_as) | dash}}
+                </td>
+                <td>
+                    <span uib-tooltip="{{::item.sent_at | date:'medium'}}"
+                          tooltip-append-to-body="true"
+                          tooltip-class="tooltip-top">
+                        {{::item.sent_at | amTimeAgo | dash}}
+                    </span>
+                </td>
+                <td>
+                    <span uib-tooltip="{{::item.opened_at | date:'medium'}}"
+                          tooltip-append-to-body="true"
+                          tooltip-class="tooltip-top">
+                        {{::item.opened_at | amTimeAgo | dash}}
+                    </span>
+                </td>
+                <td>
+                    <span uib-tooltip="{{::item.clicked_at | date:'medium'}}"
+                          tooltip-append-to-body="true"
+                          tooltip-class="tooltip-top">
+                        {{::item.clicked_at | amTimeAgo | dash}}
+                    </span>
+                </td>
+                <td>
+                    <span uib-tooltip="{{::item.replied_at | date:'medium'}}"
+                          tooltip-append-to-body="true"
+                          tooltip-class="tooltip-top">
+                        {{::item.replied_at | amTimeAgo | dash}}
+                    </span>
+                </td>
+                <td>
+                    <span uib-tooltip="{{::item.hit_goal_at | date:'medium'}}"
+                          tooltip-append-to-body="true"
+                          tooltip-class="tooltip-top">
+                        {{::item.hit_goal_at | amTimeAgo | dash}}
+                    </span>
+                </td>
+            </tr>
+            <tr ng-if="listHelper.allLoaded && listHelper.items.length === 0">
+                <td colspan="9"
+                    class="text-center">
+                    No users
+                </td>
+            </tr>
+            <tr ng-if="listHelper.loading">
+                <td colspan="9"
+                    class="text-center">
+                    <loader></loader>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,34 @@
+<div class="{{$ctrl.walker.step.className}}">
+    <h4 class="text-uppercase box title text-bold">Import</h4>
+
+    <div class="clearfix box">
+        <div class="pull-left">
+            {{$ctrl.walker.step.description}}
+        </div>
+        <div class="pull-right">
+            Step {{$ctrl.stepIndex}} of {{$ctrl.walker.total}}
+        </div>
+    </div>
+
+    <slides step="$ctrl.stepIndex">
+        <slide ng-repeat="template in $ctrl.stepTemplates track by $index"
+               class="step"
+               ng-class="{'active': ($index + 1) == $ctrl.stepIndex}"
+               ng-style="{width: 100/$ctrl.walker.total + '%'}"
+               ng-show="$ctrl.walker.steps[$index].isReady"
+               template="::template"></slide>
+    </slides>
+    <div class="buttons text-right"
+         ng-if="$ctrl.walker.index === $ctrl.walker.total - 1">
+        <button class="btn btn-primary"
+                ng-disabled="!$ctrl.walker.step.validate()"
+                ng-click="$ctrl.finish()">
+            Finalize Import
+        </button>
+    </div>
+
+    <div class="loading text-center"
+         ng-show="$ctrl.walker.inProgress">
+        <loader></loader>
+    </div>
+</div>

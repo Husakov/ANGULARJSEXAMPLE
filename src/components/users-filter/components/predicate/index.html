@@ -1,0 +1,67 @@
+<div class="uf-left">
+    <button class="btn btn-xs btn-default btn-rule"
+            ng-click="$ctrl.togglePredicatesRule()"
+            ng-bind="$ctrl.isOrRule ? 'OR' : 'AND'">
+    </button>
+</div>
+
+<div class="uf-icon">
+    <i class="fa fa-{{::$ctrl.attribute.icon}}"></i>
+</div>
+
+<div class="name-container flex-auto"
+     uib-tooltip="{{::$ctrl.attribute.description}}"
+     tooltip-append-to-body="true"
+     tooltip-class="tooltip-top">
+    {{ ::($ctrl.attribute.title || $ctrl.attribute.name) }}
+</div>
+
+<div class="comparison-container"
+     ng-init="uniqId = $id">
+    <div class="btn-group"
+         uib-dropdown
+         dropdown-append-to-body="true">
+        <button class="btn btn-basic btn-sm btn-block text-uppercase text-bold"
+                ng-disabled="$ctrl.disabled"
+                uib-dropdown-toggle>
+            {{$ctrl.helper.comparison.title || 'comparison'}}
+            <i class="fa fa-chevron-down text-sm"></i>
+        </button>
+        <ul class="dropdown-menu comparison-type-dropdown"
+            uib-dropdown-menu>
+
+            <li ng-repeat-start="(groupKey, comparisons) in ::$ctrl.helper.comparisons | groupBy:'group' track by groupKey"
+                ng-init="group = $ctrl.helper.getGroup(groupKey)"
+                ng-click="$event.stopPropagation()"
+                ng-show="::!!group"
+                class="comparison-type group-header dropdown-header">
+                {{::group.name}}
+            </li>
+            <li ng-repeat-end
+                ng-repeat="comparison in ::comparisons"
+                class="comparison-type radio">
+                <label class="text-bold">
+                    <input type="radio"
+                           name="comparison-{{::uniqId}}"
+                           ng-model="$ctrl.helper.comparison"
+                           ng-value="::comparison"
+                           ng-change="$ctrl.helper.setComparison(comparison)">
+                    <i></i>
+                    {{ ::comparison.title }}
+                </label>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="input-container text-right"
+     ng-include="$ctrl.inputType.template">
+</div>
+
+<div class="input-container text-right"
+     ng-if="!$ctrl.inputType.template">
+</div>
+
+<div class="uf-icon">
+    <i class="fa fa-minus-circle pointer"
+       ng-click="$ctrl.remove()"></i>
+</div>

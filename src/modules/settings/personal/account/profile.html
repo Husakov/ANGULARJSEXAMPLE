@@ -1,0 +1,122 @@
+<div class="profile-style">
+    <div class="row">
+        <div class="col-sm-6">
+            <form role="form" name="ctrl.form">
+                <div class="form-group">
+                    <label for="userName" class="form-label">Name</label>
+                    <input id="userName"
+                           ng-model="ctrl.model.name"
+                           type="text"
+                           class="form-control"
+                           maxlength="50"
+                           placeholder="Enter your name"
+                           required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Photo</label>
+                    <div class="form-group">
+                        <upload class="change-photo"
+                                accept="'image/*'"
+                                on-read="ctrl.addFile(file, content)">
+                            <avatar item="ctrl.model"
+                                    link-disabled="::true"
+                                    size="64"></avatar>
+                            <i class="fa fa-camera" aria-hidden="true"></i>
+                        </upload>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="userEmail" class="form-label">Email Address</label>
+                    <input id="userEmail"
+                           name="userEmail"
+                           ng-model="ctrl.model.email"
+                           type="email"
+                           class="form-control"
+                           maxlength="50"
+                           placeholder="Enter your email"
+                           required>
+                </div>
+                <div class="form-group">
+                    <label for="userJob" class="form-label">Job title</label>
+                    <input id="userJob"
+                           ng-model="ctrl.model.job_title"
+                           type="text"
+                           class="form-control"
+                           maxlength="50"
+                           placeholder="Add your job title">
+                </div>
+                <div class="form-group">
+                    <label for="biography" class="form-label">Introduction</label>
+                        <textarea id="biography"
+                                  ng-model="ctrl.model.biography"
+                                  class="form-control"
+                                  maxlength="200"
+                                  placeholder="Introduce yourself and your role"></textarea>
+                    <div ng-if="!ctrl.model.biography.length || ctrl.model.biography.length <= 160"
+                         class="help-block">
+                        {{160 - ctrl.model.biography.length}} characters remaining
+                    </div>
+                    <div ng-if="ctrl.model.biography.length > 160"
+                         class="help-block">
+                        Warning! {{160 - ctrl.model.biography.length}} characters!
+                    </div>
+                </div>
+                <div class="form-group" ng-if="!STAGE_OR_PROD">
+                    <label class="form-label">Social chanels</label>
+                    <br>
+                    <a class="social-link" href="#">
+                        <i class="fa fa-fw fa-twitter"></i>
+                        <span>Connect your Twitter</span>
+                    </a>
+                    <br>
+                    <a class="social-link" href="#">
+                        <i class="fa fa-fw fa-linkedin"></i>
+                        <span>Connect your LinkedIn</span>
+                    </a>
+                </div>
+
+                <div class="form-group">
+                    <button type="button"
+                            class="btn btn-primary"
+                            ng-disabled="!ctrl.form.$valid || ctrl.form.$submitted"
+                            ng-click="ctrl.updateModel()">
+                        <i class="fa fa-floppy-o" aria-hidden="true"></i> Save
+                    </button>
+                    <a type="button"
+                       class="btn btn-default"
+                       ui-sref="settings.account.change-password">
+                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Change password</a>
+                </div>
+            </form>
+        </div>
+
+        <!-- Right bar with profile -->
+        <div class="col-sm-6">
+            <div class="profile-wrapper">
+                <div class="top-right-bar">
+                    <i class="fa fa-angle-left" aria-hidden="true"></i>
+                    <div class="profile-info">
+                        <div class="image-row">
+                            <avatar item="ctrl.model"
+                                    link-disabled="::true"
+                                    size="48"></avatar>
+                        </div>
+                        <div class="image-row">
+                            <p class="name">{{ ctrl.model.name }}</p>
+                            <p class="status">Active 4m</p>
+                        </div>
+                    </div>
+                    <div class="profile-description">
+                        <p ng-if="!ctrl.model.job_title" class="job-title">Add your job title</p>
+                        <p ng-if="ctrl.model.job_title" class="job-title">{{ctrl.model.job_title}}</p>
+                        <p class="time">7:51 PM in Napls</p>
+                        <p ng-if="!ctrl.model.biography" class="biography">
+                            Introduce yourself and your role
+                        </p>
+                        <p ng-if="ctrl.model.biography" class="biography">{{ctrl.model.biography}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

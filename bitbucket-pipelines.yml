@@ -1,0 +1,72 @@
+image: node:6.9.4
+
+pipelines:
+  branches:
+    master:
+      - step:
+          name: Build
+          caches:
+            - node
+          script:
+            - export NODE_ENV="production"
+            - npm install
+            - node node_modules/eslint/bin/eslint.js src
+            - npm run build
+            - tar -czvf mnh-core_production.tar.gz dist
+          artifacts:
+            - mnh-core_production.tar.gz
+      - step:
+          name: Deploy
+          deployment: production
+          script:
+            - sftp $SFTP_SERVER_PATH/ <<< $'put mnh-core_production.tar.gz'
+            - curl https://api.rollbar.com/api/1/deploy/ -F access_token=$ROLLBAR_ACCESS_TOKEN -F environment="production" -F revision=$BITBUCKET_COMMIT -F local_username="Bitbucket Pipelines" -F comment=$BITBUCKET_BUILD_NUMBER
+    dev:
+      - step:
+          name: Build
+          caches:
+            - node
+          script:
+            - npm install
+            - node node_modules/eslint/bin/eslint.js src
+            - echo "Build Dev"
+            - npm run build
+            - tar -czvf mnh-core_dev.tar.gz dist
+            - rm -rf dist
+            - echo "Build Stage"
+            - export NODE_ENV="stage"
+            - npm run build
+            - tar -czvf mnh-core_test.tar.gz dist
+            - rm -rf dist
+            - echo "Build Stage"
+            - export NODE_ENV="production"
+            - npm run build
+            - tar -czvf mnh-core_staging.tar.gz dist
+          artifacts:
+            - mnh-core_dev.tar.gz
+            - mnh-core_test.tar.gz
+            - mnh-core_staging.tar.gz
+      - step:
+          name: Deploy
+          deployment: staging
+          script:
+            - sftp $SFTP_SERVER_PATH/ <<< $'put mnh-core_dev.tar.gz'
+            - sftp $SFTP_SERVER_PATH/ <<< $'put mnh-core_test.tar.gz'
+            - sftp $SFTP_SERVER_PATH/ <<< $'put mnh-core_staging.tar.gz'
+            - curl https://api.rollbar.com/api/1/deploy/ -F access_token=$ROLLBAR_ACCESS_TOKEN -F environment="staging" -F revision=$BITBUCKET_COMMIT -F local_username="Bitbucket Pipelines" -F comment=$BITBUCKET_BUILD_NUMBER
+    special:
+      - step:
+          name: Build
+          caches:
+            - node
+          script:
+            - npm install
+            - node node_modules/eslint/bin/eslint.js src
+            - npm run build
+            - tar -czvf mnh-core_special.tar.gz dist
+          artifacts:
+            - mnh-core_special.tar.gz
+      - step:
+          name: Deploy
+          script:
+            - sftp $SFTP_SERVER_PATH/ <<< $'put mnh-core_special.tar.gz'

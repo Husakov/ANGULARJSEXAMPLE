@@ -1,0 +1,124 @@
+<div class="logo-wrap"
+     ng-click="$ctrl.isOpen = !$ctrl.isOpen">
+    Riika
+</div>
+
+<nav class="nav-light">
+    <ul class="nav">
+        <li ui-sref-active="selected">
+            <a ui-sref="contacts"
+               ui-sref-opts="{inherit: false, reload: true}"
+               title="Contacts">
+                <span class="nav-icon"><i class="fa fa-fw fa-address-book"></i></span>
+                <span class="nav-text">Contacts</span>
+            </a>
+        </li>
+        <li ui-sref-active="selected">
+            <a ui-sref="messages.inbox">
+                <span class="nav-icon"><i class="fa fa-inbox"></i></span>
+                <span class="nav-text">Inbox</span>
+            </a>
+        </li>
+
+        <li class="foldable"
+            ui-sref-active="selected">
+            <a>
+                <span class="nav-caret"><i class="fa fa-caret-down"></i></span>
+                <span class="nav-icon"><i class="fa fa-fw fa-comments"></i></span>
+                <span class="nav-text">Messages</span>
+            </a>
+            <ul class="nav-sub">
+                <li>
+                    <a ui-sref="messages.list.state({type: 'manual', state: 'all'})">
+                        <span class="nav-icon"><i class="fa fa-fw fa-envelope"></i></span>
+                        <span class="nav-text">One-Time Messages</span>
+                    </a>
+                </li>
+                <li>
+                    <a ui-sref="messages.list.state({type: 'auto', state: 'all'})">
+                        <span class="nav-icon"><i class="fa fa-fw fa-paper-plane"></i></span>
+                        <span class="nav-text">Automations</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+        <li class="topmenu-avatar foldable">
+            <a>
+                <span class="nav-caret">
+                    <i class="fa fa-caret-down"></i>
+                </span>
+
+                <avatar item="$ctrl.currentUser"
+                        size="32"
+                        show-status="true"
+                        link-disabled="true"
+                        ng-if="$ctrl.currentUser"></avatar>
+
+                <span class="nav-text">Administrator</span>
+            </a>
+            <ul class="nav-sub">
+                <li>
+                    <a ng-click="$ctrl.activityPanel.toggle()"
+                       title="Activity">
+                        <span class="nav-icon"><i class="fa fa-fw fa-bell-o"></i></span>
+                        <span class="nav-text">Activity</span>
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        <span class="nav-icon"><i class="fa fa-fw fa-eye"></i></span>
+                        <span class="nav-text">
+                            My status:
+                            <span ng-if="!$ctrl.currentUser.is_away">Online</span>
+                            <span ng-if="$ctrl.currentUser.is_away">Away</span>
+                            <ui-toggle ng-model="$ctrl.onlineStatus"
+                                       ng-model-options="{getterSetter: true}"
+                                       class="pull-right toggle-status"
+                                       on=""
+                                       off=""
+                                       styles="round on-success off-warning">
+                            </ui-toggle>
+                        </span>
+                    </a>
+                </li>
+                <li ui-sref-active="selected">
+                    <a ui-sref="settings"
+                       ui-sref-opts="{inherit: false, reload: true}"
+                       title="Settings">
+                        <span class="nav-icon"><i class="fa fa-fw fa-cogs"></i></span>
+                        <span class="nav-text">Settings</span>
+                    </a>
+                </li>
+                <li class="foldable" ui-sref-active="selected">
+                    <a>
+                        <span class="nav-icon"><i class="fa fa-fw fa-tasks"></i></span>
+                        <span class="nav-text">Apps</span>
+                        <span class="nav-caret pull-right">
+                            <i class="fa fa-caret-right"></i>
+                        </span>
+                    </a>
+                    <ul class="nav-sub">
+                        <li class="li-header">
+                            <a>
+                                <span class="nav-text li-header">Add new app</span>
+                            </a>
+                        </li>
+                        <li ng-repeat="app in $ctrl.currentUser.apps"
+                            ng-class="::{'sub-selected': $ctrl.currentUser.current_app_id === app.id}">
+                            <a ng-click="$ctrl.changeApp(app.id)">
+                                <span class="nav-text">{{::app.name}}</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li ng-class="{'selected': $ctrl.logoutClicked}">
+                    <a ng-click="$ctrl.logout()">
+                        <span class="nav-icon"><i class="fa fa-fw fa-power-off"></i></span>
+                        <span class="nav-text">Logout</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</nav>
